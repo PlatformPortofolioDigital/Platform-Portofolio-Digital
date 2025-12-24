@@ -7,9 +7,9 @@
    VARIABLES
 ================================ */
 :root {
-  --primary: #38bdf8;     /* tech blue */
-  --secondary: #34d399;   /* mint green */
-  --dark: #0f172a;        /* midnight */
+  --primary: #38bdf8;
+  --secondary: #34d399;
+  --dark: #0f172a;
   --light: #f8fafc;
   --gray: #94a3b8;
   --white: #ffffff;
@@ -84,77 +84,6 @@ body {
 }
 
 /* ===============================
-   HERO VIDEO SECTION
-================================ */
-.hero-video {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.bg-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: -2;
-}
-
-.hero-video::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(15,23,42,0.8),
-    rgba(2,132,199,0.45)
-  );
-  z-index: -1;
-}
-
-/* ===============================
-   HERO CONTENT (LEFT ALIGN)
-================================ */
-.hero-content {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px 50px;
-  text-align: left;
-  color: var(--white);
-}
-
-.hero-content h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-
-/* typing effect */
-.typing-text {
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid var(--secondary);
-  animation:
-    typing 3.5s steps(30, end),
-    blink 0.7s infinite;
-}
-
-.hero-content p {
-  max-width: 520px;
-  margin-bottom: 35px;
-  color: #e5e7eb;
-  font-size: 1.05rem;
-  animation: fadeUp 1.6s ease forwards;
-}
-
-/* ===============================
    BUTTON
 ================================ */
 .btn {
@@ -166,7 +95,6 @@ body {
   font-weight: 500;
   display: inline-block;
   transition: all 0.35s ease;
-  animation: zoomIn 1.8s ease forwards;
   box-shadow: 0 8px 25px rgba(56,189,248,0.35);
 }
 
@@ -198,7 +126,61 @@ body {
 }
 
 /* ===============================
-   PROJECT CARD
+   PROJECT DETAIL (INI YANG PENTING)
+================================ */
+.project-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-img {
+  max-width: 720px;
+  width: 100%;
+  border-radius: 14px;
+  margin: 40px auto;
+  display: block;
+}
+
+.project-content {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.project-content h4 {
+  margin-top: 36px;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  color: var(--dark);
+}
+
+/* HILANGKAN TITIK HITAM */
+.project-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 12px;
+}
+
+.project-content li {
+  padding-left: 22px;
+  position: relative;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+/* Bullet custom (cantik) */
+.project-content li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+/* ===============================
+   PROJECT CARD (HOME)
 ================================ */
 .project-preview {
   display: grid;
@@ -233,16 +215,8 @@ body {
 }
 
 /* ===============================
-   LINK & FOOTER
+   FOOTER
 ================================ */
-.link {
-  display: inline-block;
-  margin-top: 22px;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
-}
-
 footer {
   text-align: center;
   padding: 34px 20px;
@@ -254,48 +228,22 @@ footer {
 }
 
 /* ===============================
-   ANIMATIONS
-================================ */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink {
-  50% { border-color: transparent }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ===============================
    RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
-  .hero-content {
-    padding: 20px 26px;
+  .navbar {
+    padding: 16px 26px;
   }
 
-  .hero-content h2 {
-    font-size: 2.2rem;
+  .section {
+    padding: 70px 24px;
+  }
+
+  .section h3 {
+    font-size: 2rem;
+  }
+
+  .project-content {
+    text-align: left;
   }
 }
