@@ -16,7 +16,7 @@
 }
 
 /* ===============================
-   RESET & GLOBAL (FULL FIX)
+   RESET & GLOBAL
 ================================ */
 * {
   margin: 0;
@@ -24,7 +24,7 @@
   box-sizing: border-box;
 }
 
-/* 🔥 FIX TITIK HITAM & JARAK KIRI */
+/* 🔥 HILANGKAN TITIK HITAM & JARAK KIRI */
 ul, ol {
   list-style: none;
   padding-left: 0;
@@ -142,12 +142,11 @@ body {
 
 .hero-content h2 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   font-weight: 700;
   margin-bottom: 18px;
 }
 
-/* typing effect */
 .typing-text {
   display: inline-block;
   white-space: nowrap;
@@ -161,7 +160,6 @@ body {
   margin-bottom: 35px;
   color: #e5e7eb;
   font-size: 1.05rem;
-  animation: fadeUp 1.2s ease forwards;
 }
 
 /* ===============================
@@ -186,7 +184,7 @@ body {
 }
 
 /* ===============================
-   SECTION UMUM
+   SECTION
 ================================ */
 .section {
   padding: 80px 40px;
@@ -252,17 +250,6 @@ footer {
 
 @keyframes blink {
   50% { border-color: transparent }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @keyframes zoomIn {
