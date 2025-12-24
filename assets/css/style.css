@@ -7,21 +7,28 @@
    VARIABLES
 ================================ */
 :root {
-  --primary: #38bdf8;     /* tech blue */
-  --secondary: #34d399;   /* mint green */
-  --dark: #0f172a;        /* midnight */
+  --primary: #38bdf8;
+  --secondary: #34d399;
+  --dark: #0f172a;
   --light: #f8fafc;
   --gray: #94a3b8;
   --white: #ffffff;
 }
 
 /* ===============================
-   RESET & GLOBAL
+   RESET & GLOBAL (FULL FIX)
 ================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* 🔥 FIX TITIK HITAM & JARAK KIRI */
+ul, ol {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 body {
@@ -30,6 +37,7 @@ body {
   color: var(--dark);
   line-height: 1.7;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* ===============================
@@ -43,16 +51,20 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 18px 50px;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.9);
   backdrop-filter: blur(12px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.06);
 }
 
 .logo {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary);
+}
+
+.navbar nav {
+  display: flex;
 }
 
 .navbar nav a {
@@ -84,11 +96,12 @@ body {
 }
 
 /* ===============================
-   HERO VIDEO SECTION
+   HERO SECTION
 ================================ */
 .hero-video {
   position: relative;
-  height: 100vh;
+  min-height: 80vh;
+  padding: 120px 0;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -96,11 +109,9 @@ body {
 
 .bg-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: -2;
 }
@@ -111,39 +122,38 @@ body {
   inset: 0;
   background: linear-gradient(
     120deg,
-    rgba(15,23,42,0.8),
+    rgba(15,23,42,0.85),
     rgba(2,132,199,0.45)
   );
   z-index: -1;
 }
 
 /* ===============================
-   HERO CONTENT (LEFT ALIGN)
+   HERO CONTENT
 ================================ */
 .hero-content {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 20px 50px;
+  padding: 0 50px;
   text-align: left;
   color: var(--white);
 }
 
 .hero-content h2 {
   font-family: 'Poppins', sans-serif;
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 18px;
 }
 
 /* typing effect */
 .typing-text {
+  display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid var(--secondary);
-  animation:
-    typing 3.5s steps(30, end),
-    blink 0.7s infinite;
+  animation: typing 3.5s steps(30, end), blink 0.7s infinite;
 }
 
 .hero-content p {
@@ -151,7 +161,7 @@ body {
   margin-bottom: 35px;
   color: #e5e7eb;
   font-size: 1.05rem;
-  animation: fadeUp 1.6s ease forwards;
+  animation: fadeUp 1.2s ease forwards;
 }
 
 /* ===============================
@@ -166,7 +176,7 @@ body {
   font-weight: 500;
   display: inline-block;
   transition: all 0.35s ease;
-  animation: zoomIn 1.8s ease forwards;
+  animation: zoomIn 1.4s ease forwards;
   box-shadow: 0 8px 25px rgba(56,189,248,0.35);
 }
 
@@ -179,13 +189,13 @@ body {
    SECTION UMUM
 ================================ */
 .section {
-  padding: 90px 40px;
+  padding: 80px 40px;
   text-align: center;
 }
 
 .section h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   margin-bottom: 14px;
   font-weight: 700;
 }
@@ -194,7 +204,6 @@ body {
   max-width: 720px;
   margin: 0 auto 40px;
   color: var(--gray);
-  font-size: 1rem;
 }
 
 /* ===============================
@@ -203,52 +212,32 @@ body {
 .project-preview {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 34px;
+  gap: 32px;
   margin-top: 50px;
 }
 
 .card {
   background: linear-gradient(180deg, #ffffff, #f1f5f9);
-  padding: 34px;
+  padding: 32px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: 0.35s ease;
 }
 
 .card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-10px);
   box-shadow: 0 20px 45px rgba(0,0,0,0.15);
 }
 
-.card h4 {
-  margin-bottom: 12px;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.card p {
-  font-size: 0.95rem;
-  color: var(--gray);
-}
-
 /* ===============================
-   LINK & FOOTER
+   FOOTER
 ================================ */
-.link {
-  display: inline-block;
-  margin-top: 22px;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
-}
-
 footer {
   text-align: center;
-  padding: 34px 20px;
+  padding: 30px 20px;
   background-color: var(--white);
   border-top: 1px solid #e5e7eb;
-  margin-top: 70px;
+  margin-top: 60px;
   font-size: 0.9rem;
   color: var(--gray);
 }
@@ -268,7 +257,7 @@ footer {
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(35px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -279,7 +268,7 @@ footer {
 @keyframes zoomIn {
   from {
     opacity: 0;
-    transform: scale(0.85);
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
@@ -291,11 +280,19 @@ footer {
    RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 16px 26px;
+  }
+
   .hero-content {
-    padding: 20px 26px;
+    padding: 0 26px;
   }
 
   .hero-content h2 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
+  }
+
+  .section {
+    padding: 60px 26px;
   }
 }
