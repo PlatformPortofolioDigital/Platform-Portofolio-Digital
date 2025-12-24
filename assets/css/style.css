@@ -7,9 +7,9 @@
    VARIABLES
 ================================ */
 :root {
-  --primary: #38bdf8;     /* tech blue */
-  --secondary: #34d399;   /* mint green */
-  --dark: #0f172a;        /* midnight */
+  --primary: #38bdf8;
+  --secondary: #34d399;
+  --dark: #0f172a;
   --light: #f8fafc;
   --gray: #94a3b8;
   --white: #ffffff;
@@ -30,6 +30,69 @@ body {
   color: var(--dark);
   line-height: 1.7;
   scroll-behavior: smooth;
+}
+
+/* ===============================
+   WELCOME / SPLASH SCREEN
+================================ */
+#welcome-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #1e2f3b, #020617);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  animation: welcomeFadeOut 1.2s ease forwards;
+  animation-delay: 3s;
+}
+
+.welcome-content {
+  text-align: center;
+  color: var(--white);
+  animation: zoomIn 1.2s ease;
+}
+
+.welcome-icons {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.welcome-icons span {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 22px rgba(56,189,248,0.45);
+}
+
+.welcome-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.welcome-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.welcome-content .domain {
+  margin-top: 14px;
+  color: var(--secondary);
+  font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 /* ===============================
@@ -72,7 +135,7 @@ body {
   left: 0;
   bottom: -6px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  transition: width 0.3s ease;
+  transition: width 0.5s ease;
 }
 
 .navbar nav a:hover {
@@ -118,7 +181,7 @@ body {
 }
 
 /* ===============================
-   HERO CONTENT (LEFT ALIGN)
+   HERO CONTENT
 ================================ */
 .hero-content {
   max-width: 1200px;
@@ -136,7 +199,6 @@ body {
   margin-bottom: 18px;
 }
 
-/* typing effect */
 .typing-text {
   white-space: nowrap;
   overflow: hidden;
@@ -167,16 +229,16 @@ body {
   display: inline-block;
   transition: all 0.35s ease;
   animation: zoomIn 1.8s ease forwards;
-  box-shadow: 0 8px 25px rgba(56,189,248,0.35);
+  box-shadow: 0 8px 25px rgba(196, 236, 254, 0.35);
 }
 
 .btn:hover {
   transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 14px 35px rgba(52,211,153,0.45);
+  box-shadow: 0 14px 35px rgba(245, 245, 245, 0.45);
 }
 
 /* ===============================
-   SECTION UMUM
+   SECTION
 ================================ */
 .section {
   padding: 90px 40px;
@@ -194,7 +256,6 @@ body {
   max-width: 720px;
   margin: 0 auto 40px;
   color: var(--gray);
-  font-size: 1rem;
 }
 
 /* ===============================
@@ -287,6 +348,13 @@ footer {
   }
 }
 
+@keyframes welcomeFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 /* ===============================
    RESPONSIVE
 ================================ */
@@ -296,6 +364,10 @@ footer {
   }
 
   .hero-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .welcome-content h2 {
     font-size: 2.2rem;
   }
 }
