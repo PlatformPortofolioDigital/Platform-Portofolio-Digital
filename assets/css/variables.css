@@ -1,6 +1,6 @@
 /* assets/css/variables.css
-   SAFE VERSION: fokus variabel + komponen kecil (toggle & mobile panel)
-   TIDAK override besar-besaran layout yang sudah ada di style.css
+   FINAL MODERN: tokens + komponen global kecil + animasi + progress bar
+   Aman: tidak override layout besar style.css kamu.
 */
 
 /* LIGHT (default) */
@@ -9,16 +9,19 @@
   --text: #111827;
   --muted: #4b5563;
 
-  --card: #ffffff;
-  --border: #e5e7eb;
+  --card: rgba(255, 255, 255, 0.92);
+  --border: rgba(17, 24, 39, 0.10);
 
   --primary: #2563eb;
   --primary-contrast: #ffffff;
 
-  --shadow: 0 10px 25px rgba(0,0,0,0.10);
-
-  --nav-bg: rgba(255,255,255,0.8);
+  --nav-bg: rgba(255, 255, 255, 0.72);
   --nav-text: #111827;
+
+  --shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.08);
+
+  --radius: 14px;
 }
 
 /* DARK */
@@ -27,82 +30,111 @@
   --text: #e5e7eb;
   --muted: #9ca3af;
 
-  --card: #111827;
-  --border: #1f2937;
+  --card: rgba(17, 24, 39, 0.88);
+  --border: rgba(229, 231, 235, 0.12);
 
   --primary: #60a5fa;
   --primary-contrast: #0b1220;
 
-  --shadow: 0 10px 25px rgba(0,0,0,0.35);
-
-  --nav-bg: rgba(17,24,39,0.75);
+  --nav-bg: rgba(17, 24, 39, 0.60);
   --nav-text: #e5e7eb;
+
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.40);
+  --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.28);
 }
 
-/* APPLY MINIMAL (biar gak nabrak style.css)
-   Kita cuma set background & color di body, bukan semua elemen */
+/* apply minimal: biar tidak tabrakan style.css utama */
 body {
   background: var(--bg);
   color: var(--text);
 }
 
-/* Smooth transition saat ganti theme */
+/* smooth transition */
 .theme-transition,
 .theme-transition * {
-  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease,
+              box-shadow .25s ease, transform .25s ease;
 }
 
-/* Active nav indicator (cuma aktif kalau link punya class nav-link dari JS) */
+/* ===== NAVBAR GLASS + SCROLL STATE ===== */
+header, nav {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-scrolled {
+  background: var(--nav-bg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===== ACTIVE NAV (animated underline) ===== */
+.nav-link {
+  position: relative;
+}
+
 .nav-link.active {
   color: var(--primary) !important;
   font-weight: 700;
-  position: relative;
 }
 
 .nav-link.active::after {
   content: "";
   position: absolute;
-  left: 0;
+  left: 50%;
   bottom: -10px;
-  width: 100%;
+  width: 0;
   height: 2px;
   background: var(--primary);
   border-radius: 999px;
+  transform: translateX(-50%);
+  animation: activeLine .30s ease forwards;
 }
 
-/* Theme toggle button (di-inject JS) */
+@keyframes activeLine {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
 #theme-toggle {
   cursor: pointer;
   border: 1px solid var(--border);
   background: var(--card);
   color: var(--text);
-  border-radius: 12px;
-  padding: 8px 10px;
+  border-radius: 999px;
+  padding: 9px 12px;
   line-height: 1;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
-/* Mobile menu button (di-inject JS) */
+#theme-toggle.rotate {
+  transform: rotate(180deg);
+}
+
+/* ===== MOBILE MENU BUTTON ===== */
 #mobile-menu-btn {
   cursor: pointer;
   border: 1px solid var(--border);
   background: var(--card);
   color: var(--text);
-  border-radius: 12px;
-  padding: 8px 10px;
+  border-radius: 999px;
+  padding: 9px 12px;
   line-height: 1;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
 }
 
-/* Panel dropdown mobile (di-inject JS) */
+/* ===== MOBILE MENU PANEL (glass dropdown) ===== */
 #mobile-menu-panel {
   display: none;
   position: absolute;
   top: 100%;
   right: 12px;
   left: 12px;
-  margin-top: 10px;
+  margin-top: 12px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: calc(var(--radius) + 4px);
   box-shadow: var(--shadow);
   overflow: hidden;
   z-index: 9999;
@@ -114,13 +146,13 @@ body {
 }
 
 @keyframes menuPop {
-  from { transform: translateY(-8px); opacity: 0; }
+  from { transform: translateY(-10px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
 }
 
 #mobile-menu-panel a {
   display: block;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-bottom: 1px solid var(--border);
   text-decoration: none;
   color: var(--text);
@@ -128,4 +160,110 @@ body {
 
 #mobile-menu-panel a:last-child {
   border-bottom: none;
+}
+
+/* hover feel */
+#mobile-menu-panel a:hover {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--primary);
+  z-index: 10000;
+}
+
+
+html, body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Banyak template ngunci background section jadi putih */
+main, section, header, footer, .container {
+  background: transparent !important;
+  color: var(--text) !important;
+}
+
+/* Teks umum ikut theme */
+p, span, small, li,
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text) !important;
+}
+
+/* Link default ikut theme (biar ga hitam mati di dark) */
+a {
+  color: inherit;
+}
+a:hover {
+  color: var(--primary);
+}
+
+/* Navbar ikut theme */
+.navbar, header.navbar, nav {
+  color: var(--nav-text) !important;
+}
+
+/* Kotak-kotak / card biar ga putih terus di dark */
+.card,
+.team-card,
+.blog-post,
+.project-preview .card,
+.contact-form form,
+.contact-form,
+.blog-list,
+.team-grid,
+.project-preview {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius);
+}
+
+/* Placeholder gambar biar ga silau */
+.project-img-placeholder {
+  background: rgba(96, 165, 250, 0.22) !important; /* biru lembut */
+  border: 1px solid var(--border) !important;
+}
+
+/* Input & textarea biar nyaman di dark */
+input, textarea, select {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  outline: none;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--muted) !important;
+}
+
+/* Tombol umum */
+button, .btn {
+  color: var(--primary-contrast) !important;
+}
+
+/* Hero section (kalau style.css bikin hero putih terang) */
+.hero {
+  color: var(--text) !important;
+}
+.hero p {
+  color: var(--muted) !important;
+}
+
+/* Footer */
+footer {
+  color: var(--muted) !important;
+}
+
+/* ===== optional: halusin transisi tema ===== */
+.theme-transition,
+.theme-transition * {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease,
+              box-shadow .25s ease, transform .25s ease !important;
 }
