@@ -24,7 +24,6 @@
   box-sizing: border-box;
 }
 
-/* 🔥 HILANGKAN TITIK HITAM & JARAK KIRI */
 ul, ol {
   list-style: none;
   padding-left: 0;
@@ -33,11 +32,71 @@ ul, ol {
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--light);
+  background: var(--light);
   color: var(--dark);
   line-height: 1.7;
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+/* ===============================
+   WELCOME SCREEN
+================================ */
+#welcome-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #1e2f3b, #020617);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: welcomeFadeOut 1.4s ease forwards;
+  animation-delay: 3.5s;
+}
+
+.welcome-content {
+  text-align: center;
+  color: var(--white);
+}
+
+.welcome-icons {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.welcome-icons span {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 22px rgba(56,189,248,0.45);
+  opacity: 0;
+}
+
+.welcome-icons span:nth-child(1) { animation: iconLeft 1s ease forwards; }
+.welcome-icons span:nth-child(2) { animation: iconTop 1s ease forwards .2s; }
+.welcome-icons span:nth-child(3) { animation: iconRight 1s ease forwards .4s; }
+
+.welcome-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  opacity: 0;
+  animation: textBottom 1s ease forwards .8s;
+}
+
+.welcome-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0;
+  animation: textTop 1s ease forwards 1.4s;
 }
 
 /* ===============================
@@ -58,7 +117,7 @@ body {
 
 .logo {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--primary);
 }
@@ -68,27 +127,22 @@ body {
 }
 
 .navbar nav a {
-  margin-left: 28px;
+  margin-left: 26px;
   text-decoration: none;
   color: var(--dark);
   font-weight: 500;
   position: relative;
-  transition: color 0.3s ease;
 }
 
 .navbar nav a::after {
   content: "";
   position: absolute;
-  width: 0;
-  height: 2px;
   left: 0;
   bottom: -6px;
+  width: 0;
+  height: 2px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  transition: width 0.3s ease;
-}
-
-.navbar nav a:hover {
-  color: var(--primary);
+  transition: width .4s ease;
 }
 
 .navbar nav a:hover::after {
@@ -96,15 +150,14 @@ body {
 }
 
 /* ===============================
-   HERO SECTION
+   HERO
 ================================ */
 .hero-video {
   position: relative;
-  min-height: 80vh;
-  padding: 120px 0;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .bg-video {
@@ -128,16 +181,14 @@ body {
   z-index: -1;
 }
 
-/* ===============================
-   HERO CONTENT
-================================ */
 .hero-content {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 50px;
-  text-align: left;
+  padding: 20px 50px;
   color: var(--white);
+  opacity: 0;
+  animation: heroFadeIn 1.2s ease forwards 3.8s;
 }
 
 .hero-content h2 {
@@ -151,30 +202,30 @@ body {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 3px solid var(--secondary);
-  animation: typing 3.5s steps(30, end), blink 0.7s infinite;
+  border-right: 3px solid var(--primary);
+  animation: typing 3.5s steps(30,end) forwards,
+             cursorBlink .7s infinite;
 }
 
 .hero-content p {
   max-width: 520px;
-  margin-bottom: 35px;
   color: #e5e7eb;
   font-size: 1.05rem;
+  margin-bottom: 32px;
 }
 
 /* ===============================
    BUTTON
 ================================ */
 .btn {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  color: var(--white);
-  padding: 14px 36px;
-  text-decoration: none;
-  border-radius: 14px;
-  font-weight: 500;
   display: inline-block;
-  transition: all 0.35s ease;
-  animation: zoomIn 1.4s ease forwards;
+  padding: 14px 36px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: .4s;
   box-shadow: 0 8px 25px rgba(56,189,248,0.35);
 }
 
@@ -184,7 +235,7 @@ body {
 }
 
 /* ===============================
-   SECTION
+   SECTION & CARD
 ================================ */
 .section {
   padding: 80px 40px;
@@ -193,93 +244,91 @@ body {
 
 .section h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.2rem;
-  margin-bottom: 14px;
+  font-size: 2.4rem;
   font-weight: 700;
+  margin-bottom: 14px;
 }
 
 .section-desc {
   max-width: 720px;
-  margin: 0 auto 40px;
+  margin: 0 auto 50px;
   color: var(--gray);
 }
 
-/* ===============================
-   PROJECT CARD
-================================ */
 .project-preview {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-  margin-top: 50px;
+  gap: 36px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .card {
   background: linear-gradient(180deg, #ffffff, #f1f5f9);
-  padding: 32px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: 0.35s ease;
+  padding: 34px;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+  transition: .4s;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+  transform: translateY(-12px);
+  box-shadow: 0 22px 45px rgba(0,0,0,.15);
 }
 
 /* ===============================
    FOOTER
 ================================ */
 footer {
-  text-align: center;
   padding: 30px 20px;
-  background-color: var(--white);
+  text-align: center;
+  background: white;
   border-top: 1px solid #e5e7eb;
-  margin-top: 60px;
-  font-size: 0.9rem;
   color: var(--gray);
+  font-size: .9rem;
 }
 
 /* ===============================
    ANIMATIONS
 ================================ */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink {
-  50% { border-color: transparent }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+@keyframes iconLeft { from{opacity:0;transform:translateX(-60px)} to{opacity:1} }
+@keyframes iconTop { from{opacity:0;transform:translateY(-60px)} to{opacity:1} }
+@keyframes iconRight { from{opacity:0;transform:translateX(60px)} to{opacity:1} }
+@keyframes textBottom { from{opacity:0;transform:translateY(40px)} to{opacity:1} }
+@keyframes textTop { from{opacity:0;transform:translateY(-40px)} to{opacity:1} }
+@keyframes welcomeFadeOut { to{opacity:0;visibility:hidden} }
+@keyframes heroFadeIn { to{opacity:1} }
+@keyframes typing { from{width:0} to{width:100%} }
+@keyframes cursorBlink { 50%{border-color:transparent} }
 
 /* ===============================
    RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
   .navbar {
-    padding: 16px 26px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+  }
+
+  .navbar nav {
+    margin-top: 10px;
+  }
+
+  .navbar nav a {
+    margin-right: 14px;
+    font-size: .95rem;
   }
 
   .hero-content {
-    padding: 0 26px;
+    padding: 24px 20px;
   }
 
   .hero-content h2 {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
 
   .section {
-    padding: 60px 26px;
+    padding: 70px 20px;
   }
 }
