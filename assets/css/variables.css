@@ -1,27 +1,141 @@
+
 :root {
-  /* LIGHT MODE */
-  --bg-color: #ffffff;
-  --text-color: #1f2937;
-  --primary-color: #2563eb;
-  --nav-bg: #ffffff;
-  --card-bg: #f9fafb;
-  --border-color: #e5e7eb;
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
 
-  --transition: all 0.3s ease;
+  --card: #f9fafb;
+  --border: #e5e7eb;
+
+  --primary: #2563eb;
+  --primary-contrast: #ffffff;
+
+  --nav-bg: rgba(255, 255, 255, 0.78);
+  --nav-text: #111827;
+
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
+/* =========================
+   DARK MODE TOKENS
+   ========================= */
 [data-theme="dark"] {
-  --bg-color: #0f172a;
-  --text-color: #e5e7eb;
-  --primary-color: #38bdf8;
-  --nav-bg: #020617;
-  --card-bg: #020617;
-  --border-color: #1e293b;
+  --bg: #0b1220;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+
+  --card: #111827;
+  --border: #1f2937;
+
+  --primary: #60a5fa;
+  --primary-contrast: #0b1220;
+
+  --nav-bg: rgba(17, 24, 39, 0.75);
+  --nav-text: #e5e7eb;
+
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
-/* Global effect */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: var(--transition);
+/* =========================
+   GLOBAL APPLY
+   ========================= */
+html, body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+a { color: inherit; }
+
+/* Smooth theme transition */
+.theme-transition,
+.theme-transition * {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+/* Navbar style (global) */
+header, nav, .navbar {
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+/* Active nav indicator */
+.nav-link.active {
+  color: var(--primary);
+  font-weight: 700;
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 999px;
+}
+
+/* =========================
+   THEME TOGGLE BUTTON (inject by JS)
+   ========================= */
+#theme-toggle {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 10px;
+  line-height: 1;
+}
+
+/* =========================
+   MOBILE MENU (inject by JS)
+   ========================= */
+#mobile-menu-btn {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 10px;
+  line-height: 1;
+}
+
+#mobile-menu-panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  left: 12px;
+  margin-top: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  z-index: 999;
+}
+
+#mobile-menu-panel.open {
+  display: block;
+  animation: menuPop .18s ease;
+}
+
+@keyframes menuPop {
+  from { transform: translateY(-8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+#mobile-menu-panel a {
+  display: block;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+
+#mobile-menu-panel a:last-child {
+  border-bottom: none;
 }
