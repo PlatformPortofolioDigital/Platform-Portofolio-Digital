@@ -40,7 +40,7 @@ body {
 }
 
 /* ===============================
-   WELCOME SCREEN
+   WELCOME SCREEN (BALANCED ~2.4s)
 ================================ */
 #welcome-screen {
   position: fixed;
@@ -50,8 +50,13 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: welcomeFadeOut 1.4s ease forwards;
-  animation-delay: 3.5s;
+
+  will-change: opacity, transform;
+  transform: translateZ(0);
+
+  /* fade out terakhir */
+  animation: welcomeFadeOut 0.6s ease forwards;
+  animation-delay: 1.8s;
 }
 
 .welcome-content {
@@ -75,19 +80,27 @@ body {
   justify-content: center;
   font-size: 26px;
   background: rgba(255,255,255,0.08);
-  box-shadow: 0 0 22px rgba(56,189,248,0.45);
+  box-shadow: 0 0 18px rgba(56,189,248,0.4);
   opacity: 0;
 }
 
-.welcome-icons span:nth-child(1) { animation: iconLeft 1s ease forwards; }
-.welcome-icons span:nth-child(2) { animation: iconTop 1s ease forwards .2s; }
-.welcome-icons span:nth-child(3) { animation: iconRight 1s ease forwards .4s; }
+/* ICON MASUK (PELANNYA PAS) */
+.welcome-icons span:nth-child(1) {
+  animation: iconLeft 0.6s ease forwards;
+}
+.welcome-icons span:nth-child(2) {
+  animation: iconTop 0.6s ease forwards 0.2s;
+}
+.welcome-icons span:nth-child(3) {
+  animation: iconRight 0.6s ease forwards 0.4s;
+}
 
+/* TEKS */
 .welcome-content h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 2.2rem;
   opacity: 0;
-  animation: textBottom 1s ease forwards .8s;
+  animation: textBottom 0.6s ease forwards 0.7s;
 }
 
 .welcome-content h2 {
@@ -96,8 +109,18 @@ body {
   font-weight: 700;
   color: var(--primary);
   opacity: 0;
-  animation: textTop 1s ease forwards 1.4s;
+  animation: textTop 0.6s ease forwards 1.0s;
 }
+
+/* FADE OUT */
+@keyframes welcomeFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.02);
+    pointer-events: none;
+  }
+}
+
 
 /* ===============================
    NAVBAR
