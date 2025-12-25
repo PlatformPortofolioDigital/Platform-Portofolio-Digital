@@ -10,7 +10,6 @@
   function getNavLinks() {
     const nav = getNavContainer();
     if (!nav) return [];
-    // ambil semua link dalam navbar
     return qsa("a", nav);
   }
 
@@ -32,10 +31,8 @@
 
       const hrefFile = normalizeFile(href);
 
-      // cocokkan halaman
       if (hrefFile && hrefFile === currentFile) a.classList.add("active");
 
-      // handle index kosong / index.html
       if ((currentFile === "" || currentFile === "index.html") &&
           (hrefFile === "" || hrefFile === "index.html")) {
         a.classList.add("active");
@@ -73,7 +70,6 @@
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-
         const id = entry.target.id;
         if (!id) return;
 
@@ -103,12 +99,10 @@
     const nav = getNavContainer();
     if (!nav) return;
 
-    // kalau sudah ada, pakai itu
     mobileBtn = qs("#mobile-menu-btn");
     mobilePanel = qs("#mobile-menu-panel");
     if (mobileBtn && mobilePanel) return;
 
-    // buat tombol hamburger
     mobileBtn = document.createElement("button");
     mobileBtn.id = "mobile-menu-btn";
     mobileBtn.type = "button";
@@ -118,11 +112,9 @@
     mobileBtn.style.marginLeft = "10px";
     mobileBtn.style.verticalAlign = "middle";
 
-    // buat panel
     mobilePanel = document.createElement("div");
     mobilePanel.id = "mobile-menu-panel";
 
-    // clone semua link navbar ke panel
     const links = getNavLinks();
     links.forEach((a) => {
       const clone = a.cloneNode(true);
@@ -130,7 +122,6 @@
       mobilePanel.appendChild(clone);
     });
 
-    // pastikan nav relative supaya panel absolute aman
     const pos = window.getComputedStyle(nav).position;
     if (pos === "static") nav.style.position = "relative";
 
@@ -139,17 +130,50 @@
 
     mobileBtn.addEventListener("click", toggleMobileMenu);
 
-    // klik di luar nutup
+    // click outside closes
     document.addEventListener("click", (e) => {
       if (!mobilePanel || !mobileBtn) return;
       if (nav.contains(e.target)) return;
       closeMobileMenu();
     });
 
-    // resize besar nutup
+    // resize closes
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 768) closeMobileMenu();
     });
+  }
+
+  // ===== NAVBAR SCROLL EFFECT =====
+  function enableNavbarScrollEffect() {
+    const navWrap = qs("header") || qs("nav");
+    if (!navWrap) return;
+
+    const onScroll = () => {
+      if (window.scrollY > 20) navWrap.classList.add("nav-scrolled");
+      else navWrap.classList.remove("nav-scrolled");
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  // ===== SCROLL PROGRESS BAR =====
+  function enableScrollProgress() {
+    if (qs("#scroll-progress")) return;
+
+    const bar = document.createElement("div");
+    bar.id = "scroll-progress";
+    document.body.appendChild(bar);
+
+    const update = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = percent.toFixed(2) + "%";
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    update();
   }
 
   // INIT
@@ -158,5 +182,8 @@
     injectMobileMenuIfMissing();
     enableSmoothScroll(closeMobileMenu);
     enableActiveOnScroll();
+
+    enableNavbarScrollEffect();
+    enableScrollProgress();
   });
 })();

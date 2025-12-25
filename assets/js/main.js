@@ -5,7 +5,6 @@
   function setTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
 
-    // smooth transition
     document.documentElement.classList.add("theme-transition");
     window.setTimeout(() => {
       document.documentElement.classList.remove("theme-transition");
@@ -16,7 +15,6 @@
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === "light" || saved === "dark") return saved;
 
-    // follow OS if not saved
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     return prefersDark ? "dark" : "light";
   }
@@ -24,8 +22,16 @@
   function toggleTheme() {
     const current = document.documentElement.getAttribute("data-theme") || "light";
     const next = current === "dark" ? "light" : "dark";
+
     setTheme(next);
     localStorage.setItem(STORAGE_KEY, next);
+
+    // small delight: rotate icon
+    const btn = document.querySelector("#theme-toggle");
+    if (btn) {
+      btn.classList.add("rotate");
+      setTimeout(() => btn.classList.remove("rotate"), 400);
+    }
   }
 
   function ensureVariablesCssLoaded() {
@@ -45,7 +51,6 @@
   function injectThemeToggleIfMissing() {
     if (document.querySelector("#theme-toggle")) return;
 
-    // cari area navbar yang ada di zip kamu
     const nav =
       document.querySelector("header nav") ||
       document.querySelector("nav") ||
@@ -60,14 +65,10 @@
     btn.textContent = "🌓";
     btn.title = "Toggle Theme";
     btn.setAttribute("aria-label", "Toggle Theme");
-
-    // styling kecil biar rapih tanpa ngacak layout
     btn.style.marginLeft = "10px";
     btn.style.verticalAlign = "middle";
 
     btn.addEventListener("click", toggleTheme);
-
-    // taruh paling akhir
     nav.appendChild(btn);
   }
 
