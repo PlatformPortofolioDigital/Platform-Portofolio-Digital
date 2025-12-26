@@ -1,77 +1,132 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Detail project Website Portfolio Kelompok 2">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Website Portfolio | Detail Project</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="../../assets/css/variables.css">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/responsive.css">
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">Kelompok 2</div>
-    <nav>
-      <a href="../../index.html">Home</a>
-      <a href="../about.html">About</a>
-      <a href="../projects.html" class="active">Projects</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-  </header>
+<!-- ===============================
+     NAVBAR
+================================ -->
+<header class="navbar">
+  <h1 class="logo">Kelompok 2</h1>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../projects.html" class="active">Projects</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+</header>
 
-  <!-- MAIN -->
-  <main>
-    <section class="section project-detail">
+<!-- ===============================
+     PROJECT HEADER
+================================ -->
+<section class="project-header">
+  <div class="container">
+    <h1>Website Portfolio</h1>
+    <p class="project-subtitle">
+      Project pengembangan website portfolio statis sebagai media dokumentasi
+      dan presentasi karya kelompok.
+    </p>
+  </div>
+</section>
 
-      <h3>Website Portfolio</h3>
-      <p class="section-desc">
-        Project pengembangan website portfolio statis sebagai media dokumentasi dan presentasi karya.
+<!-- ===============================
+     PROJECT PREVIEW
+================================ -->
+<section class="project-preview-detail">
+  <div class="container">
+    <div class="project-image">
+      <!-- GANTI SRC JIKA SUDAH ADA SCREENSHOT -->
+      <img src="../../assets/images/project-portfolio.png"
+           alt="Preview Website Portfolio">
+    </div>
+  </div>
+</section>
+
+<!-- ===============================
+     PROJECT CONTENT
+================================ -->
+<section class="project-content">
+  <div class="container project-grid">
+
+    <!-- ===== LEFT CONTENT ===== -->
+    <div class="project-main">
+
+      <h2>Deskripsi Project</h2>
+      <p>
+        Website portfolio ini dibuat untuk menampilkan profil kelompok,
+        daftar project, serta dokumentasi hasil pembelajaran selama
+        perkuliahan. Website bersifat statis dan responsif.
       </p>
 
-      <div class="card project-detail-card">
+      <h2>Tujuan Pembuatan</h2>
+      <ul>
+        <li>Sebagai media portfolio resmi Kelompok 2</li>
+        <li>Melatih penggunaan HTML, CSS, dan JavaScript</li>
+        <li>Menyajikan dokumentasi project secara online</li>
+      </ul>
 
-        <img 
-          src="../../assets/images/projects/project1.jpg"
-          alt="Website Portfolio Kelompok 2"
-          class="project-img"
-        >
+      <h2>Fitur Utama</h2>
+      <ul>
+        <li>Landing page interaktif</li>
+        <li>Halaman projects dan detail project</li>
+        <li>Desain responsif (desktop & mobile)</li>
+        <li>Navigasi sederhana dan jelas</li>
+      </ul>
 
-        <h4>Deskripsi Project</h4>
-        <p>
-          Website portfolio ini dibuat untuk menampilkan profil kelompok, daftar project,
-          serta dokumentasi hasil pembelajaran selama perkuliahan.
-        </p>
+    </div>
 
-        <h4>Tujuan Pembuatan</h4>
-        <ul>
-          <li>Media portfolio resmi Kelompok 2</li>
-          <li>Melatih HTML, CSS, dan JavaScript</li>
-          <li>Dokumentasi project secara online</li>
-        </ul>
+    <!-- ===== RIGHT SIDEBAR ===== -->
+    <aside class="project-sidebar">
 
-        <h4>Teknologi yang Digunakan</h4>
-        <ul>
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>JavaScript</li>
-        </ul>
+      <div class="project-info-card">
+        <h3>Informasi Project</h3>
 
+        <p><strong>Teknologi:</strong><br>HTML5, CSS3, JavaScript</p>
+        <p><strong>Role:</strong><br>Frontend Developer</p>
+        <p><strong>Jenis Project:</strong><br>Project Perkuliahan</p>
+        <p><strong>Tahun:</strong><br>2025</p>
+
+        <div class="project-links">
+          <a href="#" target="_blank" class="btn-outline">
+            🔗 GitHub Repository
+          </a>
+          <a href="#" target="_blank" class="btn-outline">
+            🌐 Live Demo
+          </a>
+        </div>
       </div>
 
-      <div class="back-button">
-        <a href="../projects.html" class="btn">← Kembali ke Projects</a>
-      </div>
+    </aside>
 
-    </section>
-  </main>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 Kelompok 2. All rights reserved.</p>
-  </footer>
+<!-- ===============================
+     BACK BUTTON
+================================ -->
+<section class="project-back">
+  <a href="../projects.html" class="btn">
+    ← Kembali ke Projects
+  </a>
+</section>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer>
+  <p>© 2025 Kelompok 2 | Portfolio Website</p>
+</footer>
 
 </body>
 </html>
