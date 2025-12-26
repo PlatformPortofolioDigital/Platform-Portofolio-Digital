@@ -235,11 +235,22 @@ body {
 
 .hero-content {
   max-width: 1200px;
-  margin: auto;
+  margin-right: auto;
   padding: 20px 50px;
   color: #ffffff;
+  text-align: left;
   animation: heroFadeIn 1.2s ease forwards 2.2s;
 }
+
+.hero h1,
+.hero h2 {
+  text-align: left;
+}
+
+.hero p {
+  text-align: justify;
+}
+
 
 .hero-content h2 {
   font-family: 'Poppins', sans-serif;
@@ -270,17 +281,102 @@ body {
   display: inline-block;
   padding: 14px 36px;
   border-radius: 14px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+
+  /* WARNA DALAM */
+  background: #000;
+
+  /* BORDER NEON */
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(#000, #000),
+    linear-gradient(90deg, var(--primary), var(--secondary));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  box-shadow: 0 8px 25px rgba(56, 189, 248, .35);
-  transition: .3s;
+
+  /* EFEK NEON */
+  box-shadow:
+    0 0 10px rgba(56, 189, 248, 0.6),
+    0 0 20px rgba(52, 211, 153, 0.4);
+
+  transition: all .3s ease;
 }
 
+
 .btn:hover {
-  transform: translateY(-4px);
+  box-shadow:
+    0 0 15px rgba(56, 189, 248, 0.9),
+    0 0 30px rgba(52, 211, 153, 0.8);
+  transform: translateY(-3px);
 }
+/* ===============================
+   ICON HOME
+================================ */
+.hero-icons {
+  position: absolute;
+  right: 8%;                 
+  top: 50%;                  
+  transform: translateY(-50%);
+  
+  display: flex;
+  flex-direction: row;       
+  align-items: center;
+  gap: 36px;                 /* jarak antar icon */
+
+  z-index: 10;
+}
+
+/* ICON STYLE */
+.hero-icons .icon {
+  width: 90px;
+  height: 90px;
+
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  filter:
+    drop-shadow(0 0 8px rgba(56,189,248,.85))
+    drop-shadow(0 0 18px rgba(1, 1, 78, 0.55));
+
+  animation: floatX 4.8s ease-in-out infinite;
+  transition: transform .35s ease, stroke .3s ease;
+}
+
+/* HOVER */
+.hero-icons .icon:hover {
+  transform: scale(1.18);
+  stroke: var(--secondary);
+}
+
+/* BIAR KELIHATAN DINAMIS (TIDAK KAKU) */
+.hero-icons .icon:nth-child(1) {
+  transform: translateY(-6px);
+}
+.hero-icons img:nth-child(2) {
+  transform: translateY(-10px);
+}
+
+.hero-icons img:nth-child(3) {
+  transform: translateY(8px);
+}
+
+.hero-icons .icon:nth-child(4) {
+  animation-delay: 1.8s;
+}
+
+/* ANIMASI FLOAT KE ATAS BAWAH HALUS */
+@keyframes floatX {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
 
 /* ===============================
    SECTION (REFRESH DESIGN)
@@ -318,24 +414,83 @@ body {
 }
 
 /* ===============================
-   TEAM CARD (NEW CLEAN STYLE)
+   TEAM CARD – NEON DARK
 ================================ */
 .team-card {
-  background: #ffffff;
-  padding: 28px 22px 32px;
-  border-radius: 18px;
-  border: 1px solid #e5e7eb;
-  transition: .35s ease;
-  text-align: center;
-}
+  position: relative;
+  background: rgba(15, 23, 42, 0.75); /* dark glass */
+  backdrop-filter: blur(14px);
 
-.team-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0,0,0,.08);
+  padding: 28px 22px 32px;
+  border-radius: 20px;
+
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.15),
+    0 0 40px rgba(168, 85, 247, 0.12);
+
+  transition: all 0.35s ease;
+  text-align: center;
+  overflow: hidden;
+}
+.team-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    120deg,
+    #38bdf8,
+    #a855f7,
+    #22d3ee
+  );
+
+  opacity: 0.35;
+  filter: blur(10px);
+  z-index: -1;
+}
+/* HAPUS BACKGROUND PUTIH DI BELAKANG CARD */
+.team-grid,
+.team-container,
+.about-page .section {
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 /* ===============================
-   PROFILE IMAGE (FIX SIZE)
+   NEON COLOR VARIANTS ABOUT
+================================ */
+.neon-blue::before {
+  background: #38bdf8;
+}
+
+.neon-purple::before {
+  background: #a855f7;
+}
+
+.neon-cyan::before {
+  background: #22d3ee;
+}
+
+.neon-pink::before {
+  background: #f472b6;
+}
+/* ===============================
+   HOVER EFFECT ABOUT
+================================ */
+.team-card:hover {
+  transform: translateY(-10px) scale(1.02);
+
+  box-shadow:
+    0 0 30px rgba(56, 189, 248, 0.45),
+    0 0 60px rgba(168, 85, 247, 0.35),
+    0 0 90px rgba(34, 211, 238, 0.25);
+}
+
+
+/* ===============================
+   PROFILE IMAGE ABOUT
 ================================ */
 .team-card img {
   width: 110px;
@@ -348,7 +503,7 @@ body {
 
 
 /* ===============================
-   TEXT INSIDE CARD
+   TEXT INSIDE CARD ABOUT
 ================================ */
 .team-card h4 {
   font-family: 'Poppins', sans-serif;
@@ -396,42 +551,61 @@ body {
    ABOUT PAGE BACKGROUND 
 ================================ */
 body.about-page {
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(56, 189, 248, 0.12),
-      transparent 55%
-    ),
-    linear-gradient(
-      180deg,
-      #7cbfde,
-      #5f90bb 60%,
-      #3ebaef
-    );
-  color: #e5e7eb;
+  background: linear-gradient(180deg, #020617, #0f172a);
   min-height: 100vh;
+  color: #e5e7eb;
 }
 
-/* HERO ABOUT */
 .about-page .hero {
-  padding: 120px 20px 80px;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: 0 20px;
 }
+
+/* overlay gelap */
+.about-page .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.65);
+  z-index: 0;
+}
+
+/* pastikan konten di atas overlay */
+.about-page .hero > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 .about-page .hero h2 {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 3rem;
   font-weight: 700;
-  color: #f8fafc;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+
+  background: linear-gradient(90deg, #00d2f8, #a855f7, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 12px rgba(168, 85, 247, 0.45),
+    0 0 24px rgba(56, 189, 248, 0.35),
+    0 0 42px rgba(34, 211, 238, 0.25);
 }
 
 .about-page .hero p {
-  max-width: 620px;
-  margin: auto;
-  color: #cbd5e1;
+  max-width: 650px;
   font-size: 1.05rem;
+  color: #e5e7eb; 
+  line-height: 1.8;
 }
+
 
 /* SECTION */
 .about-page .section {
@@ -454,6 +628,106 @@ body.about-page {
   background: transparent;
   color: #94a3b8;
 }
+/* ===============================
+   TYPING GLOW FIX ABOUT
+================================ */
+.typing-glow {
+  --typing-width: calc(var(--chars) * 1ch);
+
+  display: inline-block;
+  width: 0;
+  max-width: var(--typing-width);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #38bdf8;
+
+  animation:
+    typing 3.5s steps(var(--chars)) forwards,
+    blink 0.8s infinite,
+    glowPulse 2.5s ease-in-out infinite alternate;
+}
+
+/* typing effect */
+@keyframes typing {
+  from { width: 0; }
+  to { width: var(--typing-width); }
+}
+
+/* cursor blink */
+@keyframes blink {
+  0%, 50%, 100% { border-color: transparent; }
+  25%, 75% { border-color: #38bdf8; }
+}
+
+/* glow pulse */
+@keyframes glowPulse {
+  from {
+    text-shadow:
+      0 0 12px rgba(56, 189, 248, 0.6),
+      0 0 24px rgba(168, 85, 247, 0.45),
+      0 0 40px rgba(34, 211, 238, 0.35);
+  }
+  to {
+    text-shadow:
+      0 0 20px rgba(56, 189, 248, 0.9),
+      0 0 40px rgba(168, 85, 247, 0.7),
+      0 0 70px rgba(34, 211, 238, 0.55);
+  }
+}
+
+/* ===============================
+   NEON ICON ABOUT
+================================ */
+.about-neon-icon {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.6),
+    0 0 40px rgba(168, 85, 247, 0.4),
+    0 0 70px rgba(34, 211, 238, 0.35);
+
+  animation: floatNeon 4s ease-in-out infinite;
+}
+
+.about-neon-icon i {
+  font-size: 36px;
+  color: #38bdf8;
+
+  text-shadow:
+    0 0 10px rgba(56, 189, 248, 0.9),
+    0 0 20px rgba(168, 85, 247, 0.7),
+    0 0 35px rgba(34, 211, 238, 0.6);
+}
+
+/* floating animation */
+@keyframes floatNeon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* ===============================
    PROJECTS SECTION
 ================================ */
