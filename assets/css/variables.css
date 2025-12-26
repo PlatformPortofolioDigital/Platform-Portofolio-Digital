@@ -1,27 +1,44 @@
 :root {
-  /* LIGHT MODE */
-  --bg-color: #ffffff;
-  --text-color: #1f2937;
-  --primary-color: #2563eb;
-  --nav-bg: #ffffff;
-  --card-bg: #f9fafb;
+  /* ===============================
+     COLOR SYSTEM (LIGHT MODE)
+  =============================== */
+  --primary: #38bdf8;
+  --secondary: #34d399;
+
+  --dark: #0f172a;
+  --light: #f8fafc;
+  --gray: #94a3b8;
+  --white: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --card-bg: #ffffff;
   --border-color: #e5e7eb;
 
+  /* EFFECT */
   --transition: all 0.3s ease;
 }
 
+/* ===============================
+   DARK MODE
+================================ */
 [data-theme="dark"] {
-  --bg-color: #0f172a;
-  --text-color: #e5e7eb;
-  --primary-color: #38bdf8;
-  --nav-bg: #020617;
+  --primary: #38bdf8;
+  --secondary: #34d399;
+
+  --dark: #e5e7eb;
+  --light: #020617;
+  --gray: #94a3b8;
+  --white: #020617;
+
+  --nav-bg: rgba(2, 6, 23, 0.9);
   --card-bg: #020617;
   --border-color: #1e293b;
 }
 
-/* Global effect */
+/* ===============================
+   GLOBAL BASE
+================================ */
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--light);
+  color: var(--dark);
   transition: var(--transition);
 }
