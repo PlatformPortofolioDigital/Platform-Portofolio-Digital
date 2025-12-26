@@ -1,4 +1,5 @@
 // assets/js/main.js
+// Dark/Light mode + localStorage + auto inject toggle (tanpa ubah HTML)
 (function () {
   const STORAGE_KEY = "theme"; // "light" | "dark"
 
@@ -26,24 +27,23 @@
     setTheme(next);
     localStorage.setItem(STORAGE_KEY, next);
 
-    // small delight: rotate icon
     const btn = document.querySelector("#theme-toggle");
     if (btn) {
       btn.classList.add("rotate");
-      setTimeout(() => btn.classList.remove("rotate"), 400);
+      setTimeout(() => btn.classList.remove("rotate"), 350);
     }
   }
 
   function ensureVariablesCssLoaded() {
-    const links = [...document.querySelectorAll('link[rel="stylesheet"]')];
-    const already = links.some(l => (l.getAttribute("href") || "").includes("assets/css/variables.css"));
+    const already = [...document.querySelectorAll('link[rel="stylesheet"]')]
+      .some(l => (l.getAttribute("href") || "").includes("assets/css/variables.css"));
     if (already) return;
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
-
-    const isPages = location.pathname.includes("/pages/");
-    link.href = isPages ? "../assets/css/variables.css" : "assets/css/variables.css";
+    link.href = location.pathname.includes("/pages/")
+      ? "../assets/css/variables.css"
+      : "assets/css/variables.css";
 
     document.head.appendChild(link);
   }
@@ -51,33 +51,36 @@
   function injectThemeToggleIfMissing() {
     if (document.querySelector("#theme-toggle")) return;
 
-    const nav =
-      document.querySelector("header nav") ||
-      document.querySelector("nav") ||
-      document.querySelector(".navbar") ||
-      document.querySelector("header");
-
-    if (!nav) return;
+    const header = document.querySelector("header.navbar") || document.querySelector("header");
+    if (!header) return;
 
     const btn = document.createElement("button");
     btn.id = "theme-toggle";
     btn.type = "button";
-    btn.textContent = "🌓";
+    btn.textContent = "🌙";
     btn.title = "Toggle Theme";
     btn.setAttribute("aria-label", "Toggle Theme");
-    btn.style.marginLeft = "10px";
-    btn.style.verticalAlign = "middle";
 
     btn.addEventListener("click", toggleTheme);
-    nav.appendChild(btn);
+
+    // taruh di dalam header (bukan nav), supaya mobile rapi
+    header.appendChild(btn);
+  }
+
+  function syncToggleIcon() {
+    const btn = document.querySelector("#theme-toggle");
+    if (!btn) return;
+    const theme = document.documentElement.getAttribute("data-theme") || "light";
+    btn.textContent = theme === "dark" ? "☀️" : "🌙";
   }
 
   function listenOsThemeChange() {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     mq.addEventListener("change", () => {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === "light" || saved === "dark") return;
+      if (saved === "light" || saved === "dark") return; // user choose manual
       setTheme(mq.matches ? "dark" : "light");
+      syncToggleIcon();
     });
   }
 
@@ -85,6 +88,15 @@
     ensureVariablesCssLoaded();
     setTheme(getPreferredTheme());
     injectThemeToggleIfMissing();
+    syncToggleIcon();
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("#theme-toggle");
+      if (!btn) return;
+      // icon update setelah toggle
+      setTimeout(syncToggleIcon, 0);
+    });
+
     listenOsThemeChange();
   });
 })();

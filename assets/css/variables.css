@@ -1,39 +1,44 @@
 /* assets/css/variables.css
-   FINAL STABLE VERSION
-   Aman untuk kerja tim – TIDAK merusak style.css utama
+   GLOBAL UI & INTERAKTIVITAS
+   - Theme variables (light/dark)
+   - Navbar global styles (desktop/mobile)
+   - Theme toggle + mobile menu styles
 */
 
 /* ===============================
    LIGHT MODE (DEFAULT)
 ================================ */
 :root {
-  /* Core color system (dipakai style.css) */
+  /* Brand */
   --primary: #38bdf8;
   --secondary: #34d399;
 
+  /* Base */
   --dark: #0f172a;
   --light: #f8fafc;
   --gray: #94a3b8;
   --white: #ffffff;
 
-  /* Extended tokens (punya temanmu – DIPERTAHANKAN) */
-  --bg: #ffffff;
-  --text: #111827;
-  --muted: #4b5563;
+  /* Semantic tokens */
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --muted: #475569;
 
-  --card: rgba(255, 255, 255, 0.92);
-  --border: rgba(17, 24, 39, 0.10);
+  --card: rgba(255, 255, 255, 0.72);
+  --card-solid: #ffffff;
 
-  --primary-contrast: #ffffff;
+  --border: rgba(15, 23, 42, 0.12);
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.10);
+  --shadow-strong: 0 18px 45px rgba(15, 23, 42, 0.14);
 
-  --nav-bg: rgba(255, 255, 255, 0.72);
-  --nav-text: #111827;
+  /* Navbar */
+  --nav-bg: rgba(248, 250, 252, 0.70);
+  --nav-text: #0f172a;
+  --nav-border: rgba(15, 23, 42, 0.12);
+  --nav-hover: rgba(56, 189, 248, 0.14);
 
-  --shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
-  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.08);
-
-  --radius: 14px;
-  --transition: all 0.3s ease;
+  /* Focus ring */
+  --focus: rgba(56, 189, 248, 0.45);
 }
 
 /* ===============================
@@ -43,38 +48,27 @@
   --primary: #60a5fa;
   --secondary: #34d399;
 
-  --dark: #e5e7eb;
-  --light: #020617;
-  --gray: #94a3b8;
-  --white: #020617;
-
   --bg: #0b1220;
   --text: #e5e7eb;
-  --muted: #9ca3af;
+  --muted: #9aa4b2;
 
-  --card: rgba(17, 24, 39, 0.88);
-  --border: rgba(229, 231, 235, 0.12);
+  --card: rgba(17, 24, 39, 0.60);
+  --card-solid: #111827;
 
-  --primary-contrast: #0b1220;
+  --border: rgba(148, 163, 184, 0.16);
+  --shadow-soft: 0 12px 34px rgba(0, 0, 0, 0.40);
+  --shadow-strong: 0 22px 55px rgba(0, 0, 0, 0.50);
 
-  --nav-bg: rgba(17, 24, 39, 0.60);
+  --nav-bg: rgba(15, 23, 42, 0.55);
   --nav-text: #e5e7eb;
+  --nav-border: rgba(148, 163, 184, 0.16);
+  --nav-hover: rgba(96, 165, 250, 0.14);
 
-  --shadow: 0 18px 44px rgba(0, 0, 0, 0.40);
-  --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.28);
+  --focus: rgba(96, 165, 250, 0.45);
 }
 
 /* ===============================
-   GLOBAL BASE (AMAN)
-================================ */
-html, body {
-  background-color: var(--bg);
-  color: var(--text);
-  transition: var(--transition);
-}
-
-/* ===============================
-   SMOOTH THEME TRANSITION
+   THEME TRANSITION (SMOOTH)
 ================================ */
 .theme-transition,
 .theme-transition * {
@@ -87,63 +81,286 @@ html, body {
 }
 
 /* ===============================
-   NAVBAR GLASS (TIDAK DOUBLE)
+   GLOBAL BASE
 ================================ */
-header.navbar {
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  background: var(--nav-bg);
-  transition: background-color .3s ease, box-shadow .3s ease;
-}
-
-.nav-scrolled {
-  box-shadow: var(--shadow-soft);
-}
-
-/* ===============================
-   CARD & FORM BASE
-================================ */
-.card,
-.team-card,
-.blog-post,
-.project-preview .card,
-.contact-form,
-.blog-list,
-.team-grid {
-  background: var(--card);
-  border: 1px solid var(--border);
+body {
+  background: var(--bg);
   color: var(--text);
-  box-shadow: var(--shadow-soft);
-  border-radius: var(--radius);
 }
 
-/* Placeholder image */
-.project-img-placeholder {
-  background: rgba(96, 165, 250, 0.22);
-  border: 1px solid var(--border);
-}
+a { color: var(--text); }
+a:hover { color: var(--primary); }
 
 /* Inputs */
 input, textarea, select {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+}
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 4px var(--focus);
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: var(--muted);
+/* ===============================
+   NAVBAR (GLASS)
+================================ */
+header.navbar {
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+  box-shadow: var(--shadow-soft);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-/* Links (AMAN DI DARK MODE) */
-a {
+/* efek saat scroll (dipakai navigation.js) */
+header.navbar.nav-scrolled {
+  box-shadow: var(--shadow-strong);
+}
+
+/* ===============================
+   NAV LINKS
+================================ */
+header.navbar nav a.nav-link {
+  position: relative;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--nav-text);
+  outline: none;
+}
+header.navbar nav a.nav-link:hover {
+  background: var(--nav-hover);
+}
+
+/* active indicator */
+header.navbar nav a.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--primary);
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ===============================
+   THEME TOGGLE BUTTON
+================================ */
+#theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+
+  border-radius: 999px;
+  border: 1px solid var(--nav-border);
+  background: var(--card);
+  color: var(--nav-text);
+  cursor: pointer;
+
+  box-shadow: var(--shadow-soft);
+  user-select: none;
+}
+#theme-toggle:hover { transform: translateY(-1px); }
+#theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--focus), var(--shadow-soft);
+}
+#theme-toggle.rotate { transform: rotate(18deg) scale(1.02); }
+
+/* ===============================
+   MOBILE MENU (Injected by navigation.js)
+================================ */
+#mobile-menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--nav-border);
+  background: var(--card);
+  color: var(--nav-text);
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+#mobile-menu-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--focus), var(--shadow-soft);
+}
+
+#mobile-menu-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 12px;
+  min-width: 220px;
+
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-strong);
+  padding: 10px;
+  z-index: 999;
+}
+#mobile-menu-panel.open { display: block; }
+
+#mobile-menu-panel a.nav-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 12px;
   color: var(--text);
+  text-decoration: none;
 }
-a:hover {
-  color: var(--primary);
+#mobile-menu-panel a.nav-link:hover { background: var(--nav-hover); }
+
+/* ===============================
+   RESPONSIVE: show hamburger, hide desktop nav
+================================ */
+@media (max-width: 768px) {
+  #mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  header.navbar nav { display: none !important; }
 }
 
 /* Footer */
-footer {
-  color: var(--muted);
+footer { color: var(--muted); }
+
+/* ===============================
+   FINAL NAVBAR LAYOUT (DESKTOP)
+   - Logo kiri
+   - Menu mepet ke kanan (sebelum toggle)
+   - Toggle pojok kanan
+================================ */
+header.navbar{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:18px;
+
+  padding-left:28px !important;
+  padding-right:28px !important;
+}
+
+/* Menu -> kanan */
+header.navbar nav{
+  position: static !important;
+  transform: none !important;
+
+  display:flex !important;
+  align-items:center !important;
+
+  margin-left:auto !important;     /* ✅ nav ke kanan */
+  margin-right:80px !important;    /* ✅ jarak nav - toggle (atur ini) */
+}
+
+/* jarak antar menu */
+header.navbar nav a{
+  margin:0 14px !important;
+}
+
+/* Toggle tetap pojok kanan */
+#theme-toggle{
+  margin-left:0 !important;
+}
+
+/* ===============================
+   NAVBAR PATCH (RAPI + TINGGI NORMAL)
+   - tinggi navbar normal
+   - menu mepet kiri (deket logo)
+   - toggle tetap kanan
+================================ */
+
+header.navbar{
+  /* jangan bikin navbar tambah tinggi */
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  min-height: 72px !important;
+
+  /* rapihin layout tanpa gap gede */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+}
+
+/* logo biar benar-benar mepet kiri */
+header.navbar .logo,
+header.navbar h1,
+header.navbar h2,
+header.navbar a.logo {
+  margin-right: 18px !important;
+}
+
+/* nav: jangan center, jangan jauh-jauh */
+header.navbar nav{
+  margin-left: 10px !important;   /* ✅ ini bikin menu mepet kiri */
+  margin-right: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  gap: 26px !important;           /* ✅ jarak antar menu rapi (bukan margin acak) */
+}
+
+/* hilangkan margin aneh dari link */
+header.navbar nav a{
+  margin: 0 !important;
+}
+
+/* toggle tetap pojok kanan */
+#theme-toggle{
+  margin-left: auto !important;
+}
+
+/* ===============================
+   FINAL NAVBAR FIX
+   [ Logo ] ---- [ Menu ][ Toggle ]
+   Menu nempel ke toggle (kiri)
+================================ */
+
+header.navbar {
+  display: flex !important;
+  align-items: center !important;
+  padding: 14px 28px !important;
+  min-height: 68px !important;
+}
+
+/* LOGO DI KIRI */
+header.navbar .logo,
+header.navbar a.logo,
+header.navbar h1,
+header.navbar h2 {
+  margin: 0 !important;
+}
+
+/* NAV DIDORONG KE KANAN */
+header.navbar nav {
+  display: flex !important;
+  align-items: center !important;
+
+  margin-left: auto !important;   /* ⬅️ dorong nav ke kanan */
+  margin-right: 12px !important;  /* ⬅️ NAV MEPET KE TOGGLE */
+
+  gap: 22px !important;           /* jarak antar menu */
+}
+
+/* LINK RESET */
+header.navbar nav a {
+  margin: 0 !important;
+  padding: 8px 10px !important;
+}
+
+/* TOGGLE TEMA POJOK KANAN */
+#theme-toggle {
+  margin-left: 0 !important;
 }
