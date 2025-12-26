@@ -1,112 +1,197 @@
 // assets/js/navigation.js
-// FINAL FIXED VERSION
-// Aman untuk desktop & mobile, tidak bikin navbar dobel
-
+// NAV: Hamburger mobile + active indicator + smooth scroll (tanpa ubah HTML)
 (function () {
+  const NAV_STYLE_ID = "nav-runtime-overrides";
 
-  /* ===============================
-     HELPER
-  ================================ */
-  function qs(sel, root = document) {
-    return root.querySelector(sel);
-  }
-
-  function qsa(sel, root = document) {
-    return [...root.querySelectorAll(sel)];
-  }
+  function qs(sel, root = document) { return root.querySelector(sel); }
+  function qsa(sel, root = document) { return [...root.querySelectorAll(sel)]; }
 
   function normalizeFile(path) {
-    const parts = (path || "").split("/");
-    return parts[parts.length - 1];
+    const p = (path || "").split("/");
+    return p[p.length - 1];
   }
 
-  /* ===============================
-     ACTIVE NAV BY PAGE
-  ================================ */
-  function setActiveByPage() {
-    const currentFile = normalizeFile(location.pathname) || "index.html";
+  function injectNavOverrides() {
+    if (document.getElementById(NAV_STYLE_ID)) return;
 
-    const links = qsa("header.navbar nav a");
-    links.forEach(link => {
-      link.classList.add("nav-link");
-      link.classList.remove("active");
+    const style = document.createElement("style");
+    style.id = NAV_STYLE_ID;
+    style.textContent = `
+      /* ===== NAV OVERRIDES (MENANG dari responsive.css) ===== */
 
-      const hrefFile = normalizeFile(link.getAttribute("href"));
-      if (hrefFile === currentFile) {
-        link.classList.add("active");
+      /* TAMPILKAN HAMBURGER DI <= 1024px (tablet + mobile) */
+      @media (max-width: 1024px) {
+        header.navbar nav { display: none !important; }
+        #mobile-menu-btn { display: inline-flex !important; }
       }
-    });
+
+      /* posisi button biar gak "kejauhan" */
+      header.navbar { position: relative; }
+      #mobile-menu-btn { margin-left: auto; }
+
+      /* Hamburger garis 3 */
+      #mobile-menu-btn {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 999px;
+        border: 1px solid var(--nav-border);
+        background: var(--card);
+        box-shadow: var(--shadow-soft);
+        cursor: pointer;
+        position: relative;
+      }
+      #mobile-menu-btn .hb,
+      #mobile-menu-btn .hb::before,
+      #mobile-menu-btn .hb::after {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--nav-text);
+        border-radius: 99px;
+        position: relative;
+      }
+      #mobile-menu-btn .hb::before { position: absolute; top: -6px; left: 0; }
+      #mobile-menu-btn .hb::after  { position: absolute; top:  6px; left: 0; }
+
+      /* panel dropdown */
+      #mobile-menu-panel {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 16px;
+        min-width: 240px;
+        background: var(--card-solid);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: var(--shadow-strong);
+        padding: 10px;
+        z-index: 9999;
+      }
+      #mobile-menu-panel.open { display: block; }
+
+      #mobile-menu-panel a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: var(--text);
+      }
+      #mobile-menu-panel a:hover {
+        background: var(--nav-hover);
+      }
+    `;
+    document.head.appendChild(style);
   }
 
-  /* ===============================
-     NAVBAR SCROLL EFFECT
-  ================================ */
-  function enableNavbarScrollEffect() {
+  function ensureMobileMenu() {
     const header = qs("header.navbar");
-    if (!header) return;
-
-    function onScroll() {
-      if (window.scrollY > 20) {
-        header.classList.add("nav-scrolled");
-      } else {
-        header.classList.remove("nav-scrolled");
-      }
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
-
-  /* ===============================
-     MOBILE MENU (ONLY < 768px)
-  ================================ */
-  function injectMobileMenu() {
-    if (window.innerWidth >= 768) return; // ⬅️ PENTING: desktop stop di sini
-
     const nav = qs("header.navbar nav");
-    if (!nav) return;
+    if (!header || !nav) return;
 
-    if (qs("#mobile-menu-btn") || qs("#mobile-menu-panel")) return;
+    injectNavOverrides();
 
-    // button
+    // jangan dobel
+    if (qs("#mobile-menu-btn") && qs("#mobile-menu-panel")) return;
+
+    header.style.position = header.style.position || "relative";
+
     const btn = document.createElement("button");
     btn.id = "mobile-menu-btn";
     btn.type = "button";
-    btn.textContent = "☰";
     btn.setAttribute("aria-label", "Open Menu");
+    btn.setAttribute("aria-expanded", "false");
+    btn.innerHTML = `<span class="hb" aria-hidden="true"></span>`;
 
-    // panel
     const panel = document.createElement("div");
     panel.id = "mobile-menu-panel";
 
-    qsa("a", nav).forEach(a => {
+    // clone link dari nav desktop
+    qsa("a", nav).forEach((a) => {
       const clone = a.cloneNode(true);
       clone.classList.add("nav-link");
       panel.appendChild(clone);
     });
 
-    nav.appendChild(btn);
-    nav.appendChild(panel);
+    header.appendChild(btn);
+    header.appendChild(panel);
 
-    btn.addEventListener("click", () => {
-      panel.classList.toggle("open");
+    function closePanel() {
+      panel.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    }
+    function togglePanel() {
+      const isOpen = panel.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      togglePanel();
     });
 
-    // close on outside click
+    panel.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      closePanel();
+    });
+
     document.addEventListener("click", (e) => {
-      if (!panel.contains(e.target) && !btn.contains(e.target)) {
-        panel.classList.remove("open");
-      }
+      const inside = panel.contains(e.target) || btn.contains(e.target);
+      if (!inside) closePanel();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePanel();
     });
   }
 
-  /* ===============================
-     INIT
-  ================================ */
-  document.addEventListener("DOMContentLoaded", () => {
-    setActiveByPage();
-    enableNavbarScrollEffect();
-    injectMobileMenu();
-  });
+  function setActiveByPage() {
+    const currentFile = normalizeFile(location.pathname) || "index.html";
+    const links = qsa("header.navbar nav a, #mobile-menu-panel a");
 
+    links.forEach((link) => {
+      link.classList.add("nav-link");
+      link.classList.remove("active");
+
+      const href = link.getAttribute("href") || "";
+      const hrefFile = normalizeFile(href.split("#")[0]);
+      if (!hrefFile) return;
+
+      if (hrefFile === currentFile) link.classList.add("active");
+    });
+  }
+
+  function enableSmoothScroll() {
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+
+      const href = a.getAttribute("href") || "";
+      if (!href.includes("#")) return;
+
+      const [filePart, hash] = href.split("#");
+      if (!hash) return;
+
+      const currentFile = normalizeFile(location.pathname) || "index.html";
+      const hrefFile = normalizeFile(filePart);
+      if (filePart && hrefFile !== currentFile) return;
+
+      const target = document.getElementById(hash);
+      if (!target) return;
+
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.pushState(null, "", "#" + hash);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    ensureMobileMenu();
+    setActiveByPage();
+    enableSmoothScroll();
+  });
 })();
