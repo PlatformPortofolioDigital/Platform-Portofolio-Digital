@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 /* ===============================
-   RESET & GLOBAL (AMAN)
+   RESET & GLOBAL 
 ================================ */
 * {
   margin: 0;
@@ -27,79 +27,128 @@ body {
 }
 
 /* ===============================
-   WELCOME SCREEN
+   WELCOME SCREEN PRO
 ================================ */
 #welcome-screen {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at top, #1e2f3b, #020617);
+  background:
+    radial-gradient(circle at top left, #00f7ff55, transparent 40%),
+    radial-gradient(circle at bottom right, #55e1f755, transparent 45%),
+    linear-gradient(135deg, #22baed, #021117);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: welcomeFadeOut 0.6s ease forwards;
-  animation-delay: 1.8s;
+
+  animation: welcomeFadeOut 1s ease forwards;
+  animation-delay: 3.8s;
 }
 
+/* CONTENT */
 .welcome-content {
   text-align: center;
   color: #ffffff;
 }
 
+/* ICONS */
 .welcome-icons {
   display: flex;
   justify-content: center;
   gap: 22px;
-  margin-bottom: 22px;
+  margin-bottom: 26px;
 }
 
 .welcome-icons span {
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  color: #020617;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 26px;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
+
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.6),
+    0 0 40px rgba(168, 85, 247, 0.4);
+
   opacity: 0;
+  transform: translateY(30px) scale(0.7);
+  animation: iconSmooth 0.9s cubic-bezier(.22,1,.36,1) forwards;
 }
 
-.welcome-icons span:nth-child(1) {
-  animation: iconLeft .6s ease forwards
-}
+.welcome-icons span:nth-child(1) { animation-delay: 0.4s; }
+.welcome-icons span:nth-child(2) { animation-delay: 0.7s; }
+.welcome-icons span:nth-child(3) { animation-delay: 1s; }
 
-.welcome-icons span:nth-child(2) {
-  animation: iconTop .6s ease forwards .2s
-}
-
-.welcome-icons span:nth-child(3) {
-  animation: iconRight .6s ease forwards .4s
-}
-
+/* TEXT */
 .welcome-content h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 2.2rem;
   opacity: 0;
-  animation: textBottom .6s ease forwards .7s
+  transform: translateY(20px);
+  animation: textSmooth 0.8s ease forwards 1.4s;
 }
 
 .welcome-content h2 {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 3rem;
   font-weight: 700;
-  color: var(--primary);
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #22d3ee);
+  -webkit-background-clip: text;
+  color: transparent;
+
   opacity: 0;
-  animation: textTop .6s ease forwards 1s
+  transform: translateY(20px);
+  animation: textSmooth 0.8s ease forwards 1.8s;
+}
+
+/* SKIP BUTTON */
+#skip-intro {
+  margin-top: 26px;
+  padding: 10px 26px;
+  border-radius: 30px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+
+  opacity: 0;
+  animation: textSmooth 0.6s ease forwards 2.4s;
+}
+
+#skip-intro:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ANIMATIONS */
+@keyframes iconSmooth {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes textSmooth {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes welcomeFadeOut {
   to {
     opacity: 0;
-    visibility: hidden
+    visibility: hidden;
+    pointer-events: none;
   }
 }
+
 
 /* ===============================
    NAVBAR
@@ -153,6 +202,7 @@ body {
   width: 100%;
 }
 
+
 /* ===============================
    HERO
 ================================ */
@@ -202,6 +252,16 @@ body {
   color: #e5e7eb;
   margin-bottom: 32px;
 }
+.home-page .hero-video {
+  display: flex;
+}
+
+.home-page .hero-content h2 {
+  color: #ffffff;
+  opacity: 1;
+  animation: heroFadeIn 1.2s ease forwards 2.2s;
+}
+
 
 /* ===============================
    BUTTON
@@ -541,9 +601,9 @@ body.about-page {
   }
 }
 /* ===============================
-   BLOG HERO
+   BLOG HERO 
 ================================ */
-.hero {
+.blog-page .hero {
   padding: 5rem 1rem 3.5rem;
   text-align: center;
   background: linear-gradient(
@@ -553,7 +613,7 @@ body.about-page {
   );
 }
 
-.hero h2 {
+.blog-page .hero h2 {
   font-family: "Poppins", sans-serif;
   font-size: 2.4rem;
   font-weight: 600;
@@ -561,7 +621,7 @@ body.about-page {
   margin-bottom: 0.5rem;
 }
 
-.hero p {
+.blog-page .hero p {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: var(--text-muted);
@@ -658,3 +718,4 @@ body.about-page {
     transform: translateY(0);
   }
 }
+
