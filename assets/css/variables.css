@@ -1,41 +1,37 @@
 /* assets/css/variables.css
-   GLOBAL UI & INTERAKTIVITAS
-   - Theme variables (light/dark)
-   - Navbar global styles (desktop/mobile)
-   - Theme toggle + mobile menu styles
+   FINAL GLOBAL UI & INTERAKTIVITAS
+   Aman untuk kerja tim – tidak merusak style.css utama
 */
 
 /* ===============================
    LIGHT MODE (DEFAULT)
 ================================ */
 :root {
-  /* Brand */
   --primary: #38bdf8;
   --secondary: #34d399;
 
-  /* Base */
   --dark: #0f172a;
   --light: #f8fafc;
   --gray: #94a3b8;
   --white: #ffffff;
 
-  /* Semantic tokens */
-  --bg: #f8fafc;
-  --text: #0f172a;
-  --muted: #475569;
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #4b5563;
 
-  --card: rgba(255, 255, 255, 0.72);
-  --card-solid: #ffffff;
+  --card: rgba(255, 255, 255, 0.92);
+  --border: rgba(17, 24, 39, 0.10);
 
-  --border: rgba(15, 23, 42, 0.12);
-  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.10);
-  --shadow-strong: 0 18px 45px rgba(15, 23, 42, 0.14);
+  --primary-contrast: #ffffff;
 
-  /* Navbar */
-  --nav-bg: rgba(248, 250, 252, 0.70);
-  --nav-text: #0f172a;
-  --nav-border: rgba(15, 23, 42, 0.12);
-  --nav-hover: rgba(56, 189, 248, 0.14);
+  --nav-bg: rgba(255, 255, 255, 0.72);
+  --nav-text: #111827;
+
+  --shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.08);
+
+  --radius: 14px;
+  --transition: all 0.3s ease;
 
   /* Focus ring */
   --focus: rgba(56, 189, 248, 0.45);
@@ -48,27 +44,40 @@
   --primary: #60a5fa;
   --secondary: #34d399;
 
+  --dark: #e5e7eb;
+  --light: #020617;
+  --gray: #94a3b8;
+  --white: #020617;
+
   --bg: #0b1220;
   --text: #e5e7eb;
-  --muted: #9aa4b2;
+  --muted: #9ca3af;
 
-  --card: rgba(17, 24, 39, 0.60);
-  --card-solid: #111827;
+  --card: rgba(17, 24, 39, 0.88);
+  --border: rgba(229, 231, 235, 0.12);
 
-  --border: rgba(148, 163, 184, 0.16);
-  --shadow-soft: 0 12px 34px rgba(0, 0, 0, 0.40);
-  --shadow-strong: 0 22px 55px rgba(0, 0, 0, 0.50);
+  --primary-contrast: #0b1220;
 
-  --nav-bg: rgba(15, 23, 42, 0.55);
+  --nav-bg: rgba(17, 24, 39, 0.60);
   --nav-text: #e5e7eb;
-  --nav-border: rgba(148, 163, 184, 0.16);
-  --nav-hover: rgba(96, 165, 250, 0.14);
+
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.40);
+  --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.28);
 
   --focus: rgba(96, 165, 250, 0.45);
 }
 
 /* ===============================
-   THEME TRANSITION (SMOOTH)
+   GLOBAL BASE (AMAN)
+================================ */
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: var(--transition);
+}
+
+/* ===============================
+   SMOOTH THEME TRANSITION
 ================================ */
 .theme-transition,
 .theme-transition * {
@@ -81,114 +90,127 @@
 }
 
 /* ===============================
-   GLOBAL BASE
+   NAVBAR GLASS
 ================================ */
-body {
-  background: var(--bg);
-  color: var(--text);
+header.navbar {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: var(--nav-bg);
+  transition: background-color .3s ease, box-shadow .3s ease;
 }
 
-a { color: var(--text); }
-a:hover { color: var(--primary); }
+header.navbar.nav-scrolled {
+  box-shadow: var(--shadow-soft);
+}
+
+/* ACTIVE LINK underline indicator */
+header.navbar nav a.nav-link {
+  position: relative;
+  color: var(--nav-text);
+  text-decoration: none;
+}
+
+header.navbar nav a.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -8px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+/* ===============================
+   CARD & FORM BASE
+================================ */
+.card,
+.team-card,
+.blog-post,
+.project-preview .card,
+.contact-form,
+.blog-list,
+.team-grid {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius);
+}
+
+/* Placeholder image */
+.project-img-placeholder {
+  background: rgba(96, 165, 250, 0.22);
+  border: 1px solid var(--border);
+}
 
 /* Inputs */
 input, textarea, select {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  outline: none;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
 }
 input:focus, textarea:focus, select:focus {
+  outline: none;
   box-shadow: 0 0 0 4px var(--focus);
 }
 
-/* ===============================
-   NAVBAR (GLASS)
-================================ */
-header.navbar {
-  background: var(--nav-bg);
-  border: 1px solid var(--nav-border);
-  box-shadow: var(--shadow-soft);
-  border-radius: 20px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
+/* Links */
+a { color: var(--text); }
+a:hover { color: var(--primary); }
 
-/* efek saat scroll (dipakai navigation.js) */
-header.navbar.nav-scrolled {
-  box-shadow: var(--shadow-strong);
-}
+/* Footer */
+footer { color: var(--muted); }
 
 /* ===============================
-   NAV LINKS
-================================ */
-header.navbar nav a.nav-link {
-  position: relative;
-  padding: 10px 12px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: var(--nav-text);
-  outline: none;
-}
-header.navbar nav a.nav-link:hover {
-  background: var(--nav-hover);
-}
-
-/* active indicator */
-header.navbar nav a.nav-link.active::after {
-  content: "";
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 6px;
-  height: 2px;
-  border-radius: 99px;
-  background: var(--primary);
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* ===============================
-   THEME TOGGLE BUTTON
+   THEME TOGGLE (AMAN)
 ================================ */
 #theme-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-
-  border-radius: 999px;
-  border: 1px solid var(--nav-border);
-  background: var(--card);
-  color: var(--nav-text);
-  cursor: pointer;
-
-  box-shadow: var(--shadow-soft);
   user-select: none;
 }
-#theme-toggle:hover { transform: translateY(-1px); }
+
 #theme-toggle:focus {
   outline: none;
   box-shadow: 0 0 0 4px var(--focus), var(--shadow-soft);
 }
-#theme-toggle.rotate { transform: rotate(18deg) scale(1.02); }
+
+#theme-toggle.rotate {
+  transform: rotate(18deg) scale(1.02);
+}
 
 /* ===============================
-   MOBILE MENU (Injected by navigation.js)
+   MOBILE MENU (button + panel)
+   (dibuat via navigation.js)
 ================================ */
 #mobile-menu-btn {
-  display: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  border: 1px solid var(--nav-border);
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
   background: var(--card);
-  color: var(--nav-text);
+  color: var(--text);
   cursor: pointer;
   box-shadow: var(--shadow-soft);
+  display: none;
+  align-items: center;
+  justify-content: center;
 }
+
 #mobile-menu-btn:focus {
   outline: none;
   box-shadow: 0 0 0 4px var(--focus), var(--shadow-soft);
@@ -198,16 +220,17 @@ header.navbar nav a.nav-link.active::after {
   display: none;
   position: absolute;
   top: calc(100% + 10px);
-  right: 12px;
+  right: 16px;
   min-width: 220px;
 
-  background: var(--card-solid);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
-  box-shadow: var(--shadow-strong);
+  box-shadow: var(--shadow);
   padding: 10px;
-  z-index: 999;
+  z-index: 9999;
 }
+
 #mobile-menu-panel.open { display: block; }
 
 #mobile-menu-panel a.nav-link {
@@ -217,150 +240,137 @@ header.navbar nav a.nav-link.active::after {
   color: var(--text);
   text-decoration: none;
 }
-#mobile-menu-panel a.nav-link:hover { background: var(--nav-hover); }
+
+#mobile-menu-panel a.nav-link:hover {
+  background: rgba(56, 189, 248, 0.14);
+}
 
 /* ===============================
-   RESPONSIVE: show hamburger, hide desktop nav
+   MOBILE NAVBAR FIX
+   ✅ INI yang ngalahin responsive.css kamu
+   (biar About/Contact gak balik "tinggi")
 ================================ */
 @media (max-width: 768px) {
+  /* responsive.css kamu bikin .navbar column → kita override jadi 1 baris */
+  header.navbar,
+  .navbar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+
+    padding: 12px 16px !important;
+    min-height: 68px !important;
+  }
+
+  /* nav link desktop boleh tetap ada, tapi kita sembunyikan (hamburger yang tampil) */
+  header.navbar nav {
+    display: none !important;
+  }
+
   #mobile-menu-btn {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
   }
-  header.navbar nav { display: none !important; }
-}
-
-/* Footer */
-footer { color: var(--muted); }
-
-/* ===============================
-   FINAL NAVBAR LAYOUT (DESKTOP)
-   - Logo kiri
-   - Menu mepet ke kanan (sebelum toggle)
-   - Toggle pojok kanan
-================================ */
-header.navbar{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:flex-start !important;
-  gap:18px;
-
-  padding-left:28px !important;
-  padding-right:28px !important;
-}
-
-/* Menu -> kanan */
-header.navbar nav{
-  position: static !important;
-  transform: none !important;
-
-  display:flex !important;
-  align-items:center !important;
-
-  margin-left:auto !important;     /* ✅ nav ke kanan */
-  margin-right:80px !important;    /* ✅ jarak nav - toggle (atur ini) */
-}
-
-/* jarak antar menu */
-header.navbar nav a{
-  margin:0 14px !important;
-}
-
-/* Toggle tetap pojok kanan */
-#theme-toggle{
-  margin-left:0 !important;
 }
 
 /* ===============================
-   NAVBAR PATCH (RAPI + TINGGI NORMAL)
-   - tinggi navbar normal
-   - menu mepet kiri (deket logo)
-   - toggle tetap kanan
+   FIX: NAV DESKTOP + TOGGLE + HAMBURGER NUMPUK
+   - aktifkan mode mobile sampai 992px
+   - kunci posisi tombol tema & hamburger di kanan
+   - hide nav desktop supaya gak double
 ================================ */
 
-header.navbar{
-  /* jangan bikin navbar tambah tinggi */
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
-  min-height: 72px !important;
+@media (max-width: 992px) {
+  /* header jangan wrap jadi 2 baris */
+  header.navbar,
+  .navbar {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
 
-  /* rapihin layout tanpa gap gede */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 0 !important;
-}
+    padding: 12px 16px !important;
+    min-height: 68px !important;
+  }
 
-/* logo biar benar-benar mepet kiri */
-header.navbar .logo,
-header.navbar h1,
-header.navbar h2,
-header.navbar a.logo {
-  margin-right: 18px !important;
-}
+  /* logo jangan pecah jadi 2 baris (Kelompok / 2) */
+  header.navbar .logo,
+  header.navbar a.logo,
+  header.navbar h1,
+  header.navbar h2 {
+    white-space: nowrap !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    font-size: 26px !important; /* bisa kecilin ke 24 kalau masih kepotong */
+  }
 
-/* nav: jangan center, jangan jauh-jauh */
-header.navbar nav{
-  margin-left: 10px !important;   /* ✅ ini bikin menu mepet kiri */
-  margin-right: 0 !important;
+  /* HIDE nav desktop (biar gak tampil barengan hamburger) */
+  header.navbar nav {
+    display: none !important;
+  }
 
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
+  /* tombol tema: fix di kanan (sebelum hamburger) */
+  #theme-toggle {
+    position: absolute !important;
+    right: 78px !important;   /* jarak dari kanan (biar ada tempat hamburger) */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    z-index: 10 !important;
+  }
 
-  gap: 26px !important;           /* ✅ jarak antar menu rapi (bukan margin acak) */
-}
+  /* hamburger: pojok kanan */
+  #mobile-menu-btn {
+    display: inline-flex !important;
+    position: absolute !important;
+    right: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 11 !important;
+  }
 
-/* hilangkan margin aneh dari link */
-header.navbar nav a{
-  margin: 0 !important;
-}
-
-/* toggle tetap pojok kanan */
-#theme-toggle{
-  margin-left: auto !important;
+  /* panel hamburger tetap turun dari header */
+  #mobile-menu-panel {
+    right: 16px !important;
+    top: calc(100% + 10px) !important;
+  }
 }
 
 /* ===============================
-   FINAL NAVBAR FIX
-   [ Logo ] ---- [ Menu ][ Toggle ]
-   Menu nempel ke toggle (kiri)
+   FIX HEADER KECIL: TAGLINE NABRAK TOGGLE/HAMBURGER
+   - sembunyikan subtitle/tagline di navbar saat layar kecil
+   - tombol tetap rapi di kanan
 ================================ */
+@media (max-width: 992px) {
+  /* sembunyikan teks kedua/tagline yang bikin numpuk */
+  header.navbar p,
+  header.navbar small,
+  header.navbar .tagline,
+  header.navbar .subtitle,
+  header.navbar span.subtitle {
+    display: none !important;
+  }
 
-header.navbar {
-  display: flex !important;
-  align-items: center !important;
-  padding: 14px 28px !important;
-  min-height: 68px !important;
-}
+  /* kalau tagline kamu berupa elemen ke-2 setelah judul, pakai ini juga */
+  header.navbar > :not(nav):not(#theme-toggle):not(#mobile-menu-btn):not(#mobile-menu-panel):not(.logo):not(a.logo):not(h1):not(h2) {
+    display: none !important;
+  }
 
-/* LOGO DI KIRI */
-header.navbar .logo,
-header.navbar a.logo,
-header.navbar h1,
-header.navbar h2 {
-  margin: 0 !important;
-}
+  /* kunci tombol kanan */
+  #theme-toggle {
+    position: absolute !important;
+    right: 78px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
 
-/* NAV DIDORONG KE KANAN */
-header.navbar nav {
-  display: flex !important;
-  align-items: center !important;
-
-  margin-left: auto !important;   /* ⬅️ dorong nav ke kanan */
-  margin-right: 12px !important;  /* ⬅️ NAV MEPET KE TOGGLE */
-
-  gap: 22px !important;           /* jarak antar menu */
-}
-
-/* LINK RESET */
-header.navbar nav a {
-  margin: 0 !important;
-  padding: 8px 10px !important;
-}
-
-/* TOGGLE TEMA POJOK KANAN */
-#theme-toggle {
-  margin-left: 0 !important;
+  #mobile-menu-btn {
+    position: absolute !important;
+    right: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
 }
