@@ -100,3 +100,29 @@
     listenOsThemeChange();
   });
 })();
+
+// ===== WELCOME SCREEN: sekali per TAB, durasi < 3 detik =====
+document.addEventListener("DOMContentLoaded", () => {
+  const welcome = document.getElementById("welcome-screen"); // <- GANTI kalau id beda
+  if (!welcome) return;
+
+  const shown = sessionStorage.getItem("welcomeShown");
+
+  if (shown) {
+    // sudah pernah tampil di tab ini
+    welcome.style.display = "none";
+    return;
+  }
+
+  // pertama kali di tab ini
+  sessionStorage.setItem("welcomeShown", "true");
+
+  // tampil sebentar (<3 detik), lalu hilang halus
+  const DURATION = 1800; // 1.8 detik (ubah 1200-2500 sesuai mau)
+  setTimeout(() => {
+    welcome.classList.add("hide"); // butuh CSS .hide (lihat bawah)
+    setTimeout(() => {
+      welcome.style.display = "none";
+    }, 400); // waktu animasi fade
+  }, DURATION);
+});
