@@ -394,3 +394,267 @@ body.about-page {
   background: transparent;
   color: #94a3b8;
 }
+/* ===============================
+   PROJECTS SECTION
+================================ */
+.projects {
+  padding: 5rem 0;
+}
+
+.projects h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--dark);
+}
+
+.section-desc {
+  text-align: center;
+  max-width: 650px;
+  margin: 0.8rem auto 3rem;
+  color: var(--text-muted);
+  font-family: "Inter", sans-serif;
+  line-height: 1.7;
+}
+
+/* ===============================
+   PROJECT GRID
+================================ */
+.project-preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ===============================
+   PROJECT CARD
+================================ */
+.project-preview .card {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 1.6rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect */
+.project-preview .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   IMAGE PLACEHOLDER
+================================ */
+.project-img-placeholder {
+  width: 100%;
+  height: 180px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+  );
+  margin-bottom: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* overlay animation */
+.project-img-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.card:hover .project-img-placeholder::after {
+  transform: translateX(0);
+}
+
+/* ===============================
+   CARD CONTENT
+================================ */
+.project-preview h4 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--dark);
+}
+
+.project-preview p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+/* ===============================
+   PROJECT LINK
+================================ */
+.project-link {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  color: var(--secondary);
+  transform: translateX(6px);
+}
+/* ===============================
+   SCROLL ANIMATION
+================================ */
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===============================
+   BLOG HERO
+================================ */
+.hero {
+  padding: 5rem 1rem 3.5rem;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.12),
+    rgba(52, 211, 153, 0.12)
+  );
+}
+
+.hero h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* ===============================
+   BLOG LIST
+================================ */
+.blog-list {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+/* ===============================
+   BLOG CARD
+================================ */
+.blog-post {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 18px;
+  margin-bottom: 2rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect */
+.blog-post:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+}
+
+/* Accent bar */
+.blog-post::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--primary),
+    var(--secondary)
+  );
+}
+
+/* ===============================
+   BLOG CONTENT
+================================ */
+.blog-post h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+}
+
+.blog-post .date {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.blog-post p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ===============================
+   ANIMASI MASUK
+================================ */
+.blog-post {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUpBlog 0.8s ease forwards;
+}
+
+.blog-post:nth-child(1) {
+  animation-delay: 0.15s;
+}
+.blog-post:nth-child(2) {
+  animation-delay: 0.35s;
+}
+
+@keyframes fadeUpBlog {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

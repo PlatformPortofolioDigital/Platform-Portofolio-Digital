@@ -11,3 +11,53 @@
     font-size: 2rem;
   }
 }
+/* ===============================
+   RESPONSIVE PROJECTS
+================================ */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .project-preview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .projects {
+    padding: 3.5rem 0;
+  }
+
+  .projects h3 {
+    font-size: 1.8rem;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .project-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .project-img-placeholder {
+    height: 160px;
+  }
+}
+/* ===============================
+   BLOG RESPONSIVE
+================================ */
+@media (max-width: 576px) {
+  .hero h2 {
+    font-size: 1.9rem;
+  }
+
+  .blog-post {
+    padding: 1.6rem;
+  }
+
+  .blog-post h3 {
+    font-size: 1.2rem;
+  }
+}
