@@ -338,3 +338,39 @@ footer { color: var(--muted); }
     top: calc(100% + 10px) !important;
   }
 }
+
+/* ===============================
+   FIX HEADER KECIL: TAGLINE NABRAK TOGGLE/HAMBURGER
+   - sembunyikan subtitle/tagline di navbar saat layar kecil
+   - tombol tetap rapi di kanan
+================================ */
+@media (max-width: 992px) {
+  /* sembunyikan teks kedua/tagline yang bikin numpuk */
+  header.navbar p,
+  header.navbar small,
+  header.navbar .tagline,
+  header.navbar .subtitle,
+  header.navbar span.subtitle {
+    display: none !important;
+  }
+
+  /* kalau tagline kamu berupa elemen ke-2 setelah judul, pakai ini juga */
+  header.navbar > :not(nav):not(#theme-toggle):not(#mobile-menu-btn):not(#mobile-menu-panel):not(.logo):not(a.logo):not(h1):not(h2) {
+    display: none !important;
+  }
+
+  /* kunci tombol kanan */
+  #theme-toggle {
+    position: absolute !important;
+    right: 78px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  #mobile-menu-btn {
+    position: absolute !important;
+    right: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
