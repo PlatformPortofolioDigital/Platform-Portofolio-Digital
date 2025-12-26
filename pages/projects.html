@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects | Kelompok 2</title>
 
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
+
 <body>
 
   <!-- NAVBAR -->
@@ -17,84 +19,76 @@
     <nav>
       <a href="../index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="project.html" class="active">Projects</a>
+      <a href="projects.html" class="active">Projects</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main>
-    <!-- HEADER PROJECT -->
-    <section class="section">
-      <h3>Project Kami</h3>
-      <p class="section-desc">
-        Kumpulan project yang telah kami kerjakan sebagai dokumentasi dan portofolio kelompok.
-      </p>
 
-      <div class="project-preview">
+    <!-- PROJECTS SECTION -->
+    <section class="section projects">
+      <div class="container">
+        <h3>Project Kami</h3>
+        <p class="section-desc">
+          Kumpulan project yang telah kami kerjakan sebagai dokumentasi dan portofolio kelompok.
+        </p>
 
-        <!-- CARD 1 -->
-        <div class="card">
-          <img 
-            src="../assets/images/projects/project1.jpg" 
-            alt="Website Portfolio" 
-            class="project-img"
-            loading="lazy"
-          >
-          <h4>Website Portfolio</h4>
-          <p>Website portfolio statis menggunakan HTML, CSS, dan JavaScript.</p>
-          <a 
-            href="project-detail/project-portfolio.html" 
-            class="link"
-          >
-            Detail Project →
-          </a>
-        </div>
+        <div class="project-preview">
 
-        <!-- CARD 2 -->
-        <div class="card">
-          <img 
-            src="../assets/images/projects/project2.jpg" 
-            alt="Sistem Informasi Sederhana" 
-            class="project-img"
-            loading="lazy"
-          >
-          <h4>Sistem Informasi Sederhana</h4>
-          <p>Aplikasi CRUD sederhana untuk latihan konsep sistem informasi.</p>
-          <a 
-            href="project-detail/project-crud.html" 
-            class="link"
-          >
-            Detail Project →
-          </a>
-        </div>
+          <!-- PROJECT 1 -->
+          <div class="card">
+            <div class="project-img-placeholder"></div>
+            <h4>Website Portfolio</h4>
+            <p>
+              Website portfolio statis menggunakan HTML, CSS, dan JavaScript.
+            </p>
+            <a href="project-detail/project-portfolio.html" class="project-link">
+              Detail Project →
+            </a>
+          </div>
 
-        <!-- CARD 3 -->
-        <div class="card">
-          <img 
-            src="../assets/images/projects/project3.jpg" 
-            alt="UI Design Prototype" 
-            class="project-img"
-            loading="lazy"
-          >
-          <h4>UI Design Prototype</h4>
-          <p>Desain antarmuka aplikasi menggunakan prinsip UI/UX dasar.</p>
-          <a 
-            href="project-detail/project-ui.html" 
-            class="link"
-          >
-            Detail Project →
-          </a>
+          <!-- PROJECT 2 -->
+          <div class="card">
+            <div class="project-img-placeholder"></div>
+            <h4>Sistem Informasi Sederhana</h4>
+            <p>
+              Aplikasi CRUD sederhana untuk latihan konsep sistem informasi.
+            </p>
+            <a href="project-detail/project-si.html" class="project-link">
+              Detail Project →
+            </a>
+          </div>
+
+          <!-- PROJECT 3 -->
+          <div class="card">
+            <div class="project-img-placeholder"></div>
+            <h4>UI Design Prototype</h4>
+            <p>
+              Desain antarmuka aplikasi menggunakan prinsip UI/UX dasar.
+            </p>
+            <a href="project-detail/project-ui.html" class="project-link">
+              Detail Project →
+            </a>
+          </div>
+
         </div>
 
       </div>
     </section>
+
   </main>
 
   <!-- FOOTER -->
   <footer>
     <p>© 2025 Kelompok 2. All rights reserved.</p>
   </footer>
+
+  <!-- GLOBAL UI & INTERAKTIVITAS (WAJIB) -->
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/navigation.js"></script>
 
 </body>
 </html>

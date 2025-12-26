@@ -1,50 +1,112 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll("nav a");
-  const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("nav-menu");
+// assets/js/navigation.js
+// FINAL FIXED VERSION
+// Aman untuk desktop & mobile, tidak bikin navbar dobel
 
-  /* =====================
-     MOBILE NAVIGATION
-  ====================== */
-  if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      navMenu.classList.toggle("active");
+(function () {
+
+  /* ===============================
+     HELPER
+  ================================ */
+  function qs(sel, root = document) {
+    return root.querySelector(sel);
+  }
+
+  function qsa(sel, root = document) {
+    return [...root.querySelectorAll(sel)];
+  }
+
+  function normalizeFile(path) {
+    const parts = (path || "").split("/");
+    return parts[parts.length - 1];
+  }
+
+  /* ===============================
+     ACTIVE NAV BY PAGE
+  ================================ */
+  function setActiveByPage() {
+    const currentFile = normalizeFile(location.pathname) || "index.html";
+
+    const links = qsa("header.navbar nav a");
+    links.forEach(link => {
+      link.classList.add("nav-link");
+      link.classList.remove("active");
+
+      const hrefFile = normalizeFile(link.getAttribute("href"));
+      if (hrefFile === currentFile) {
+        link.classList.add("active");
+      }
     });
   }
 
-  /* =====================
-     SMOOTH SCROLL
-  ====================== */
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const target = link.getAttribute("href");
+  /* ===============================
+     NAVBAR SCROLL EFFECT
+  ================================ */
+  function enableNavbarScrollEffect() {
+    const header = qs("header.navbar");
+    if (!header) return;
 
-      if (target.startsWith("#")) {
-        e.preventDefault();
-        const section = document.querySelector(target);
-
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-        }
+    function onScroll() {
+      if (window.scrollY > 20) {
+        header.classList.add("nav-scrolled");
+      } else {
+        header.classList.remove("nav-scrolled");
       }
+    }
 
-      // Tutup menu mobile
-      if (navMenu?.classList.contains("active")) {
-        navMenu.classList.remove("active");
-        hamburger.classList.remove("active");
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ===============================
+     MOBILE MENU (ONLY < 768px)
+  ================================ */
+  function injectMobileMenu() {
+    if (window.innerWidth >= 768) return; // ⬅️ PENTING: desktop stop di sini
+
+    const nav = qs("header.navbar nav");
+    if (!nav) return;
+
+    if (qs("#mobile-menu-btn") || qs("#mobile-menu-panel")) return;
+
+    // button
+    const btn = document.createElement("button");
+    btn.id = "mobile-menu-btn";
+    btn.type = "button";
+    btn.textContent = "☰";
+    btn.setAttribute("aria-label", "Open Menu");
+
+    // panel
+    const panel = document.createElement("div");
+    panel.id = "mobile-menu-panel";
+
+    qsa("a", nav).forEach(a => {
+      const clone = a.cloneNode(true);
+      clone.classList.add("nav-link");
+      panel.appendChild(clone);
+    });
+
+    nav.appendChild(btn);
+    nav.appendChild(panel);
+
+    btn.addEventListener("click", () => {
+      panel.classList.toggle("open");
+    });
+
+    // close on outside click
+    document.addEventListener("click", (e) => {
+      if (!panel.contains(e.target) && !btn.contains(e.target)) {
+        panel.classList.remove("open");
       }
     });
+  }
+
+  /* ===============================
+     INIT
+  ================================ */
+  document.addEventListener("DOMContentLoaded", () => {
+    setActiveByPage();
+    enableNavbarScrollEffect();
+    injectMobileMenu();
   });
 
-  /* =====================
-     ACTIVE NAV INDICATOR
-  ====================== */
-  const currentPage = location.pathname.split("/").pop();
-
-  navLinks.forEach((link) => {
-    if (link.getAttribute("href") === currentPage) {
-      link.classList.add("active");
-    }
-  });
-});
+})();

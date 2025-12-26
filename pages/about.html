@@ -12,11 +12,11 @@
 <body>
 
 <!-- NAVBAR -->
-<header class="navbar">
+<header class="navbar animate">
   <h1 class="logo">Kelompok 2</h1>
   <nav>
     <a href="../index.html">Home</a>
-    <a href="about.html">About</a>
+    <a href="about.html" class="active">About</a>
     <a href="projects.html">Projects</a>
     <a href="blog.html">Blog</a>
     <a href="contact.html">Contact</a>
@@ -24,18 +24,63 @@
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero animate">
   <h2>Tentang Kami</h2>
   <p>Mengenal lebih dekat Kelompok 2 dan peran tiap anggota</p>
 </section>
 
 <!-- DESKRIPSI KELOMPOK -->
-<section class="section">
+<section class="section animate">
   <h3>Profil Kelompok</h3>
   <p class="section-desc">
     Kelompok 2 merupakan tim mahasiswa yang mengembangkan website portfolio
     sebagai sarana dokumentasi, pembelajaran, dan presentasi karya.
-    Website ini dibuat sebagai bagian dari tugas mata kuliah PPLOS
+    Website ini dibuat sebagai bagian dari tugas mata kuliah PPLOS.
   </p>
 </section>
 
+<!-- ANGGOTA KELOMPOK -->
+<section class="section">
+  <h3 class="animate">Anggota Kelompok</h3>
+
+  <div class="team-grid">
+    <div class="team-card animate" style="transition-delay: 0.1s">
+      <img src="../assets/images/profile/profile-1.jpg" alt="Mutiara Oktrilisa">
+      <h4>Mutiara Oktrilisa</h4>
+      <p>Frontend Developer</p>
+    </div>
+
+    <div class="team-card animate" style="transition-delay: 0.2s">
+      <img src="../assets/images/profile/profile-2.jpg" alt="Zahwa Rava Rahayu">
+      <h4>Zahwa Rava Rahayu</h4>
+      <p>UI / UX Designer</p>
+    </div>
+
+    <div class="team-card animate" style="transition-delay: 0.3s">
+      <img src="../assets/images/profile/profile-3.jpg" alt="Marda Tilla">
+      <h4>Marda Tilla</h4>
+      <p>Content & Documentation</p>
+    </div>
+
+    <div class="team-card animate" style="transition-delay: 0.4s">
+      <img src="../assets/images/profile/profile-4.jpg" alt="Vegia Dwi Yandra">
+      <h4>Vegia Dwi Yandra</h4>
+      <p>Project Manager</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="animate">
+  <p>© 2025 Kelompok 2 | Website Portfolio</p>
+</footer>
+
+<!-- GLOBAL SCRIPT -->
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/navigation.js"></script>
+
+<!-- SCROLL ANIMATION -->
+<script src="../assets/js/transition.js"></script>
+
+</body>
+</html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistem Informasi Sederhana | Kelompok 2</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="../../assets/css/variables.css">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/responsive.css">
@@ -17,37 +18,55 @@
     <nav>
       <a href="../../index.html">Home</a>
       <a href="../about.html">About</a>
-      <a href="../projects.html">Projects</a>
+      <a href="../project.html" class="active">Projects</a>
       <a href="../blog.html">Blog</a>
       <a href="../contact.html">Contact</a>
     </nav>
   </header>
 
-  <!-- DETAIL PROJECT -->
-  <section class="section">
-    <h3>Sistem Informasi Sederhana</h3>
-    <p class="section-desc">
-      Aplikasi CRUD sederhana yang dikembangkan untuk memahami konsep dasar sistem informasi.
-    </p>
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="section">
 
-    <div class="card" style="max-width:800px;margin:auto;">
-      <h4>Deskripsi Project</h4>
-      <p>
-        Project ini bertujuan untuk melatih pemahaman alur data, operasi CRUD, serta struktur sistem informasi
-        sederhana menggunakan teknologi web.
+      <h3>Sistem Informasi Sederhana</h3>
+      <p class="section-desc">
+        Aplikasi CRUD sederhana yang dikembangkan untuk memahami konsep dasar sistem informasi.
       </p>
 
-      <h4>Teknologi</h4>
-      <ul style="text-align:left; margin-top:10px;">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-      </ul>
+      <!-- DETAIL CARD -->
+      <div class="card project-detail-card">
 
-      <a href="../projects.html" class="link">← Kembali ke Projects</a>
-    </div>
-  </section>
+        <h4>Deskripsi Project</h4>
+        <p>
+          Project ini bertujuan untuk melatih pemahaman alur data, operasi CRUD
+          (Create, Read, Update, Delete), serta struktur sistem informasi sederhana
+          berbasis web.
+        </p>
 
+        <h4>Tujuan Pembuatan</h4>
+        <ul>
+          <li>Melatih konsep dasar sistem informasi</li>
+          <li>Memahami alur data CRUD</li>
+          <li>Mengimplementasikan logika sederhana berbasis web</li>
+        </ul>
+
+        <h4>Teknologi yang Digunakan</h4>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+        </ul>
+
+      </div>
+
+      <div class="back-button">
+          <a href="../projects.html" class="btn">← Kembali ke Projects</a>
+        </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 Kelompok 2. All rights reserved.</p>
   </footer>
