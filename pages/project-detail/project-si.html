@@ -1,97 +1,132 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistem Informasi Sederhana | Kelompok 2</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistem Informasi Sederhana | Detail Project</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="../../assets/css/variables.css">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/responsive.css">
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">Kelompok 2</div>
-    <nav>
-      <a href="../../index.html">Home</a>
-      <a href="../about.html">About</a>
-      <a href="../projects.html" class="active">Projects</a>
-      <a href="../blog.html">Blog</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
-  </header>
+<!-- ===============================
+     NAVBAR
+================================ -->
+<header class="navbar">
+  <h1 class="logo">Kelompok 2</h1>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../projects.html" class="active">Projects</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+</header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <section class="section project-detail">
+<!-- ===============================
+     PROJECT HEADER
+================================ -->
+<section class="project-header">
+  <div class="container">
+    <h1>Sistem Informasi Sederhana</h1>
+    <p class="project-subtitle">
+      Aplikasi CRUD sederhana untuk memahami konsep dasar sistem informasi.
+    </p>
+  </div>
+</section>
 
-      <!-- HEADER -->
-      <div class="project-header">
-        <h1>Sistem Informasi Sederhana</h1>
-        <p class="section-desc">
-          Aplikasi CRUD sederhana untuk memahami konsep dasar sistem informasi berbasis web.
-        </p>
-      </div>
+<!-- ===============================
+     PROJECT PREVIEW
+================================ -->
+<section class="project-preview-detail">
+  <div class="container">
+    <div class="project-image">
+      <img src="../../assets/images/project-si.png"
+           alt="Preview Sistem Informasi Sederhana">
+    </div>
+  </div>
+</section>
 
-      <!-- CONTENT GRID -->
-      <div class="project-detail-grid">
+<!-- ===============================
+     PROJECT CONTENT
+================================ -->
+<section class="project-content">
+  <div class="container project-grid">
 
-        <!-- LEFT -->
-        <div class="project-content">
-          <h3>Deskripsi Project</h3>
-          <p>
-            Project ini dikembangkan untuk melatih pemahaman alur data,
-            operasi CRUD (Create, Read, Update, Delete), serta penerapan
-            logika sistem informasi sederhana.
-          </p>
+    <!-- ===== LEFT CONTENT ===== -->
+    <div class="project-main">
 
-          <h3>Tujuan Pembuatan</h3>
-          <ul>
-            <li>Memahami konsep dasar sistem informasi</li>
-            <li>Mengimplementasikan operasi CRUD</li>
-            <li>Melatih logika pemrograman berbasis web</li>
-          </ul>
+      <h2>Deskripsi Project</h2>
+      <p>
+        Project ini dikembangkan untuk melatih pemahaman alur data,
+        operasi CRUD (Create, Read, Update, Delete), serta penerapan
+        logika sistem informasi berbasis web.
+      </p>
 
-          <h3>Fitur Utama</h3>
-          <ul>
-            <li>Input dan manajemen data</li>
-            <li>Edit dan hapus data</li>
-            <li>Tampilan data terstruktur</li>
-          </ul>
+      <h2>Tujuan Pembuatan</h2>
+      <ul>
+        <li>Memahami konsep dasar sistem informasi</li>
+        <li>Mengimplementasikan operasi CRUD</li>
+        <li>Melatih logika pemrograman web</li>
+      </ul>
+
+      <h2>Fitur Utama</h2>
+      <ul>
+        <li>Input, edit, dan hapus data</li>
+        <li>Manajemen data sederhana</li>
+        <li>Tampilan data terstruktur</li>
+      </ul>
+
+    </div>
+
+    <!-- ===== RIGHT SIDEBAR ===== -->
+    <aside class="project-sidebar">
+
+      <div class="project-info-card">
+        <h3>Informasi Project</h3>
+
+        <p><strong>Teknologi:</strong><br>HTML, CSS, JavaScript</p>
+        <p><strong>Role:</strong><br>Frontend Developer</p>
+        <p><strong>Jenis Project:</strong><br>Project Perkuliahan</p>
+        <p><strong>Tahun:</strong><br>2025</p>
+
+        <div class="project-links">
+          <a href="#" target="_blank" class="btn-outline">
+            🔗 GitHub Repository
+          </a>
+          <a href="#" target="_blank" class="btn-outline">
+            🌐 Live Demo
+          </a>
         </div>
-
-        <!-- RIGHT -->
-        <aside class="project-info card">
-          <h3>Informasi Project</h3>
-
-          <p><strong>Teknologi:</strong><br>HTML, CSS, JavaScript</p>
-          <p><strong>Role:</strong><br>Frontend Developer</p>
-          <p><strong>Jenis Project:</strong><br>Project Perkuliahan</p>
-          <p><strong>Tahun:</strong><br>2025</p>
-
-          <div class="project-links">
-            <a href="#" class="btn-outline" target="_blank">GitHub Repository</a>
-            <a href="#" class="btn-outline" target="_blank">Live Demo</a>
-          </div>
-        </aside>
-
       </div>
 
-      <!-- BACK -->
-      <div class="back-button">
-        <a href="../projects.html" class="btn">← Kembali ke Projects</a>
-      </div>
+    </aside>
 
-    </section>
-  </main>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Kelompok 2 | Portfolio Website</p>
-  </footer>
+<!-- ===============================
+     BACK BUTTON
+================================ -->
+<section class="project-back">
+  <a href="../projects.html" class="btn">
+    ← Kembali ke Projects
+  </a>
+</section>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer>
+  <p>© 2025 Kelompok 2 | Portfolio Website</p>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/navigation.js"></script>
 
 </body>
 </html>
