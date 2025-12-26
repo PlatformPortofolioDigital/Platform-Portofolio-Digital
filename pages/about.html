@@ -5,15 +5,20 @@
   <title>About | Kelompok 2</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/responsive.css">
+
+  <!-- ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+
+<body class="about-page">
 
 <!-- NAVBAR -->
 <header class="navbar animate">
-  <h1 class="logo">Kelompok 2</h1>
+  <h1 class="logo">Tentang Kami</h1>
   <nav>
     <a href="../index.html">Home</a>
     <a href="about.html" class="active">About</a>
@@ -25,17 +30,21 @@
 
 <!-- HERO -->
 <section class="hero animate">
-  <h2>Tentang Kami</h2>
-  <p>Mengenal lebih dekat Kelompok 2 dan peran tiap anggota</p>
+  <h2>Tentang Kelompok 2</h2>
+  <p>
+    Mengenal lebih dekat tim mahasiswa yang mengembangkan website portfolio
+    sebagai media pembelajaran dan presentasi karya digital.
+  </p>
 </section>
 
 <!-- DESKRIPSI KELOMPOK -->
 <section class="section animate">
   <h3>Profil Kelompok</h3>
   <p class="section-desc">
-    Kelompok 2 merupakan tim mahasiswa yang mengembangkan website portfolio
-    sebagai sarana dokumentasi, pembelajaran, dan presentasi karya.
-    Website ini dibuat sebagai bagian dari tugas mata kuliah PPLOS.
+    Kelompok 2 merupakan tim mahasiswa yang berfokus pada pengembangan
+    website portfolio modern. Website ini dibuat sebagai bagian dari
+    tugas mata kuliah PPLOS dengan menerapkan prinsip UI/UX, kolaborasi,
+    dan teknologi web.
   </p>
 </section>
 
@@ -44,29 +53,46 @@
   <h3 class="animate">Anggota Kelompok</h3>
 
   <div class="team-grid">
-    <div class="team-card animate" style="transition-delay: 0.1s">
+
+    <div class="team-card animate animate-left" style="transition-delay: .1s">
       <img src="../assets/images/profile/profile-1.jpg" alt="Mutiara Oktrilisa">
       <h4>Mutiara Oktrilisa</h4>
       <p>Frontend Developer</p>
+      <div class="team-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
     </div>
 
-    <div class="team-card animate" style="transition-delay: 0.2s">
-      <img src="../assets/images/profile/profile-2.jpg" alt="Zahwa Rava Rahayu">
+    <div class="team-card animate" style="transition-delay: .2s">
+      <img src="../assets/images/profile/profile-2.jpeg" alt="Zahwa Rava Rahayu">
       <h4>Zahwa Rava Rahayu</h4>
       <p>UI / UX Designer</p>
+      <div class="team-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
     </div>
 
-    <div class="team-card animate" style="transition-delay: 0.3s">
+    <div class="team-card animate animate-right" style="transition-delay: .3s">
       <img src="../assets/images/profile/profile-3.jpg" alt="Marda Tilla">
       <h4>Marda Tilla</h4>
       <p>Content & Documentation</p>
+      <div class="team-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
 
-    <div class="team-card animate" style="transition-delay: 0.4s">
+    <div class="team-card animate animate-left" style="transition-delay: .4s">
       <img src="../assets/images/profile/profile-4.jpg" alt="Vegia Dwi Yandra">
       <h4>Vegia Dwi Yandra</h4>
       <p>Project Manager</p>
+      <div class="team-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -75,11 +101,9 @@
   <p>© 2025 Kelompok 2 | Website Portfolio</p>
 </footer>
 
-<!-- GLOBAL SCRIPT -->
+<!-- SCRIPT -->
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/navigation.js"></script>
-
-<!-- SCROLL ANIMATION -->
 <script src="../assets/js/transition.js"></script>
 
 </body>
