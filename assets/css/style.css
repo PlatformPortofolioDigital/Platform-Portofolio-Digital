@@ -40,7 +40,7 @@ body {
 }
 
 /* ===============================
-   WELCOME SCREEN
+   WELCOME SCREEN (BALANCED ~2.4s)
 ================================ */
 #welcome-screen {
   position: fixed;
@@ -50,8 +50,13 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: welcomeFadeOut 1.4s ease forwards;
-  animation-delay: 3.5s;
+
+  will-change: opacity, transform;
+  transform: translateZ(0);
+
+  /* fade out terakhir */
+  animation: welcomeFadeOut 0.6s ease forwards;
+  animation-delay: 1.8s;
 }
 
 .welcome-content {
@@ -75,19 +80,27 @@ body {
   justify-content: center;
   font-size: 26px;
   background: rgba(255,255,255,0.08);
-  box-shadow: 0 0 22px rgba(56,189,248,0.45);
+  box-shadow: 0 0 18px rgba(56,189,248,0.4);
   opacity: 0;
 }
 
-.welcome-icons span:nth-child(1) { animation: iconLeft 1s ease forwards; }
-.welcome-icons span:nth-child(2) { animation: iconTop 1s ease forwards .2s; }
-.welcome-icons span:nth-child(3) { animation: iconRight 1s ease forwards .4s; }
+/* ICON MASUK (PELANNYA PAS) */
+.welcome-icons span:nth-child(1) {
+  animation: iconLeft 0.6s ease forwards;
+}
+.welcome-icons span:nth-child(2) {
+  animation: iconTop 0.6s ease forwards 0.2s;
+}
+.welcome-icons span:nth-child(3) {
+  animation: iconRight 0.6s ease forwards 0.4s;
+}
 
+/* TEKS */
 .welcome-content h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 2.2rem;
   opacity: 0;
-  animation: textBottom 1s ease forwards .8s;
+  animation: textBottom 0.6s ease forwards 0.7s;
 }
 
 .welcome-content h2 {
@@ -96,8 +109,18 @@ body {
   font-weight: 700;
   color: var(--primary);
   opacity: 0;
-  animation: textTop 1s ease forwards 1.4s;
+  animation: textTop 0.6s ease forwards 1.0s;
 }
+
+/* FADE OUT */
+@keyframes welcomeFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.02);
+    pointer-events: none;
+  }
+}
+
 
 /* ===============================
    NAVBAR
@@ -421,4 +444,117 @@ footer {
   .section {
     padding: 70px 20px;
   }
+}
+
+/* =========================================================
+   TAMBAHAN: NAV ACTIONS + THEME BTN + HAMBURGER (RAPI MODERN)
+   (Tempel di paling bawah, tanpa ubah kode lain)
+   ========================================================= */
+
+/* wadah tombol kanan */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 16px;
+}
+
+/* tombol theme & hamburger tampil rapi (tidak oval jelek) */
+.nav-actions #theme-toggle,
+.nav-actions #mobile-menu-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(148,163,184,.35);
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+  box-shadow: 0 10px 22px rgba(15,23,42,.08);
+}
+
+.nav-actions #theme-toggle:hover,
+.nav-actions #mobile-menu-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(15,23,42,.12);
+  border-color: rgba(56,189,248,.55);
+}
+
+.nav-actions #theme-toggle {
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+}
+/* ===============================
+   FIX HAMBURGER (ID ASLI: #mobile-menu-btn)
+   Tempel PALING BAWAH style.css
+================================ */
+
+#mobile-menu-btn{
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(148,163,184,.35);
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 10px 22px rgba(15,23,42,.08);
+
+  /* buang teks "≡" biar ga ganggu */
+  font-size: 0;
+  line-height: 0;
+}
+
+/* 3 garis */
+#mobile-menu-btn::before,
+#mobile-menu-btn::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  width:20px;
+  height:2px;
+  background: var(--dark);
+  transform: translateX(-50%);
+  border-radius:999px;
+}
+
+#mobile-menu-btn::before{ top: 14px; }
+#mobile-menu-btn::after{ top: 28px; }
+
+/* garis tengah */
+#mobile-menu-btn span{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:20px;
+  height:2px;
+  background: var(--dark);
+  transform: translate(-50%,-50%);
+  border-radius:999px;
+}
+
+/* kalau tombol kamu tidak punya <span>, kita pakai background sebagai garis tengah */
+#mobile-menu-btn{
+  background-image: linear-gradient(var(--dark), var(--dark));
+  background-repeat: no-repeat;
+  background-size: 20px 2px;
+  background-position: center;
+}
+
+/* dark mode */
+html[data-theme="dark"] #mobile-menu-btn{
+  background: rgba(15,23,42,.65);
+  border-color: rgba(148,163,184,.22);
+  box-shadow: 0 12px 26px rgba(0,0,0,.35);
+  background-image: linear-gradient(#e5e7eb, #e5e7eb);
+}
+
+html[data-theme="dark"] #mobile-menu-btn::before,
+html[data-theme="dark"] #mobile-menu-btn::after{
+  background:#e5e7eb;
 }
