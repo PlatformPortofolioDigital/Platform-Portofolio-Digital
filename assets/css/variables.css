@@ -374,3 +374,84 @@ footer { color: var(--muted); }
     transform: translateY(-50%) !important;
   }
 }
+
+/* ===============================
+   FIX HOME HERO (biar cocok light/dark)
+   - overlay background adaptif tema
+   - teks gak terlalu mepet & panjang
+   Aman: hanya styling, tidak ubah HTML
+================================ */
+
+/* kalau section hero kamu punya class umum seperti .hero / .home / .landing */
+.hero, .home, .landing, .hero-section, #hero, #home {
+  position: relative;
+}
+
+/* overlay gelap/terang di atas background image */
+.hero::before, .home::before, .landing::before, .hero-section::before, #hero::before, #home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(255,255,255,0.55); /* default light: bikin lebih soft */
+}
+
+/* dark mode: overlay gelap tapi gak “mati banget” */
+[data-theme="dark"] .hero::before,
+[data-theme="dark"] .home::before,
+[data-theme="dark"] .landing::before,
+[data-theme="dark"] .hero-section::before,
+[data-theme="dark"] #hero::before,
+[data-theme="dark"] #home::before {
+  background: rgba(2, 6, 23, 0.55);
+}
+
+/* pastikan konten hero di atas overlay */
+.hero > *, .home > *, .landing > *, .hero-section > *, #hero > *, #home > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* rapihin teks biar gak “blok panjang” */
+.hero p, .home p, .landing p, .hero-section p, #hero p, #home p {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+/* heading tetap kebaca di dark */
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .home h1,
+[data-theme="dark"] .landing h1,
+[data-theme="dark"] .hero-section h1,
+[data-theme="dark"] #hero h1,
+[data-theme="dark"] #home h1 {
+  color: #fff;
+}
+/* ===============================
+   NAV DEKET KE THEME TOGGLE (DESKTOP)
+   - menu nempel ke tombol 🌙
+================================ */
+
+header.navbar{
+  display:flex !important;
+  align-items:center !important;
+  gap: 16px !important;
+}
+
+/* nav didorong ke kanan, tapi JANGAN ada margin kanan gede */
+header.navbar nav{
+  margin-left: auto !important;
+  margin-right: 12px !important;  /* <<< kecil aja (ubah 8-16px) */
+}
+
+/* jarak antar menu rapih */
+header.navbar nav a{
+  margin: 0 12px !important;
+}
+
+/* toggle tetap pojok kanan */
+#theme-toggle{
+  margin-left: 0 !important;
+}
