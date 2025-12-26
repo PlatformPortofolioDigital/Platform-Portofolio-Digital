@@ -4,19 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 /* ===============================
-   VARIABLES
-================================ */
-:root {
-  --primary: #38bdf8;
-  --secondary: #34d399;
-  --dark: #0f172a;
-  --light: #f8fafc;
-  --gray: #94a3b8;
-  --white: #ffffff;
-}
-
-/* ===============================
-   RESET & GLOBAL
+   RESET & GLOBAL (AMAN)
 ================================ */
 * {
   margin: 0;
@@ -24,23 +12,22 @@
   box-sizing: border-box;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
-  padding-left: 0;
-  margin-left: 0;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--light);
-  color: var(--dark);
+  background: transparent;
+  /* DIKONTROL variables.css */
+  color: inherit;
   line-height: 1.7;
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
 /* ===============================
-   WELCOME SCREEN (BALANCED ~2.4s)
+   WELCOME SCREEN
 ================================ */
 #welcome-screen {
   position: fixed;
@@ -50,18 +37,13 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-
-  will-change: opacity, transform;
-  transform: translateZ(0);
-
-  /* fade out terakhir */
   animation: welcomeFadeOut 0.6s ease forwards;
   animation-delay: 1.8s;
 }
 
 .welcome-content {
   text-align: center;
-  color: var(--white);
+  color: #ffffff;
 }
 
 .welcome-icons {
@@ -79,28 +61,28 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 26px;
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 0 18px rgba(56,189,248,0.4);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
   opacity: 0;
 }
 
-/* ICON MASUK (PELANNYA PAS) */
 .welcome-icons span:nth-child(1) {
-  animation: iconLeft 0.6s ease forwards;
-}
-.welcome-icons span:nth-child(2) {
-  animation: iconTop 0.6s ease forwards 0.2s;
-}
-.welcome-icons span:nth-child(3) {
-  animation: iconRight 0.6s ease forwards 0.4s;
+  animation: iconLeft .6s ease forwards
 }
 
-/* TEKS */
+.welcome-icons span:nth-child(2) {
+  animation: iconTop .6s ease forwards .2s
+}
+
+.welcome-icons span:nth-child(3) {
+  animation: iconRight .6s ease forwards .4s
+}
+
 .welcome-content h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 2.2rem;
   opacity: 0;
-  animation: textBottom 0.6s ease forwards 0.7s;
+  animation: textBottom .6s ease forwards .7s
 }
 
 .welcome-content h2 {
@@ -109,18 +91,15 @@ body {
   font-weight: 700;
   color: var(--primary);
   opacity: 0;
-  animation: textTop 0.6s ease forwards 1.0s;
+  animation: textTop .6s ease forwards 1s
 }
 
-/* FADE OUT */
 @keyframes welcomeFadeOut {
   to {
     opacity: 0;
-    transform: scale(1.02);
-    pointer-events: none;
+    visibility: hidden
   }
 }
-
 
 /* ===============================
    NAVBAR
@@ -133,9 +112,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 18px 50px;
-  background: rgba(255,255,255,0.9);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
 .logo {
@@ -147,12 +126,13 @@ body {
 
 .navbar nav {
   display: flex;
+  align-items: center;
 }
 
 .navbar nav a {
   margin-left: 26px;
   text-decoration: none;
-  color: var(--dark);
+  color: var(--text);
   font-weight: 500;
   position: relative;
 }
@@ -165,10 +145,11 @@ body {
   width: 0;
   height: 2px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  transition: width .4s ease;
+  transition: .3s;
 }
 
-.navbar nav a:hover::after {
+.navbar nav a:hover::after,
+.navbar nav a.active::after {
   width: 100%;
 }
 
@@ -196,44 +177,29 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(15,23,42,0.85),
-    rgba(2,132,199,0.45)
-  );
+  background: linear-gradient(120deg,
+      rgba(15, 23, 42, 0.85),
+      rgba(2, 132, 199, 0.45));
   z-index: -1;
 }
 
 .hero-content {
   max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+  margin: auto;
   padding: 20px 50px;
-  color: var(--white);
-  opacity: 0;
-  animation: heroFadeIn 1.2s ease forwards 3.8s;
+  color: #ffffff;
+  animation: heroFadeIn 1.2s ease forwards 2.2s;
 }
 
 .hero-content h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 2.6rem;
-  font-weight: 700;
   margin-bottom: 18px;
-}
-
-.typing-text {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid var(--primary);
-  animation: typing 3.5s steps(30,end) forwards,
-             cursorBlink .7s infinite;
 }
 
 .hero-content p {
   max-width: 520px;
   color: #e5e7eb;
-  font-size: 1.05rem;
   margin-bottom: 32px;
 }
 
@@ -245,16 +211,15 @@ body {
   padding: 14px 36px;
   border-radius: 14px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
-  color: white;
+  color: #fff;
   text-decoration: none;
   font-weight: 500;
-  transition: .4s;
-  box-shadow: 0 8px 25px rgba(56,189,248,0.35);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, .35);
+  transition: .3s;
 }
 
 .btn:hover {
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 14px 35px rgba(52,211,153,0.45);
+  transform: translateY(-4px);
 }
 
 /* ===============================
@@ -268,7 +233,6 @@ body {
 .section h3 {
   font-family: 'Poppins', sans-serif;
   font-size: 2.4rem;
-  font-weight: 700;
   margin-bottom: 14px;
 }
 
@@ -287,107 +251,17 @@ body {
 }
 
 .card {
-  background: linear-gradient(180deg, #ffffff, #f1f5f9);
   padding: 34px;
   border-radius: 22px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.08);
-  transition: all .4s ease;
-
-  /* STEP 2 UPGRADE */
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  transition: .3s;
 }
 
 .card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 22px 45px rgba(0,0,0,.15);
+  transform: translateY(-10px);
 }
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  opacity: 0;
-  transition: opacity .3s ease;
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-
-.project-img-placeholder {
-  width: 100%;
-  height: 180px;
-  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-  border-radius: 12px;
-  margin-bottom: 16px;
-}
-
-/* =========================
-   PROJECTS HEADER 
-========================= */
-
-.projects {
-  background: linear-gradient(
-    180deg,
-    #f4f9ff 0%,
-    #ffffff 100%
-  );
-}
-
-.projects h3 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 12px;
-}
-
-.projects .section-desc {
-  max-width: 720px;
-  margin: 0 auto;
-  font-size: 1.05rem;
-  color: #64748b;
-  line-height: 1.7;
-}
-
-/* ==============================
-   PROJECTS PAGE - BLUE THEME
-============================== */
-
-.projects-section {
-  background: linear-gradient(
-    180deg,
-    #f4f9ff 0%,
-    #ffffff 100%
-  );
-  padding: 80px 0;
-}
-
-.projects-section .section-title {
-  text-align: center;
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 12px;
-}
-
-.projects-section .section-desc {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 50px;
-  font-size: 1.05rem;
-  color: #64748b;
-  line-height: 1.7;
-}
-
-
 
 /* ===============================
    FOOTER
@@ -395,29 +269,78 @@ body {
 footer {
   padding: 30px 20px;
   text-align: center;
-  background: white;
-  border-top: 1px solid #e5e7eb;
-  color: var(--gray);
-  font-size: .9rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
 }
 
 /* ===============================
    ANIMATIONS
 ================================ */
-@keyframes iconLeft { from{opacity:0;transform:translateX(-60px)} to{opacity:1} }
-@keyframes iconTop { from{opacity:0;transform:translateY(-60px)} to{opacity:1} }
-@keyframes iconRight { from{opacity:0;transform:translateX(60px)} to{opacity:1} }
-@keyframes textBottom { from{opacity:0;transform:translateY(40px)} to{opacity:1} }
-@keyframes textTop { from{opacity:0;transform:translateY(-40px)} to{opacity:1} }
-@keyframes welcomeFadeOut { to{opacity:0;visibility:hidden} }
-@keyframes heroFadeIn { to{opacity:1} }
-@keyframes typing { from{width:0} to{width:100%} }
-@keyframes cursorBlink { 50%{border-color:transparent} }
+@keyframes iconLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px)
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes iconTop {
+  from {
+    opacity: 0;
+    transform: translateY(-40px)
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes iconRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px)
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes textBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px)
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes textTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px)
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1
+  }
+}
 
 /* ===============================
    RESPONSIVE
 ================================ */
-@media (max-width: 768px) {
+@media (max-width:768px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
@@ -428,133 +351,7 @@ footer {
     margin-top: 10px;
   }
 
-  .navbar nav a {
-    margin-right: 14px;
-    font-size: .95rem;
-  }
-
   .hero-content {
     padding: 24px 20px;
   }
-
-  .hero-content h2 {
-    font-size: 2rem;
-  }
-
-  .section {
-    padding: 70px 20px;
-  }
-}
-
-/* =========================================================
-   TAMBAHAN: NAV ACTIONS + THEME BTN + HAMBURGER (RAPI MODERN)
-   (Tempel di paling bawah, tanpa ubah kode lain)
-   ========================================================= */
-
-/* wadah tombol kanan */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 16px;
-}
-
-/* tombol theme & hamburger tampil rapi (tidak oval jelek) */
-.nav-actions #theme-toggle,
-.nav-actions #mobile-menu-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  border: 1px solid rgba(148,163,184,.35);
-  background: rgba(255,255,255,.75);
-  backdrop-filter: blur(10px);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
-  box-shadow: 0 10px 22px rgba(15,23,42,.08);
-}
-
-.nav-actions #theme-toggle:hover,
-.nav-actions #mobile-menu-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(15,23,42,.12);
-  border-color: rgba(56,189,248,.55);
-}
-
-.nav-actions #theme-toggle {
-  font-size: 18px;
-  line-height: 1;
-  padding: 0;
-}
-/* ===============================
-   FIX HAMBURGER (ID ASLI: #mobile-menu-btn)
-   Tempel PALING BAWAH style.css
-================================ */
-
-#mobile-menu-btn{
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  border: 1px solid rgba(148,163,184,.35);
-  background: rgba(255,255,255,.75);
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-  padding: 0;
-  box-shadow: 0 10px 22px rgba(15,23,42,.08);
-
-  /* buang teks "≡" biar ga ganggu */
-  font-size: 0;
-  line-height: 0;
-}
-
-/* 3 garis */
-#mobile-menu-btn::before,
-#mobile-menu-btn::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  width:20px;
-  height:2px;
-  background: var(--dark);
-  transform: translateX(-50%);
-  border-radius:999px;
-}
-
-#mobile-menu-btn::before{ top: 14px; }
-#mobile-menu-btn::after{ top: 28px; }
-
-/* garis tengah */
-#mobile-menu-btn span{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:20px;
-  height:2px;
-  background: var(--dark);
-  transform: translate(-50%,-50%);
-  border-radius:999px;
-}
-
-/* kalau tombol kamu tidak punya <span>, kita pakai background sebagai garis tengah */
-#mobile-menu-btn{
-  background-image: linear-gradient(var(--dark), var(--dark));
-  background-repeat: no-repeat;
-  background-size: 20px 2px;
-  background-position: center;
-}
-
-/* dark mode */
-html[data-theme="dark"] #mobile-menu-btn{
-  background: rgba(15,23,42,.65);
-  border-color: rgba(148,163,184,.22);
-  box-shadow: 0 12px 26px rgba(0,0,0,.35);
-  background-image: linear-gradient(#e5e7eb, #e5e7eb);
-}
-
-html[data-theme="dark"] #mobile-menu-btn::before,
-html[data-theme="dark"] #mobile-menu-btn::after{
-  background:#e5e7eb;
 }
