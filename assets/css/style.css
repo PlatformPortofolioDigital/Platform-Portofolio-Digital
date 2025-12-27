@@ -1136,3 +1136,25 @@ body.about-page {
   }
 }
 
+/* ===============================
+   PROJECT PREVIEW IMAGE
+================================ */
+.project-preview-detail {
+  margin: 3rem 0;
+}
+
+.project-preview-detail .project-image {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.project-preview-detail img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
