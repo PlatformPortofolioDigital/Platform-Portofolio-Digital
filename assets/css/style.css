@@ -1208,4 +1208,10 @@ body.about-page {
   gap: 12px;
 }
 
+.project-box {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
 
