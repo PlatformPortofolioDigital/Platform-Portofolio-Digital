@@ -1298,17 +1298,11 @@ body.about-page {
   color: #1f2937;
 }
 
-.project-img {
-  width: 100%;
-  height: 240px; /* DARI 180px */
-  overflow: hidden;
-  border-radius: 14px;
-  margin-bottom: 14px;
+.project-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: #ffffffcc;
 }
 
-.project-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* GANTI cover -> contain */
-  background: #fff; /* biar aman */
-}
