@@ -61,3 +61,58 @@
     font-size: 1.2rem;
   }
 }
+/* =========================================================
+   PROJECTS PAGE – THEME AWARE (FINAL)
+========================================================= */
+
+body.projects-page {
+  background: linear-gradient(
+    180deg,
+    var(--cyber-bg-start),
+    var(--cyber-bg-end)
+  ) !important;
+  color: var(--cyber-text) !important;
+}
+
+/* section */
+body.projects-page .projects h3 {
+  color: var(--cyber-title) !important;
+}
+
+body.projects-page .projects .section-desc {
+  color: var(--cyber-text) !important;
+}
+
+/* project card */
+body.projects-page .project-preview .project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* icon */
+body.projects-page .project-icon {
+  color: var(--cyber-accent) !important;
+}
+
+/* text */
+body.projects-page .project-card h4 {
+  color: var(--cyber-title) !important;
+}
+
+body.projects-page .project-desc,
+body.projects-page .project-tech,
+body.projects-page .project-role {
+  color: var(--cyber-text) !important;
+}
+
+/* link */
+body.projects-page .project-link {
+  color: var(--cyber-accent) !important;
+}
+
+body.projects-page .project-link:hover {
+  color: var(--cyber-title) !important;
+}
+

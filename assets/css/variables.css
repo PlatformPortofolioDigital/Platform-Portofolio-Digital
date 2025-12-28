@@ -455,3 +455,52 @@ header.navbar nav a{
 #theme-toggle{
   margin-left: 0 !important;
 }
+/* ===============================
+   HERO BACKGROUND (GLOBAL)
+================================ */
+:root {
+  /* LIGHT MODE */
+  --hero-bg-start: #0b3c5d;
+  --hero-bg-end: #021b2f;
+  --hero-overlay: rgba(11, 60, 93, 0.75);
+}
+
+[data-theme="dark"] {
+  /* DARK MODE */
+  --hero-bg-start: #020617;
+  --hero-bg-end: #020617;
+  --hero-overlay: rgba(2, 6, 23, 0.88);
+}
+
+/* ===============================
+   about
+================================ */
+:root {
+  --hero-bg-start: #0b3c5d;
+  --hero-bg-end: #021b2f;
+  --hero-overlay: rgba(11, 60, 93, 0.75);
+}
+
+[data-theme="dark"] {
+  --hero-bg-start: #020617;
+  --hero-bg-end: #020617;
+  --hero-overlay: rgba(2, 6, 23, 0.88);
+}
+/* ===============================
+   CYBER COLOR SYSTEM (HOME)
+================================ */
+:root {
+  --cyber-bg-start: #061a2d;
+  --cyber-bg-end: #0a2f4f;
+  --cyber-title: #ffffff;
+  --cyber-text: #cfe9f6;
+  --cyber-accent: #38bdf8;
+}
+
+[data-theme="dark"] {
+  --cyber-bg-start: #020617;
+  --cyber-bg-end: #020617;
+  --cyber-title: #ffffff;
+  --cyber-text: #dbeafe;
+  --cyber-accent: #60a5fa;
+}
