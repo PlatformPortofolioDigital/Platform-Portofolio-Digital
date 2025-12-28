@@ -1284,3 +1284,16 @@ body.about-page {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
+
+/* ===============================
+   SECTION TITLE STYLE
+================================ */
+
+.project-main h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 4px solid var(--primary);
+  color: #1f2937;
+}
