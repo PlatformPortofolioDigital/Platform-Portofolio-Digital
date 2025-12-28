@@ -116,3 +116,15 @@ body.projects-page .project-link:hover {
   color: var(--cyber-title) !important;
 }
 
+@media (max-width: 900px){
+  .contact-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 900px){
+  .contact-hero .contact-container{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact-layout{
+    grid-template-columns: 1fr;
+  }
+}

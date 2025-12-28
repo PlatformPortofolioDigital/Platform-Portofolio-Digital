@@ -1,52 +1,187 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact | Kelompok 2</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hubungi Kelompok 2 melalui form kontak atau sosial media." />
+  <title>Contact | Platform Portofolio Digital</title>
 
-  <link rel="stylesheet" href="../assets/css/variables.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/responsive.css">
-
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
 </head>
+
 <body>
+  <!-- NAVBAR (SAMAIN DENGAN INDEX) -->
+  <header class="navbar">
+    <h1 class="logo">PLATFORM PORTOFOLIO DIGITAL</h1>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<header class="navbar">
-  <h1 class="logo">Kelompok 2</h1>
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <main class="contact-page">
+    <!-- HERO -->
+    <section class="contact-hero2">
+      <div class="contact-hero2__inner">
+        <div>
+          <h2>Get in Touch</h2>
+          <p>
+            Punya pertanyaan, kerja sama, atau feedback?
+            Kirim pesan lewat form — admin akan balas ke email kamu.
+          </p>
+        </div>
 
-<section class="hero">
-  <h2>Contact Us</h2>
-  <p>Hubungi kami melalui form berikut</p>
-</section>
+        <div class="contact-hero2__chip">
+          <span class="dot"></span>
+          <span>Fast response</span>
+        </div>
+      </div>
+    </section>
 
-<section class="contact-form">
-  <form id="contactForm">
-    <input type="text" id="name" placeholder="Nama">
-    <input type="email" id="email" placeholder="Email">
-    <textarea id="message" placeholder="Pesan"></textarea>
-    <button type="submit" class="btn">Kirim</button>
-  </form>
-</section>
+    <!-- GRID -->
+    <section class="contact-grid2">
+      <!-- LEFT: INFO -->
+      <aside class="contact-card2">
+        <h3>Kontak Langsung</h3>
+        <p class="muted2">
+          Kamu bisa hubungi kami lewat channel berikut.
+        </p>
 
-<footer>
-  <p>© 2025 Kelompok 2</p>
-</footer>
+        <div class="contact-info2">
+          <a class="info2" href="mailto:mutiaraoktrilisa20102005@gmail.com">
+            <span class="ic2">✉️</span>
+            <div>
+              <div class="label2">Email Admin</div>
+              <div class="value2">mutiaraoktrilisa20102005@gmail.com</div>
+            </div>
+          </a>
 
-<!-- FORM VALIDATION (ASLI, TETAP) -->
-<script src="../assets/js/form-validation.js"></script>
+          <a class="info2" href="tel:+6285762054103">
+            <span class="ic2">📞</span>
+            <div>
+              <div class="label2">Telepon / WA</div>
+              <div class="value2">+62 857-6205-4103</div>
+            </div>
+          </a>
 
-<!-- GLOBAL UI & INTERAKTIVITAS (WAJIB) -->
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/navigation.js"></script>
+          <div class="info2" role="group" aria-label="Lokasi">
+            <span class="ic2">📍</span>
+            <div>
+              <div class="label2">Lokasi</div>
+              <div class="value2">Padang, Indonesia</div>
+            </div>
+          </div>
+        </div>
 
+        <div class="divider2"></div>
+
+        <h4 class="mini2">Social</h4>
+        <div class="social2">
+          <a
+            class="pill2"
+            href="https://github.com/mutiaraoktrilisa20102005-hub"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub
+          </a>
+
+          <a
+            class="pill2"
+            href="https://www.linkedin.com/in/mutiara-oktrilisa-38442a323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank"
+            rel="noopener"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            class="pill2"
+            href="https://www.instagram.com/mutiiaaa______?igsh=MTF5NTc1ZDFkMzZ2dQ=="
+            target="_blank"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+        </div>
+
+        <div class="note2">
+          Pesan dari form akan terkirim ke email admin.
+          Admin bisa membalas langsung ke email pengirim.
+        </div>
+      </aside>
+
+      <!-- RIGHT: FORM -->
+      <section class="contact-card2">
+        <h3>Kirim Pesan</h3>
+        <p class="muted2">
+          Isi data dengan benar ya biar admin gampang balas.
+        </p>
+
+        <div id="formAlert" class="form-alert" style="display:none;"></div>
+
+        <form
+          id="contactForm"
+          action="https://formsubmit.co/mutiaraoktrilisa20102005@gmail.com"
+          method="POST"
+          novalidate
+        >
+          <!-- ✅ FIX: redirect balik ke contact.html + trigger notif sukses -->
+          <input
+            type="hidden"
+            name="_next"
+            value="http://127.0.0.1:5500/pages/contact.html?success=1"
+          />
+
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" value="Pesan Baru dari Website Portofolio (Kelompok 2)" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_replyto" value="%email%" />
+
+          <!-- anti spam -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="field2">
+            <label for="name">Nama</label>
+            <input id="name" name="name" type="text" placeholder="Nama lengkap" autocomplete="name" required />
+            <small class="error" id="errName"></small>
+          </div>
+
+          <div class="field2">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="nama@email.com" autocomplete="email" required />
+            <small class="error" id="errEmail"></small>
+          </div>
+
+          <div class="field2">
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tulis pesan kamu..." required></textarea>
+            <small class="error" id="errMessage"></small>
+          </div>
+
+          <button type="submit" class="btnSend2" id="btnSubmit">
+            Kirim Pesan <span aria-hidden="true">→</span>
+          </button>
+
+          <p class="hint2">
+            *Pertama kali pakai FormSubmit biasanya diminta aktivasi via email admin (normal).
+          </p>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Platform Portofolio Digital</p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/form-validation.js"></script>
 </body>
 </html>
