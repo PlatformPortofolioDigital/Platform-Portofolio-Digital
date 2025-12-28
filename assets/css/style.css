@@ -93,10 +93,8 @@ body {
 }
 
 .welcome-content h2 {
-  font-family: "Poppins", sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
   background: linear-gradient(90deg, #38bdf8, #a855f7, #22d3ee);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 
@@ -571,6 +569,7 @@ body.about-page {
   margin-bottom: 16px;
 
   background: linear-gradient(90deg, #00d2f8, #f9f8fa, #22d3ee);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -625,6 +624,7 @@ body.about-page {
   font-weight: 800;
 
   background: linear-gradient(90deg, #f3f6f8, #f0eff1, #22d3ee);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
