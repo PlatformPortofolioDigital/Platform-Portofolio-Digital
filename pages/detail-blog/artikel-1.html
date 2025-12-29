@@ -6,85 +6,69 @@
   <title>Judul Artikel 1</title>
 
   <!-- CSS UTAMA -->
-  <link rel="stylesheet" href="../assets/css/style.css">
+ <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 
 <body class="blog-detail-page">
 
-  <!-- ===============================
-       NAVBAR
-  ================================ -->
-  <header>
+<!-- NAVBAR -->
+<header>
+  <div class="navbar-container">
     <div class="logo">Kelompok 2</div>
-    <nav>
-      <a href="../index.html">Home</a>
+
+    <nav class="nav-menu">
+      <a href="../../index.html">Home</a>
       <a href="../about.html">About</a>
       <a href="../projects.html">Projects</a>
       <a href="../blog.html" class="active">Blog</a>
       <a href="../contact.html">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- ===============================
-       ARTICLE DETAIL
-  ================================ -->
-  <main class="article-detail">
-    <article class="article-card">
+<!-- ARTICLE HEADER (SAMA SEPERTI PROJECT) -->
+<section class="article-header">
+  <h1>Pentingnya Kerja Tim dalam Proyek Pengembangan Website</h1>
+  <p class="article-desc">
+    Kerja tim berperan penting dalam memastikan proyek pengembangan website
+    berjalan efektif, terstruktur, dan menghasilkan kualitas terbaik.
+  </p>
+  <div class="article-meta">
+    <span>21 Desember 2025</span>
+    <span>•</span>
+    <span>Team Project</span>
+  </div>
+</section>
 
-      <!-- THUMBNAIL -->
-      <img 
-        src="../../assets/images/blog/art-1.jpg" 
-        alt="Mengenal Frontend Development"
-        class="article-thumb"
-      >
+<!-- ARTICLE IMAGE -->
+<section class="article-image">
+  <img src="../../assets/images/blog/art-2.jpg" alt="Kerja Tim">
+</section>
 
-      <!-- TITLE -->
-      <h1 class="article-title">
-        Mengenal Frontend Development dan Perannya dalam Website
-      </h1>
+<!-- ARTICLE CONTENT -->
+<main class="article-content">
+  <p>
+    Dalam sebuah proyek pengembangan website, kerja tim memiliki peranan
+    yang sangat penting. Proyek yang dikerjakan secara tim memungkinkan
+    pembagian tugas yang lebih jelas.
+  </p>
 
-      <!-- META -->
-      <div class="article-meta">
-        <span class="date">20 Desember 2025</span>
-        <span class="category">Frontend</span>
-      </div>
+  <p>
+    Setiap anggota tim biasanya memiliki peran masing-masing, seperti
+    frontend developer, backend developer, UI/UX designer, dan project manager.
+  </p>
 
-      <!-- CONTENT -->
-      <div class="article-content">
-        <p>
-          Frontend development adalah bagian dari pengembangan website yang berfokus
-          pada tampilan dan interaksi pengguna. Semua hal yang dapat dilihat dan digunakan
-          langsung oleh pengguna, seperti warna, tombol, teks, dan animasi, merupakan
-          tanggung jawab frontend developer.
-        </p>
+  <p>
+    Komunikasi yang baik, penggunaan tools kolaborasi seperti GitHub atau Trello,
+    serta keterbukaan terhadap masukan akan meningkatkan kualitas hasil akhir.
+  </p>
 
-        <p>
-          Dalam pengembangan frontend, terdapat tiga teknologi utama yang paling sering
-          digunakan, yaitu HTML, CSS, dan JavaScript. HTML berfungsi untuk membangun
-          struktur halaman, CSS digunakan untuk mengatur tampilan dan desain, sedangkan
-          JavaScript membuat website menjadi interaktif.
-        </p>
+  <a href="../blog.html" class="back-link">← Kembali ke Blog</a>
+</main>
 
-        <p>
-          Seorang frontend developer juga harus memperhatikan user experience (UX) dan
-          user interface (UI). Website yang baik bukan hanya terlihat menarik, tetapi juga
-          mudah digunakan dan responsif di berbagai perangkat seperti laptop, tablet,
-          dan smartphone.
-        </p>
+</body>
 
-        <p>
-          Website dikembangkan menggunakan HTML, CSS, dan JavaScript dengan menerapkan
-          desain responsif serta dark mode.
-        </p>
-      </div>
-
-      <!-- BACK BUTTON -->
-      <a href="../blog.html" class="back-link">← Kembali ke Blog</a>
-
-    </article>
-  </main>
 <!-- GLOBAL UI & INTERAKTIVITAS -->
   <script src="../../assets/js/main.js"></script>
   <script src="../../assets/js/navigation.js"></script>
-</body>
 </html>
