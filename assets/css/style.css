@@ -1589,7 +1589,7 @@ body.projects-page .project-link {
 .form-alert.info {
   background: rgba(56, 189, 248, .12);
 }
-<<<<<<< HEAD
+
 /* ===============================
    PROJECT DETAIL TEXT FIX
 ================================ */
@@ -1632,7 +1632,7 @@ body.projects-page .project-link {
   color: #334155 !important;   /* abu gelap, jelas */
   opacity: 1 !important;       /* pastikan tidak pudar */
 }
-=======
+
 
 /* ===============================
    MODAL DETAIL PORTOFOLIO (FINAL FIX)
@@ -1677,4 +1677,4 @@ body.projects-page .project-link {
   cursor: pointer;
   z-index: 10;
 }
->>>>>>> 46146693c750b5b09e307329f99df9a2ac962b5a
+
