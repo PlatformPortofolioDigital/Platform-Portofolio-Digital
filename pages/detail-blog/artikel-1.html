@@ -4,42 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Judul Artikel 1</title>
+
+  <!-- CSS UTAMA -->
   <link rel="stylesheet" href="../assets/css/style.css">
-  
 </head>
-<body>
 
+<body class="blog-detail-page">
+
+  <!-- ===============================
+       NAVBAR
+  ================================ -->
+  <header>
+    <div class="logo">Kelompok 2</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../blog.html" class="active">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===============================
+       ARTICLE DETAIL
+  ================================ -->
   <main class="article-detail">
-    <article>
-     <img src="../../assets/images/blog/art-1.jpg" alt="Preview artikel 1"
-        style="display:block; width:300px; border:2px solid red;">
+    <article class="article-card">
+
+      <!-- THUMBNAIL -->
+      <img 
+        src="../../assets/images/blog/art-1.jpg" 
+        alt="Mengenal Frontend Development"
+        class="article-thumb"
+      >
+
+      <!-- TITLE -->
+      <h1 class="article-title">
+        Mengenal Frontend Development dan Perannya dalam Website
+      </h1>
+
+      <!-- META -->
+      <div class="article-meta">
+        <span class="date">20 Desember 2025</span>
+        <span class="category">Frontend</span>
       </div>
-      <h1>Mengenal Frontend Development dan Perannya dalam Website
-</h1>
-      <p class="date">20 Desember 2025</p>
-      <p class="category">Kategori: Frontend</p>
 
-      <p>
-      Frontend development adalah bagian dari pengembangan website yang berfokus pada tampilan dan interaksi pengguna. 
-      Semua hal yang dapat dilihat dan digunakan langsung oleh pengguna, seperti warna, tombol, teks, dan animasi, 
-      merupakan tanggung jawab frontend developer.Dalam pengembangan frontend, terdapat tiga teknologi utama yang 
-      paling sering digunakan, yaitu HTML, CSS, dan JavaScript. HTML berfungsi untuk membangun struktur halaman, 
-      CSS digunakan untuk mengatur tampilan dan desain, sedangkan JavaScript membuat website menjadi interaktif.
-      Seorang frontend developer juga harus memperhatikan user experience (UX) dan user interface (UI). Website yang baik
-       bukan hanya terlihat menarik, tetapi juga mudah digunakan dan responsif di berbagai perangkat, seperti laptop, tablet, 
-       dan smartphone. Dengan berkembangnya teknologi, frontend kini didukung oleh berbagai framework seperti Bootstrap, React, dan Vue.js yang membantu mempercepat proses pengembangan. Oleh karena itu, memahami frontend development menjadi langkah penting bagi siapa pun yang ingin terjun ke dunia web development.
+      <!-- CONTENT -->
+      <div class="article-content">
+        <p>
+          Frontend development adalah bagian dari pengembangan website yang berfokus
+          pada tampilan dan interaksi pengguna. Semua hal yang dapat dilihat dan digunakan
+          langsung oleh pengguna, seperti warna, tombol, teks, dan animasi, merupakan
+          tanggung jawab frontend developer.
+        </p>
 
+        <p>
+          Dalam pengembangan frontend, terdapat tiga teknologi utama yang paling sering
+          digunakan, yaitu HTML, CSS, dan JavaScript. HTML berfungsi untuk membangun
+          struktur halaman, CSS digunakan untuk mengatur tampilan dan desain, sedangkan
+          JavaScript membuat website menjadi interaktif.
+        </p>
 
-      </p>
+        <p>
+          Seorang frontend developer juga harus memperhatikan user experience (UX) dan
+          user interface (UI). Website yang baik bukan hanya terlihat menarik, tetapi juga
+          mudah digunakan dan responsif di berbagai perangkat seperti laptop, tablet,
+          dan smartphone.
+        </p>
 
-      <p>
-        Website dikembangkan menggunakan HTML, CSS, dan JavaScript
-        dengan menerapkan desain responsif dan dark mode.
-      </p>
+        <p>
+          Website dikembangkan menggunakan HTML, CSS, dan JavaScript dengan menerapkan
+          desain responsif serta dark mode.
+        </p>
+      </div>
 
-      <a href="../blog.html">← Kembali ke Blog</a>
+      <!-- BACK BUTTON -->
+      <a href="../blog.html" class="back-link">← Kembali ke Blog</a>
+
     </article>
   </main>
-
+<!-- GLOBAL UI & INTERAKTIVITAS -->
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/navigation.js"></script>
 </body>
 </html>
