@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <title>About | Kelompok 2</title>
@@ -20,7 +21,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.6);
+      background: rgba(0, 0, 0, .6);
       z-index: 9999;
       align-items: center;
       justify-content: center;
@@ -57,97 +58,98 @@
 
 <body class="about-page">
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <h1 class="logo">Tentang Kami</h1>
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="about.html" class="active">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <h1 class="logo">Tentang Kami</h1>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section class="hero hero-about">
-  <h2>Tentang Kelompok 2</h2>
-  <p>
-    Kelompok 2 merupakan tim mahasiswa yang berfokus pada pengembangan
-    website portfolio modern sebagai bagian dari pembelajaran web.
-  </p>
-</section>
+  <!-- HERO -->
+  <section class="hero hero-about">
+    <h2>Tentang Kelompok 2</h2>
+    <p>
+      Kelompok 2 merupakan tim mahasiswa yang berfokus pada pengembangan
+      website portfolio modern sebagai bagian dari pembelajaran web.
+    </p>
+  </section>
 
-<!-- TEAM -->
-<section class="section">
-  <h3>Anggota Kelompok</h3>
+  <!-- TEAM -->
+  <section class="section">
+    <h3>Anggota Kelompok</h3>
 
-  <div class="team-grid">
+    <div class="team-grid">
 
-    <div class="team-card">
-      <img src="../assets/images/profile/profile-1.jpeg">
-      <h4>Mutiara Oktrilisa</h4>
-      <p>Frontend Developer</p>
-      <button onclick="openDetail('detail-about/mutiaraoktrilisa.html')">
-        Detail portofolio →
-      </button>
+      <div class="team-card">
+        <img src="../assets/images/profile/profile-1.jpeg">
+        <h4>Mutiara Oktrilisa</h4>
+        <p>Frontend Developer</p>
+        <button onclick="openDetail('detail-about/mutiaraoktrilisa.html')">
+          Detail portofolio →
+        </button>
+      </div>
+
+      <div class="team-card">
+        <img src="../assets/images/profile/profile-2.jpeg">
+        <h4>Zahwa Rava Rahayu</h4>
+        <p>UI / UX Designer</p>
+        <button onclick="openDetail('detail-about/zahwaravarahayu.html')">
+          Detail portofolio →
+        </button>
+      </div>
+
+      <div class="team-card">
+        <img src="../assets/images/profile/profile-3.png">
+        <h4>Marda Tilla</h4>
+        <p>Content & Documentation</p>
+        <button onclick="openDetail('detail-about/mardatilla.html')">
+          Detail portofolio →
+        </button>
+      </div>
+
+      <div class="team-card">
+        <img src="../assets/images/profile/profile-4.jpeg">
+        <h4>Vegia Dwi Yandra</h4>
+        <p>Project Manager</p>
+        <button onclick="openDetail('detail-about/vegiadwiyandra.html')">
+          Detail portofolio →
+        </button>
+      </div>
+
     </div>
+  </section>
 
-    <div class="team-card">
-      <img src="../assets/images/profile/profile-2.jpeg">
-      <h4>Zahwa Rava Rahayu</h4>
-      <p>UI / UX Designer</p>
-      <button onclick="openDetail('detail-about/zahwaravarahayu.html')">
-        Detail portofolio →
-      </button>
+  <!-- MODAL -->
+  <div id="detailModal">
+    <div class="modal-box">
+      <span class="close-modal" onclick="closeDetail()">✕</span>
+      <iframe id="detailFrame"></iframe>
     </div>
-
-    <div class="team-card">
-      <img src="../assets/images/profile/profile-3.png">
-      <h4>Marda Tilla</h4>
-      <p>Content & Documentation</p>
-      <button onclick="openDetail('detail-about/mardatilla.html')">
-        Detail portofolio →
-      </button>
-    </div>
-
-    <div class="team-card">
-      <img src="../assets/images/profile/profile-4.jpeg">
-      <h4>Vegia Dwi Yandra</h4>
-      <p>Project Manager</p>
-      <button onclick="openDetail('detail-about/vegiadwiyandra.html')">
-        Detail portofolio →
-      </button>
-    </div>
-
   </div>
-</section>
 
-<!-- MODAL -->
-<div id="detailModal">
-  <div class="modal-box">
-    <span class="close-modal" onclick="closeDetail()">✕</span>
-    <iframe id="detailFrame"></iframe>
-  </div>
-</div>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Kelompok 2 | Website Portfolio</p>
+  </footer>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 Kelompok 2 | Website Portfolio</p>
-</footer>
+  <!-- SCRIPT -->
+  <script>
+    function openDetail(page) {
+      document.getElementById("detailModal").style.display = "flex";
+      document.getElementById("detailFrame").src = page;
+    }
 
-<!-- SCRIPT -->
-<script>
-  function openDetail(page) {
-    document.getElementById("detailModal").style.display = "flex";
-    document.getElementById("detailFrame").src = page;
-  }
-
-  function closeDetail() {
-    document.getElementById("detailModal").style.display = "none";
-    document.getElementById("detailFrame").src = "";
-  }
-</script>
+    function closeDetail() {
+      document.getElementById("detailModal").style.display = "none";
+      document.getElementById("detailFrame").src = "";
+    }
+  </script>
 
 </body>
+
 </html>
