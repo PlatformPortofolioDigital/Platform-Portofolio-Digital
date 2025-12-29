@@ -1,300 +1,158 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Kelompok 2</title>
-
-  <!-- GOOGLE FONT -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <title>Home | Kelompok 2</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
 
   <!-- ICON -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- SMOOTH SCROLL -->
   <style>
-    html {
-      scroll-behavior: smooth;
+    html { scroll-behavior: smooth; }
+#home .page-frame { min-height: calc(100vh - var(--nav-height)); }
+
+    /* navbar tinggi dinamis */
+    :root { --nav-height: 72px; }
+
+    /* satu navbar aja */
+    .onepage-navbar{
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: inherit;
+    }
+
+    /* wrapper scroll utama (bukan iframe) */
+    .onepage-wrapper{
+      min-height: 100vh;
+      background: var(--light);
+    }
+
+    /* setiap section halaman */
+    .onepage-section{
+      scroll-margin-top: var(--nav-height);
+      background: var(--light);
+    }
+
+    /* iframe auto height */
+    .page-frame{
+      width: 100%;
+      border: 0;
+      display: block;
+      height: 100px; /* akan di-resize via JS */
+      background: var(--light);
     }
   </style>
 </head>
 
-<body>
+<body class="onepage-home">
+  <!-- NAVBAR -->
+  <header class="navbar onepage-navbar" id="mainNavbar">
+  <div class="logo">Kelompok 2</div>
 
-  <!-- ===============================
-     PAGE WRAPPER (WAJIB)
-================================ -->
-  <div class="page">
+  <!-- tombol hamburger (mobile) -->
+  
 
-    <!-- ===============================
-       WELCOME SCREEN
-  ================================ -->
-    <div id="welcome-screen">
-      <div class="welcome-content">
-        <div class="welcome-icons">
-          <span>⚙️</span>
-          <span>💻</span>
-          <span>🚀</span>
-        </div>
-        <h1>Welcome To Our</h1>
-        <h2>Portofolio Website</h2>
-        <button id="skip-intro">Skip Intro</button>
-      </div>
-    </div>
+  <nav id="mainNav">
+    <a href="#home" data-goto="home" class="active">Home</a>
+    <a href="#about" data-goto="about">About</a>
+    <a href="#projects" data-goto="projects">Projects</a>
+    <a href="#blog" data-goto="blog">Blog</a>
+    <a href="#contact" data-goto="contact">Contact</a>
+  </nav>
 
-    <!-- ===============================
-       NAVBAR
-  ================================ -->
-    <header class="navbar">
-      <h1 class="logo">PLATFORM PORTOFOLIO DIGITAL</h1>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  
+</header>
 
-    <!-- ===============================
-       HERO SECTION / HOME
-  ================================ -->
-    <section id="home" class="hero hero-video">
-      <video autoplay muted loop playsinline class="bg-video">
-        <source src="assets/video/bg-coding.mp4" type="video/mp4">
-      </video>
 
-      <div class="hero-content">
-        <h2 class="typing-text">Group 2 Portfolio Website</h2>
-
-        <p>
-          Kami adalah Kelompok 2, tim yang berfokus pada pengembangan solusi digital
-          kreatif dan modern. Website ini dibangun sebagai media portofolio untuk
-          menampilkan karya, ide, serta proses pembelajaran kami di bidang teknologi
-          dan pengembangan web.
-        </p>
-
-        <a href="#projects" class="btn">Lihat Project</a>
-      </div>
-
-      <div class="hero-icons">
-        <svg viewBox="0 0 24 24" class="icon">
-          <polyline points="16 18 22 12 16 6" />
-          <polyline points="8 6 2 12 8 18" />
-        </svg>
-
-        <svg viewBox="0 0 24 24" class="icon">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06
-                 a2 2 0 0 1-2.83 2.83l-.06-.06
-                 a1.65 1.65 0 0 0-1.82-.33
-                 a1.65 1.65 0 0 0-1 1.51V21
-                 a2 2 0 0 1-4 0v-.09
-                 a1.65 1.65 0 0 0-1-1.51
-                 a1.65 1.65 0 0 0-1.82.33l-.06.06
-                 a2 2 0 1 1-2.83-2.83l.06-.06
-                 a1.65 1.65 0 0 0 .33-1.82
-                 a1.65 1.65 0 0 0-1.51-1H3
-                 a2 2 0 0 1 0-4h.09
-                 a1.65 1.65 0 0 0 1.51-1
-                 a1.65 1.65 0 0 0-.33-1.82l-.06-.06
-                 a2 2 0 1 1 2.83-2.83l.06.06
-                 a1.65 1.65 0 0 0 1.82.33
-                 H9a1.65 1.65 0 0 0 1-1.51V3
-                 a2 2 0 0 1 4 0v.09
-                 a1.65 1.65 0 0 0 1 1.51
-                 a1.65 1.65 0 0 0 1.82-.33l.06-.06
-                 a2 2 0 1 1 2.83 2.83l-.06.06
-                 a1.65 1.65 0 0 0-.33 1.82
-                 V9c0 .67.39 1.28 1 1.51H21
-                 a2 2 0 0 1 0 4h-.09
-                 a1.65 1.65 0 0 0-1.51 1z" />
-        </svg>
-
-        <svg viewBox="0 0 24 24" class="icon">
-          <path d="M18 10a4 4 0 0 0-7.9-1.2
-                 A5 5 0 1 0 6 19h12a4 4 0 0 0 0-8z" />
-        </svg>
-
-        <svg viewBox="0 0 24 24" class="icon">
-          <ellipse cx="12" cy="5" rx="9" ry="3" />
-          <path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5" />
-          <path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6" />
-        </svg>
-      </div>
+  <main class="onepage-wrapper">
+    <section class="onepage-section" id="home">
+      <iframe class="page-frame" src="pages/home-section.html" title="Home"></iframe>
     </section>
 
-    <!-- ===============================
-       ABOUT SECTION
-  ================================ -->
-    <section id="about" class="section about">
-  <div class="container">
-
-    <h3>About Us</h3>
-    <p class="section-desc">
-      Kelompok 2 merupakan tim mahasiswa yang memiliki ketertarikan dalam
-      pengembangan web dan teknologi digital.
-    </p>
-
-    <!-- SHOWCASE ANGGOTA -->
-    <div class="team-grid">
-
-      <!-- MEMBER 1 -->
-      <div class="card team-card">
-        <img src="assets/images/team/mutiara.jpg" alt="Mutiara Oktrilisa" class="team-img">
-        <h4>Mutiara Oktrilisa</h4>
-        <p class="team-role">Frontend Developer</p>
-        <a href="pages/detail-about/mutiaraoktrilisa.html" class="team-link">
-          Detail portfolio →
-        </a>
-      </div>
-
-      <!-- MEMBER 2 -->
-      <div class="card team-card">
-        <img src="assets/images/team/zahwaravahrayu.jpg" alt="Zahwa Rava Rahayu" class="team-img">
-        <h4>Zahwa Rava Rahayu</h4>
-        <p class="team-role">UI / UX Designer</p>
-        <a href="pages/detail-about/zahwaravahrayu.html" class="team-link">
-          Detail portfolio →
-        </a>
-      </div>
-      
-
-    </div>
-
-    <!-- LINK KE HALAMAN ABOUT -->
-    <a href="pages/about.html" class="link-detail">
-      Lihat Semua Anggota →
-    </a>
-
-  </div>
-</section>
-
-
-    <!-- ===============================
-       PROJECTS SECTION
-  ================================ -->
-    <section id="projects" class="section projects">
-      <div class="container">
-
-        <h3>Project Kami</h3>
-        <p class="section-desc">
-          Kumpulan project yang telah kami kerjakan sebagai dokumentasi dan portofolio kelompok.
-        </p>
-
-        <!-- COPY DARI projects.html -->
-        <div class="project-preview">
-
-          <!-- Project 1 -->
-          <div class="card project-card">
-            <div class="project-img project-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h4>Website Portfolio</h4>
-            <p class="project-desc">
-              Website portfolio statis untuk menampilkan profil kelompok dan dokumentasi project.
-            </p>
-            <div class="project-tech">HTML • CSS • JavaScript</div>
-            <div class="project-role">Role: Frontend Developer</div>
-            <a href="pages/project-detail/project-portfolio.html" class="project-link">
-              Detail Project →
-            </a>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="card project-card">
-            <div class="project-img project-icon">
-              <i class="fas fa-database"></i>
-            </div>
-            <h4>Sistem Informasi Sederhana</h4>
-            <p class="project-desc">
-              Aplikasi CRUD sederhana untuk latihan konsep sistem informasi.
-            </p>
-            <div class="project-tech">HTML • CSS • PHP • MySQL</div>
-            <div class="project-role">Role: Backend & Frontend Developer</div>
-            <a href="pages/project-detail/project-si.html" class="project-link">
-              Detail Project →
-            </a>
-          </div>
-
-          <!-- PROJECT 3 -->
-          <div class="card project-card">
-            <div class="project-img project-icon">
-              <i class="fas fa-palette"></i>
-            </div>
-            <h4>UI Design Prototype</h4>
-            <p class="project-desc">
-              Desain antarmuka aplikasi dengan prinsip UI/UX dasar.
-            </p>
-            <div class="project-tech">
-              Figma • UI/UX Design
-            </div>
-            <div class="project-role">
-              Role: UI/UX Designer
-            </div>
-            <a href="project-detail/project-ui.html" class="project-link">
-              Detail Project →
-            </a>
-          </div>
-
-        </div>
-
-        <a href="pages/projects.html" class="link-detail">
-          Lihat Semua Project →
-        </a>
-
-      </div>
+    <section class="onepage-section" id="about">
+      <iframe class="page-frame" src="pages/about.html" title="About"></iframe>
     </section>
 
-
-    <!-- ===============================
-       BLOG SECTION
-  ================================ -->
-    <section id="blog" class="section">
-      <h2>Blog</h2>
-      <p>
-        Artikel dan tulisan kami seputar teknologi, pengalaman belajar,
-        serta insight selama mengembangkan proyek digital.
-      </p>
-      <a href="pages/blog.html" class="link-detail">Baca Artikel</a>
+    <section class="onepage-section" id="projects">
+      <iframe class="page-frame" src="pages/projects.html" title="Projects"></iframe>
     </section>
 
-    <!-- ===============================
-       CONTACT SECTION
-  ================================ -->
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>
-        Hubungi kami untuk diskusi, kolaborasi, atau pertanyaan seputar
-        proyek dan pengembangan web.
-      </p>
-      <a href="pages/contact.html" class="link-detail">Hubungi Kami</a>
+    <section class="onepage-section" id="blog">
+      <iframe class="page-frame" src="pages/blog.html" title="Blog"></iframe>
     </section>
 
-    <!-- ===============================
-       FOOTER
-  ================================ -->
-    <footer>
-      <p>© 2025 Kelompok 2 | Website Portfolio</p>
-    </footer>
+    <section class="onepage-section" id="contact">
+      <iframe class="page-frame" src="pages/contact.html" title="Contact"></iframe>
+    </section>
+  </main>
 
-  </div>
-  <!-- END PAGE WRAPPER -->
+  <script>
+    // set --nav-height sesuai tinggi navbar beneran
+    function syncNavHeight() {
+      const nav = document.getElementById("mainNavbar");
+      if (!nav) return;
+      document.documentElement.style.setProperty("--nav-height", nav.offsetHeight + "px");
+    }
+    window.addEventListener("load", syncNavHeight);
+    window.addEventListener("resize", syncNavHeight);
 
-  <!-- ===============================
-     SCRIPT
-================================ -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/navigation.js"></script>
+    // klik navbar -> scroll
+    const navLinks = document.querySelectorAll(".onepage-navbar nav a");
+    navLinks.forEach(a => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = a.dataset.goto;
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // active nav saat scroll
+    const sections = [...document.querySelectorAll(".onepage-section")];
+    const io = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(en => en.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const id = visible.target.id;
+      navLinks.forEach(a => a.classList.toggle("active", a.dataset.goto === id));
+      history.replaceState(null, "", "#" + id);
+    }, { threshold: [0.45, 0.6, 0.75] });
+    sections.forEach(s => io.observe(s));
+
+    // ==== AUTO-RESIZE IFRAME (biar gak ada scroll kecil di iframe) ====
+    const frames = [...document.querySelectorAll(".page-frame")];
+
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+      if (!data || data.type !== "IFRAME_HEIGHT") return;
+
+      // cari iframe yang ngirim
+      const iframe = frames.find(f => f.contentWindow === event.source);
+      if (!iframe) return;
+
+      // set tinggi iframe sesuai konten
+      const h = Math.max(200, Number(data.height || 0));
+      iframe.style.height = h + "px";
+    });
+
+    // kalau buka pakai hash
+    window.addEventListener("load", () => {
+      const hash = location.hash.replace("#", "");
+      if (!hash) return;
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "auto", block: "start" });
+    });
+  </script>
+<script src="assets/js/navigation.js"></script>
+<script src="assets/js/main.js"></script>
 
 </body>
-
 </html>

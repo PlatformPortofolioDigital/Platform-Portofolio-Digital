@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Section</title>
+
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ===== FIX: jadi 1 halaman full ===== */
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body { overflow: hidden; } /* biar gak ada scroll di iframe */
+    
+    /* paksa hero 1 layar */
+    .hero.hero-video {
+      height: 100vh !important;
+      min-height: 100vh !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* pastikan konten rapih tengah */
+    .hero-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    /* welcome overlay full screen di atas hero */
+    #welcome-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+
+    #welcome-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* biar tombol tetap clickable */
+    #skip-intro {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="home-page embedded">
+
+  <!-- HERO FULL 1 LAYAR -->
+  <section class="hero hero-video" id="homeHero">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="../assets/video/bg-coding.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+      <h1>Group 2 Portfolio Website</h1>
+      <p>
+        Kami adalah Kelompok 2, tim yang berfokus pada pengembangan solusi digital
+        kreatif dan modern. Website ini dibangun sebagai media portofolio untuk
+        menampilkan karya, ide, serta proses pembelajaran kami di bidang teknologi
+        dan pengembangan web.
+      </p>
+
+      <!-- arahkan ke parent section projects -->
+      <a href="../index.html#projects" class="btn">Lihat Project</a>
+    </div>
+
+    <div class="hero-icons">
+      <svg viewBox="0 0 24 24" class="icon">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+
+      <svg viewBox="0 0 24 24" class="icon">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06
+               a2 2 0 0 1-2.83 2.83l-.06-.06
+               a1.65 1.65 0 0 0-1.82-.33
+               a1.65 1.65 0 0 0-1 1.51V21
+               a2 2 0 0 1-4 0v-.09
+               a1.65 1.65 0 0 0-1-1.51
+               a1.65 1.65 0 0 0-1.82.33l-.06.06
+               a2 2 0 1 1-2.83-2.83l.06-.06
+               a1.65 1.65 0 0 0 .33-1.82
+               a1.65 1.65 0 0 0-1.51-1H3
+               a2 2 0 0 1 0-4h.09
+               a1.65 1.65 0 0 0 1.51-1
+               a1.65 1.65 0 0 0-.33-1.82l-.06-.06
+               a2 2 0 1 1 2.83-2.83l.06.06
+               a1.65 1.65 0 0 0 1.82.33
+               H9a1.65 1.65 0 0 0 1-1.51V3
+               a2 2 0 0 1 4 0v.09
+               a1.65 1.65 0 0 0 1 1.51
+               a1.65 1.65 0 0 0 1.82-.33l.06-.06
+               a2 2 0 1 1 2.83 2.83l-.06.06
+               a1.65 1.65 0 0 0-.33 1.82
+               V9c0 .67.39 1.28 1 1.51H21
+               a2 2 0 0 1 0 4h-.09
+               a1.65 1.65 0 0 0-1.51 1z" />
+      </svg>
+
+      <svg viewBox="0 0 24 24" class="icon">
+        <path d="M18 10a4 4 0 0 0-7.9-1.2
+               A5 5 0 1 0 6 19h12a4 4 0 0 0 0-8z" />
+      </svg>
+
+      <svg viewBox="0 0 24 24" class="icon">
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5" />
+        <path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- WELCOME SCREEN (OVERLAY DI ATAS HERO) -->
+  <div id="welcome-screen">
+    <div class="welcome-content">
+      <div class="welcome-icons">
+        <span>⚙️</span>
+        <span>💻</span>
+        <span>🚀</span>
+      </div>
+      <h2>Welcome To Our</h2>
+      <h3>Portofolio Website</h3>
+      <button id="skip-intro">Masuk</button>
+    </div>
+  </div>
+
+  <script>
+    // ====== iframe height: karena ini 100vh, cukup kirim 100vh + sedikit ======
+    function sendHeight() {
+      const h = Math.max(window.innerHeight, document.documentElement.clientHeight);
+      parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
+    }
+
+    // ====== welcome overlay hide ======
+    document.addEventListener("DOMContentLoaded", () => {
+      const welcome = document.getElementById("welcome-screen");
+      const btn = document.getElementById("skip-intro");
+
+      // pastikan tinggi langsung benar
+      sendHeight();
+
+      if (btn && welcome) {
+        btn.addEventListener("click", () => {
+          welcome.classList.add("hide");
+          // setelah animasi, pastikan parent tetap 100vh
+          setTimeout(sendHeight, 400);
+        });
+      }
+    });
+
+    window.addEventListener("resize", sendHeight);
+  </script>
+</body>
+</html>

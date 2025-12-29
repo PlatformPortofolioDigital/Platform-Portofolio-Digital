@@ -18,6 +18,7 @@ ol {
 }
 
 body {
+
   font-family: 'Inter', sans-serif;
   background: transparent;
   /* DIKONTROL variables.css */
@@ -182,6 +183,14 @@ body {
 .navbar nav {
   display: flex;
   align-items: center;
+}
+
+.navbar nav a {
+  margin-left: 26px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  position: relative;
 }
 
 .navbar nav a::after {
@@ -1011,137 +1020,7 @@ body.about-page {
     transform: translateY(0);
   }
 }
-/* ===============================
-   BLOG DETAIL - PROJECT STYLE ARTIKEL
-================================ */
-.blog-detail-page {
-  background: var(--light);
-  color: var(--dark);
-}
 
-/* HEADER */
-.article-header {
-  max-width: 820px;
-  margin: 120px auto 60px;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.article-header h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.6rem;
-  margin-bottom: 16px;
-}
-
-.article-desc {
-  font-size: 1.05rem;
-  color: var(--gray);
-  line-height: 1.8;
-  margin-bottom: 14px;
-}
-
-.article-meta {
-  font-size: 0.9rem;
-  color: var(--gray);
-}
-
-/* IMAGE */
-.article-image {
-  max-width: 500px;
-  margin: 0 auto 60px;
-  padding: 0 20px;
-}
-
-.article-image img {
-  width: 100%;
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.12);
-}
-
-/* CONTENT */
-.article-content {
-  max-width: 760px;
-  margin: 0 auto 120px;
-  padding: 0 20px;
-  font-size: 1.05rem;
-  line-height: 1.9;
-}
-
-.article-content p {
-  margin-bottom: 22px;
-}
-
-/* BACK LINK */
-.back-link {
-  display: inline-block;
-  margin-top: 30px;
-  color: var(--primary);
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.back-link:hover {
-  text-decoration: underline;
-}
-
-/* ===============================
-   NAVBAR (GLOBAL)
-================================ */
-.navbar {
-  position: sticky;
-  top: 0;
-  background: var(--light);
-  z-index: 1000;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-}
-
-.navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 18px 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* LOGO */
-.logo {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-/* MENU */
-.nav-menu {
-  display: flex;
-  gap: 28px;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  font-weight: 500;
-  color: var(--dark);
-  position: relative;
-}
-
-/* ACTIVE & HOVER */
-.nav-menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transition: width .3s ease;
-}
-
-.nav-menu a:hover::after,
-.nav-menu a.active::after {
-  width: 100%;
-}
 
 
 /* =========================================================
@@ -2491,3 +2370,583 @@ body.about-page .hero p{
 body.about-page .hero + .section{
   padding-top: 60px !important;
 }
+
+/* ===== HOMEPAGE INDEX FIX (tempel di style.css paling bawah) ===== */
+
+/* blog & contact yang gak punya .container */
+.page #blog.section,
+.page #contact.section{
+  padding: 90px 24px;
+  background: linear-gradient(180deg, #2f5f7c, #3f7f9c, #7fcdf0);
+}
+
+.page #blog.section > h2,
+.page #contact.section > h2{
+  max-width: 1100px;
+  margin: 0 auto 14px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 650;
+  color: #e0f2fe;
+}
+
+.page #blog.section > p,
+.page #contact.section > p{
+  max-width: 720px;
+  margin: 0 auto 28px;
+  text-align: center;
+  line-height: 1.85;
+  color: #bae6fd;
+  font-size: 1.02rem;
+}
+
+.page #blog.section > a,
+.page #contact.section > a{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* hero video biar teks kebaca */
+.page #home.hero{
+  position: relative;
+  min-height: 92vh;
+  padding: 120px 24px 70px;
+  overflow: hidden;
+}
+
+.page #home .bg-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.page #home::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.55);
+  z-index: 1;
+}
+
+.page #home .hero-content,
+.page #home .hero-icons{
+  position: relative;
+  z-index: 2;
+}
+
+.page #home .hero-content{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* projects preview grid */
+.page #projects .project-preview{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+@media (max-width: 992px){
+  .page #projects .project-preview{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 576px){
+  .page #projects .project-preview{ grid-template-columns: 1fr; }
+  .page #home .hero-icons{ display: none; }
+}
+
+/* =========================================================
+   HOME (INDEX) THEME SYNC — bikin Home sama feel-nya
+   kaya halaman saat klik navbar (tanpa ubah HTML)
+   Tempel di PALING BAWAH assets/css/style.css
+========================================================= */
+
+/* A) Samain base tema halaman Home */
+.page{
+  background: var(--dark);
+  color: var(--light);
+}
+
+/* B) Container konsisten (bikin semua section punya “bentuk” sama) */
+.page .container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* C) Semua section spacing konsisten */
+.page .section{
+  padding: 90px 0;
+}
+
+/* D) Heading & desc biar gaya sama */
+.page .section h3,
+.page .section h2{
+  text-align: center;
+  color: var(--light);
+  margin-bottom: 12px;
+  font-size: 2.1rem;
+}
+
+.page .section .section-desc,
+.page .section > p{
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto 28px;
+  color: rgba(248,250,252,0.85);
+  line-height: 1.85;
+}
+
+/* E) Biar Blog & Contact (yang gak punya .container) tetep rapi */
+.page #blog.section,
+.page #contact.section{
+  padding: 90px 0;
+}
+
+.page #blog.section > h2,
+.page #blog.section > p,
+.page #blog.section > a,
+.page #contact.section > h2,
+.page #contact.section > p,
+.page #contact.section > a{
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.page #blog.section > a,
+.page #contact.section > a{
+  display: flex;
+  justify-content: center;
+}
+
+/* F) Samain “bentuk section” jadi panel/card (kayak halaman lain) */
+.page #about.section,
+.page #projects.section,
+.page #blog.section,
+.page #contact.section{
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+/* G) Hero: tetap video tapi overlay & layout rapi + nyambung */
+.page #home.hero{
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 70px;
+  overflow: hidden;
+}
+
+.page #home .bg-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.page #home::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    180deg,
+    rgba(15,23,42,0.72),
+    rgba(15,23,42,0.62),
+    rgba(15,23,42,0.90)
+  );
+  z-index:1;
+}
+
+/* hero content biar sama width nya */
+.page #home .hero-content{
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page #home .hero-content h2{
+  color: var(--light);
+  font-size: 2.6rem;
+  margin-bottom: 12px;
+}
+
+.page #home .hero-content p{
+  color: rgba(248,250,252,0.88);
+  max-width: 720px;
+  line-height: 1.9;
+}
+
+/* hero icons jadi rapi & “sebaris”, gak ngaco */
+.page #home .hero-icons{
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 26px auto 0;
+  padding: 0 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.page #home .hero-icons .icon{
+  width: 52px;
+  height: 52px;
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+}
+
+/* H) Card biar konsisten (team & project) */
+.page .card{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+}
+
+/* TEAM GRID */
+.page #about .team-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.page #about .team-img{
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+/* PROJECT GRID */
+.page #projects .project-preview{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.page #projects .project-img{
+  display: grid;
+  place-items: center;
+  height: 140px;
+  margin: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.page #projects .project-icon i{
+  font-size: 42px;
+}
+
+/* I) Link tombol “detail” biar sama tone */
+.page .link-detail{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 16px;
+  font-weight: 650;
+  text-decoration: none;
+  color: var(--light);
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+}
+
+/* J) Responsive */
+@media (max-width: 992px){
+  .page #projects .project-preview{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 576px){
+  .page #home .hero-icons{ display: none; }
+  .page #about .team-grid{ grid-template-columns: 1fr; }
+  .page #projects .project-preview{ grid-template-columns: 1fr; }
+}
+/* ===========================
+   FINAL FIX HOME (INDEX)
+   Tempel PALING BAWAH style.css
+=========================== */
+
+/* 1) Samain feel Home kayak halaman lain (light theme) */
+.page{
+  background: var(--light);
+  color: var(--dark);
+}
+
+/* 2) Navbar biasanya fixed — kasih offset biar gak nabrak */
+:root{ --navH: 90px; }
+
+.navbar{
+  height: var(--navH);
+  display: flex;
+  align-items: center;
+}
+
+/* semua section anchor pas diklik navbar gak ketutup navbar */
+#home, #about, #projects, #blog, #contact{
+  scroll-margin-top: calc(var(--navH) + 20px);
+}
+
+/* 3) HERO: bikin video full 1 layar, bukan strip */
+#home.hero-video{
+  position: relative;
+  min-height: calc(100vh - var(--navH));
+  padding-top: var(--navH);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #0b1220; /* fallback */
+}
+
+#home.hero-video .bg-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* overlay biar teks kebaca */
+#home.hero-video::after{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.65);
+  z-index: 1;
+}
+
+/* konten hero di atas video */
+#home.hero-video .hero-content{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  color: #f8fafc;
+}
+
+#home.hero-video .hero-content h2{
+  font-size: 2.6rem;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: #e0f2fe;
+}
+
+#home.hero-video .hero-content p{
+  max-width: 720px;
+  line-height: 1.9;
+  color: rgba(248,250,252,0.9);
+}
+
+/* tombol hero */
+#home.hero-video .hero-content .btn{
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--primary);
+  color: #0b1220;
+}
+
+/* 4) Hero icons: taruh bawah kanan rapi (opsional) */
+#home.hero-video .hero-icons{
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#home.hero-video .hero-icons .icon{
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+}
+
+/* 5) Section Home: samain bentuknya kayak halaman lain */
+.page .section{
+  padding: 90px 0;
+}
+
+/* Blog & Contact gak punya .container -> disamakan */
+#blog.section,
+#contact.section{
+  padding: 90px 0;
+  background: var(--light);
+}
+
+#blog.section > h2,
+#blog.section > p,
+#blog.section > a,
+#contact.section > h2,
+#contact.section > p,
+#contact.section > a{
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+}
+
+#blog.section > a,
+#contact.section > a{
+  display: inline-flex;
+  justify-content: center;
+}
+
+/* heading blog/contact biar sama gaya */
+#blog.section > h2,
+#contact.section > h2{
+  font-family: "Poppins", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+
+#blog.section > p,
+#contact.section > p{
+  max-width: 740px;
+  margin: 0 auto 26px;
+  color: rgba(15,23,42,0.75);
+  line-height: 1.85;
+}
+
+/* 6) Button link-detail biar seragam */
+.page .link-detail{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(56,189,248,0.12);
+  color: var(--dark);
+}
+
+/* 7) Grid About & Projects biar rapi di Home */
+#about .team-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+#projects .project-preview{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+/* responsive */
+@media (max-width: 992px){
+  #projects .project-preview{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 576px){
+  #home.hero-video .hero-icons{ display: none; }
+  #about .team-grid{ grid-template-columns: 1fr; }
+  #projects .project-preview{ grid-template-columns: 1fr; }
+  #home.hero-video .hero-content h2{ font-size: 2.1rem; }
+}
+
+
+/* ===============================
+   CONTAINER (GLOBAL)
+   Biar Home/Blog/About konsisten lebarnya
+================================ */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== EMBED MODE (ketika halaman dipakai di Home scroll via iframe) ===== */
+body.embedded .navbar {
+  display: none !important;
+}
+
+body.embedded {
+  padding-top: 0 !important;
+}
+
+/* kalau kamu punya footer global dan mau hilang di embed */
+body.embedded footer {
+  display: none !important;
+}
+
+/* ===============================
+   FIX: HERO HOME KOSONG / TEKS HILANG
+   (z-index negatif bikin overlay/video jatuh ke belakang body)
+================================ */
+
+/* bikin stacking context biar z-index negatif tetap di dalam section */
+.hero-video {
+  position: relative;
+  z-index: 0;                 /* penting: ini yang bikin stacking context */
+  background: #0f172a;        /* fallback kalau video gagal load */
+}
+
+/* video jangan pakai -2, cukup -1 */
+.hero-video .bg-video {
+  z-index: -1 !important;
+}
+
+/* overlay jangan negatif, taruh di atas video */
+.hero-video::before {
+  z-index: 0 !important;
+}
+
+/* konten teks selalu di atas overlay */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+}
+
+/* ===== EMBED MODE (ketika halaman dipakai di Home scroll) ===== */
+body.embedded .navbar {
+  display: none !important;
+}
+
+body.embedded footer {
+  display: none !important;
+}
+

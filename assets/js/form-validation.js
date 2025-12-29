@@ -76,7 +76,8 @@
     showAlert("✅ Pesan kamu berhasil terkirim! Silakan cek email secara berkala, admin akan membalas secepatnya.", "success");
 
     // bersihin query success dari URL biar notif gak muncul terus
-    window.history.replaceState({}, document.title, window.location.pathname);
+    window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+
 
     // reset form biar bersih
     form.reset();

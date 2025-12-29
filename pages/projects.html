@@ -137,6 +137,27 @@
   <!-- GLOBAL UI & INTERAKTIVITAS -->
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/navigation.js"></script>
+<script>
+  if (window.self !== window.top) {
+    document.body.classList.add("embedded");
+  }
+</script>
+<script>
+  // hide navbar/ footer di mode embed + kirim tinggi ke parent
+  document.body.classList.add("embedded");
+
+  function sendHeight() {
+    const h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
+  }
+
+  window.addEventListener("load", sendHeight);
+  window.addEventListener("resize", sendHeight);
+  new ResizeObserver(sendHeight).observe(document.body);
+</script>
 
 </body>
 
