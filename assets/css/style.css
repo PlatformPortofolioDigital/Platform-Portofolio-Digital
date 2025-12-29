@@ -2088,3 +2088,284 @@ body:has(.blog-post) section{
 body:has(.blog-list){
   padding-bottom: 80px;
 }
+
+/* =========================================================
+   ABOUT -> MATCH PROJECTS / CONTACT CYBER THEME
+   (tanpa ubah HTML)
+========================================================= */
+
+/* Background About sama persis Projects */
+body.about-page{
+  background: linear-gradient(180deg, #8ad7e1, #0f172a) !important;
+  color: #c7f5ff !important;
+}
+
+/* Kalau About pakai .section background yang beda, paksa transparan */
+body.about-page .section{
+  background: transparent !important;
+}
+
+/* Judul section About lebih tegas */
+body.about-page .section h3{
+  color: #e0f2fe !important;
+  font-weight: 800 !important;
+  text-shadow:
+    0 0 10px rgba(56, 189, 248, 0.25),
+    0 0 20px rgba(125, 211, 252, 0.18);
+}
+
+/* Deskripsi section biar kebaca */
+body.about-page .section-desc{
+  color: rgba(199, 245, 255, 0.92) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.85 !important;
+}
+
+/* Hero About kalau masih “flat”, bikin lebih nyatu */
+body.about-page .hero h2{
+  color: #e0f2fe !important;
+  font-weight: 800 !important;
+}
+
+body.about-page .hero p{
+  color: rgba(199, 245, 255, 0.92) !important;
+}
+
+/* TEAM CARD: samain gaya Projects card (gradient + neon) */
+body.about-page .team-card{
+  background: linear-gradient(145deg, #020405, #57e1fd) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.35),
+    0 0 18px rgb(56, 213, 248) !important;
+  backdrop-filter: blur(14px);
+  transition: all 0.4s ease;
+}
+
+body.about-page .team-card:hover{
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.5),
+    0 0 32px rgba(56, 189, 248, 0.55),
+    0 0 48px rgba(82, 213, 222, 0.89) !important;
+}
+
+/* Text dalam team card */
+body.about-page .team-card h4{
+  color: #e0f2fe !important;
+  font-weight: 800 !important;
+}
+
+body.about-page .team-card p{
+  color: rgba(199, 245, 255, 0.92) !important;
+  font-size: 1.02rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Social button biar nyatu neon */
+body.about-page .team-social a{
+  background: rgba(2, 6, 23, 0.35) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  color: #e0f2fe !important;
+}
+
+body.about-page .team-social a:hover{
+  background: rgba(56, 189, 248, 0.35) !important;
+  color: #061a2d !important;
+}
+/* =========================================================
+   ABOUT FINAL FIX -> biar gak kotak-kotak & nyatu theme
+========================================================= */
+
+/* 1) Background full page (sama kayak Projects) */
+body.about-page{
+  background: linear-gradient(180deg, #8ad7e1, #0f172a) !important;
+  color: #c7f5ff !important;
+}
+
+/* 2) Hilangin blok biru gelap hero yang bikin “kepotong” */
+body.about-page .hero{
+  background: transparent !important;
+}
+
+body.about-page .hero::before{
+  background: transparent !important;
+}
+
+/* 3) Semua section dibuat transparan biar nyatu, gak jadi 2 warna beda */
+body.about-page .section{
+  background: transparent !important;
+}
+
+/* 4) Rapihin spacing: yang bikin kosong gede itu padding section */
+body.about-page .section{
+  padding: 70px 24px !important;
+}
+body.about-page .section:first-of-type{
+  padding-top: 40px !important;
+}
+
+/* 5) Judul utama & judul section biar lebih “mahal” */
+body.about-page .hero h2{
+  color: #e0f2fe !important;
+  font-weight: 900 !important;
+  text-shadow:
+    0 0 10px rgba(56, 189, 248, 0.35),
+    0 0 22px rgba(125, 211, 252, 0.22);
+}
+
+/* Title "Anggota Kelompok" dll */
+body.about-page .section h3{
+  color: #e0f2fe !important;
+  font-weight: 900 !important;
+  margin-bottom: 14px !important;
+  text-shadow:
+    0 0 10px rgba(56, 189, 248, 0.22);
+}
+
+/* Paragraf hero biar gak kepisah aneh */
+body.about-page .hero p{
+  color: rgba(199, 245, 255, 0.92) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.9 !important;
+  max-width: 860px !important;
+}
+
+/* 6) Team grid jangan jadi “kotak” di atas background */
+body.about-page .team-grid{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 7) Team card tetap cyber (matching Projects) */
+body.about-page .team-card{
+  background: linear-gradient(145deg, #020405, #57e1fd) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.35),
+    0 0 18px rgb(56, 213, 248) !important;
+  backdrop-filter: blur(14px);
+  transition: all 0.4s ease;
+}
+
+body.about-page .team-card:hover{
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.5),
+    0 0 32px rgba(56, 189, 248, 0.55),
+    0 0 48px rgba(82, 213, 222, 0.89) !important;
+}
+
+/* Text dalam card */
+body.about-page .team-card h4{
+  color: #e0f2fe !important;
+  font-weight: 800 !important;
+}
+body.about-page .team-card p{
+  color: rgba(199, 245, 255, 0.92) !important;
+}
+/* =========================================================
+   ABOUT – RAPIIIN HERO & FLOW SECTION
+========================================================= */
+
+/* 1. Hero About: jangan kegedean & kosong */
+body.about-page .hero{
+  min-height: unset !important;
+  padding: 70px 24px 60px !important;
+  text-align: center;
+}
+
+/* 2. Judul utama "Tentang Kelompok 2" */
+body.about-page .hero h2{
+  font-size: clamp(2.1rem, 4vw, 2.6rem) !important;
+  font-weight: 900 !important;
+  margin-bottom: 18px !important;
+  letter-spacing: .3px;
+}
+
+/* 3. Paragraf deskripsi: dibikin rapih & center */
+body.about-page .hero p{
+  max-width: 780px !important;
+  margin: 0 auto !important;
+  font-size: 1.05rem !important;
+  line-height: 1.85 !important;
+  opacity: .92;
+}
+
+/* 4. Section setelah hero (biar gak lompat jauh) */
+body.about-page .section{
+  padding: 70px 24px !important;
+}
+
+/* 5. JUDUL "Anggota Kelompok" – ini yang paling jelek tadi */
+body.about-page .section h3{
+  font-size: clamp(1.9rem, 3.2vw, 2.2rem) !important;
+  margin-bottom: 40px !important;
+  text-align: center;
+  font-weight: 900 !important;
+}
+
+/* 6. Jarak antar hero ke section berikutnya */
+body.about-page .hero + .section{
+  padding-top: 50px !important;
+}
+
+/* 7. Background hero dikasih depth halus (biar gak flat) */
+body.about-page .hero{
+  background: linear-gradient(
+    180deg,
+    rgba(56,189,248,.25),
+    rgba(15,23,42,.15)
+  ) !important;
+}
+
+/* 8. Biar transisi hero → anggota halus */
+body.about-page .section{
+  background: transparent !important;
+}
+/* =========================================================
+   ABOUT – HERO JADI CARD (SEPERTI ANGGOTA, TAPI LEBAR)
+========================================================= */
+
+/* 1. Hero jadi container biasa */
+body.about-page .hero{
+  background: transparent !important;
+  padding: 60px 24px 40px !important;
+  min-height: unset !important;
+}
+
+/* 2. Bungkus konten hero jadi card */
+body.about-page .hero > *{
+  max-width: 980px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #020405, #57e1fd);
+  border-radius: 24px;
+  padding: 48px 56px;
+  box-shadow:
+    0 12px 32px rgba(15, 23, 42, 0.35),
+    0 0 22px rgba(56, 213, 248, 0.45);
+}
+
+/* 3. Judul */
+body.about-page .hero h2{
+  font-size: 2.3rem !important;
+  font-weight: 900 !important;
+  margin-bottom: 16px !important;
+  text-align: center;
+  color: #e0f2fe !important;
+}
+
+/* 4. Paragraf */
+body.about-page .hero p{
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(199, 245, 255, 0.92);
+}
+
+/* 5. Jarak ke section Anggota Kelompok */
+body.about-page .hero + .section{
+  padding-top: 60px !important;
+}
