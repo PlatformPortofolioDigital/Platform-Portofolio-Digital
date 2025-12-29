@@ -1678,3 +1678,413 @@ body.projects-page .project-link {
   z-index: 10;
 }
 
+/* CONTACT -> match Projects look */
+body.contact-body .contact-card2{
+  background: rgba(56, 189, 248, 0.15) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 0 18px rgba(56, 189, 248, 0.45),
+    0 0 36px rgba(125, 211, 252, 0.25) !important;
+}
+
+/* input biar ikut cyber */
+body.contact-body .contact-card2 input,
+body.contact-body .contact-card2 textarea{
+  background: rgba(2, 6, 23, 0.35) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  color: var(--cyber-title) !important;
+  border-radius: 14px;
+}
+
+body.contact-body .contact-card2 input:focus,
+body.contact-body .contact-card2 textarea:focus{
+  border-color: rgba(56, 189, 248, 0.70) !important;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18) !important;
+}
+
+body.contact-body .btnSend2{
+  background: rgba(56, 189, 248, 0.22) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  color: var(--cyber-title) !important;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.28) !important;
+}
+
+
+/* =======================================================================
+   [PERBAIKAN AKU] CONTACT -> EXACT LIKE PROJECTS (.project-preview .card)
+   TARUH PALING BAWAH (override terakhir, gak ganggu page lain)
+======================================================================== */
+
+/* Card contact dibuat 1:1 gaya project-preview .card */
+body.contact-body .contact-card2{
+  background: linear-gradient(145deg, #020405, #57e1fd) !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.35),
+    0 0 18px rgb(56, 213, 248) !important;
+  backdrop-filter: blur(14px);
+  transition: all 0.4s ease;
+}
+
+body.contact-body .contact-card2:hover{
+  transform: translateY(-10px);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.5),
+    0 0 32px rgba(56, 189, 248, 0.55),
+    0 0 48px rgba(82, 213, 222, 0.89) !important;
+}
+
+/* Text biar kebaca di gradient gelap */
+body.contact-body .contact-card2 h3,
+body.contact-body .contact-hero2 h2{
+  color: #e0f2fe !important;
+}
+
+body.contact-body .contact-hero2 p,
+body.contact-body .muted2,
+body.contact-body .label2,
+body.contact-body .hint2{
+  color: #c7f5ff !important;
+  opacity: .92;
+}
+
+/* Info item + note ikutin vibe */
+body.contact-body .info2,
+body.contact-body .note2{
+  background: rgba(2, 6, 23, 0.35) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+}
+
+/* Input ikutin dark-cyber (yang kepakai itu .field2, bukan input langsung) */
+body.contact-body .field2 input,
+body.contact-body .field2 textarea{
+  background: rgba(2, 6, 23, 0.35) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  color: #e0f2fe !important;
+}
+
+body.contact-body .field2 input::placeholder,
+body.contact-body .field2 textarea::placeholder{
+  color: rgba(199, 245, 255, 0.65) !important;
+}
+
+body.contact-body .field2 input:focus,
+body.contact-body .field2 textarea:focus{
+  border-color: rgba(56, 189, 248, 0.70) !important;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18) !important;
+}
+
+/* Tombol biar cocok dengan card projects */
+body.contact-body .btnSend2{
+  background: rgba(56, 189, 248, 0.22) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  color: #e0f2fe !important;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.28) !important;
+}
+
+/* =========================================================
+   [FIX FINAL] CONTACT AUTO (TANPA UBAH HTML)
+   - detect halaman contact via: body:has(main.contact-page)
+   - samain background & card dengan style Projects
+========================================================= */
+
+/* 1) Background contact: ikut projects-page (cyber gradient) */
+body:has(main.contact-page){
+  background: linear-gradient(180deg,
+      var(--cyber-bg-start),
+      var(--cyber-bg-end)) !important;
+  color: var(--cyber-text) !important;
+}
+
+/* Fallback kalau :has() tiba-tiba nggak kebaca: bikin layer background full */
+main.contact-page::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg,
+      var(--cyber-bg-start),
+      var(--cyber-bg-end));
+}
+
+/* 2) Card contact: samain PERSIS kayak .project-preview .card */
+body:has(main.contact-page) .contact-card2{
+  background: linear-gradient(145deg, #020405, #57e1fd) !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.35),
+    0 0 18px rgb(56, 213, 248) !important;
+  backdrop-filter: blur(14px);
+  transition: all 0.4s ease;
+}
+
+body:has(main.contact-page) .contact-card2:hover{
+  transform: translateY(-10px);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.5),
+    0 0 32px rgba(56, 189, 248, 0.55),
+    0 0 48px rgba(82, 213, 222, 0.89) !important;
+}
+
+/* 3) Text biar kebaca di card gelap */
+body:has(main.contact-page) .contact-hero2 h2,
+body:has(main.contact-page) .contact-card2 h3,
+body:has(main.contact-page) .mini2{
+  color: #e0f2fe !important;
+}
+
+body:has(main.contact-page) .contact-hero2 p,
+body:has(main.contact-page) .muted2,
+body:has(main.contact-page) .label2,
+body:has(main.contact-page) .hint2{
+  color: #c7f5ff !important;
+  opacity: .92;
+}
+
+/* 4) Box info + note biar nyatu */
+body:has(main.contact-page) .info2,
+body:has(main.contact-page) .note2{
+  background: rgba(2, 6, 23, 0.35) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+}
+
+/* 5) Input harus target .field2 (ini yang kamu pakai di HTML) */
+body:has(main.contact-page) .field2 input,
+body:has(main.contact-page) .field2 textarea{
+  background: rgba(2, 6, 23, 0.35) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  color: #e0f2fe !important;
+}
+
+body:has(main.contact-page) .field2 input::placeholder,
+body:has(main.contact-page) .field2 textarea::placeholder{
+  color: rgba(199, 245, 255, 0.65) !important;
+}
+
+body:has(main.contact-page) .field2 input:focus,
+body:has(main.contact-page) .field2 textarea:focus{
+  border-color: rgba(56, 189, 248, 0.70) !important;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18) !important;
+}
+
+/* 6) Button biar matching neon */
+body:has(main.contact-page) .btnSend2{
+  background: rgba(56, 189, 248, 0.22) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  color: #e0f2fe !important;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.28) !important;
+}
+/* =========================================================
+   CONTACT BACKGROUND -> PERSIS SEPERTI PROJECTS
+   (ambil dari .projects { background: linear-gradient(...) })
+========================================================= */
+body:has(main.contact-page){
+  background: linear-gradient(180deg, #8ad7e1, #0f172a) !important;
+}
+
+/* fallback layer juga ikut sama */
+main.contact-page::before{
+  background: linear-gradient(180deg, #8ad7e1, #0f172a) !important;
+}
+/* =========================================================
+   CONTACT TYPOGRAPHY FIX (lebih “hidup” & kebaca)
+========================================================= */
+
+/* Judul card */
+body:has(main.contact-page) .contact-card2 h3{
+  color: #e0f2fe !important;
+  font-weight: 800 !important;
+  letter-spacing: .2px;
+}
+
+/* Deskripsi kecil di bawah judul */
+body:has(main.contact-page) .contact-card2 > p,
+body:has(main.contact-page) .muted2{
+  color: rgba(199, 245, 255, 0.92) !important;
+  font-weight: 500 !important;
+  line-height: 1.65 !important;
+}
+
+/* Item info: label (Email Admin / Telepon / Lokasi) */
+body:has(main.contact-page) .info2 .label2{
+  color: rgba(224, 242, 254, 0.86) !important;
+  font-weight: 700 !important;
+  font-size: .9rem !important;
+}
+
+/* Item info: value (alamat email/nomor/lokasi) — ini yang paling kerasa “kurang” */
+body:has(main.contact-page) .info2 .value2{
+  color: #e0f2fe !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: .15px;
+  text-shadow: 0 0 10px rgba(56, 213, 248, 0.18);
+}
+
+/* Biar link email/wa (kalau <a>) tetap kebaca */
+body:has(main.contact-page) .info2 a,
+body:has(main.contact-page) .info2{
+  color: #e0f2fe !important;
+}
+
+/* Label field form (Nama/Email/Pesan) */
+body:has(main.contact-page) .field2 label{
+  color: rgba(224, 242, 254, 0.88) !important;
+  font-weight: 700 !important;
+  letter-spacing: .2px;
+}
+
+/* Placeholder input biar gak “pudar” */
+body:has(main.contact-page) .field2 input::placeholder,
+body:has(main.contact-page) .field2 textarea::placeholder{
+  color: rgba(199, 245, 255, 0.55) !important;
+}
+
+/* Rapiin jarak antar item biar gak keliatan kosong */
+body:has(main.contact-page) .contact-info2{
+  gap: 12px !important;
+}
+
+body:has(main.contact-page) .info2{
+  padding: 14px !important;
+}
+/* =========================================================
+   BLOG AUTO (TANPA UBAH HTML)
+   Detect blog page via: body:has(.blog-list) / body:has(.blog-post)
+========================================================= */
+
+/* Background blog sama persis Projects */
+body:has(.blog-list),
+body:has(.blog-post){
+  background: linear-gradient(180deg, #8ad7e1, #0f172a) !important;
+  color: #c7f5ff !important;
+}
+
+/* Layer fallback biar background pasti full */
+.blog-list::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #8ad7e1, #0f172a);
+}
+
+/* Hero blog jangan hijau */
+body:has(.blog-list) .hero,
+body:has(.blog-post) .hero{
+  background: transparent !important;
+}
+
+/* Hero text */
+body:has(.blog-list) .hero h2,
+body:has(.blog-post) .hero h2{
+  color: #e0f2fe !important;
+  text-shadow:
+    0 0 10px rgba(56, 189, 248, 0.35),
+    0 0 20px rgba(125, 211, 252, 0.22);
+}
+
+body:has(.blog-list) .hero p,
+body:has(.blog-post) .hero p{
+  color: rgba(199, 245, 255, 0.90) !important;
+}
+
+/* Blog card jadi gaya Projects */
+body:has(.blog-list) .blog-post,
+body:has(.blog-post) .blog-post{
+  background: linear-gradient(145deg, #020405, #57e1fd) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  border-radius: 18px !important;
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.35),
+    0 0 18px rgb(56, 213, 248) !important;
+  backdrop-filter: blur(14px);
+}
+
+body:has(.blog-list) .blog-post:hover,
+body:has(.blog-post) .blog-post:hover{
+  transform: translateY(-10px);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.5),
+    0 0 32px rgba(56, 189, 248, 0.55),
+    0 0 48px rgba(82, 213, 222, 0.89) !important;
+}
+
+/* accent bar kiri jadi neon biru */
+body:has(.blog-list) .blog-post::before,
+body:has(.blog-post) .blog-post::before{
+  background: linear-gradient(180deg, #38bdf8, #7dd3fc) !important;
+}
+
+/* Typography */
+body:has(.blog-list) .blog-post h3,
+body:has(.blog-post) .blog-post h3{
+  color: #e0f2fe !important;
+  font-weight: 800 !important;
+  letter-spacing: .2px;
+}
+
+body:has(.blog-list) .blog-post .date,
+body:has(.blog-post) .blog-post .date{
+  color: rgba(199, 245, 255, 0.75) !important;
+  font-weight: 600 !important;
+}
+
+body:has(.blog-list) .blog-post p,
+body:has(.blog-post) .blog-post p{
+  color: rgba(199, 245, 255, 0.92) !important;
+  line-height: 1.75 !important;
+}
+/* =========================================================
+   BLOG TEXT SCALE UP (judul, tanggal, isi)
+========================================================= */
+
+/* Judul artikel */
+body:has(.blog-post) .blog-post h3{
+  font-size: 1.7rem !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: .3px;
+}
+
+/* Tanggal */
+body:has(.blog-post) .blog-post .date{
+  font-size: 1rem !important;
+  margin-bottom: 14px !important;
+  font-weight: 600 !important;
+}
+
+/* Isi ringkasan artikel */
+body:has(.blog-post) .blog-post p{
+  font-size: 1.05rem !important;
+  line-height: 1.85 !important;
+}
+
+/* Link baca selengkapnya */
+body:has(.blog-post) .blog-post a{
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+}
+/* =========================================================
+   BLOG REMOVE WHITE BACKGROUND WRAPPER
+========================================================= */
+
+/* Container blog */
+body:has(.blog-list) .blog-list{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Kalau ada section pembungkus */
+body:has(.blog-list) section,
+body:has(.blog-post) section{
+  background: transparent !important;
+}
+
+/* Jaga jarak tapi tanpa putih */
+body:has(.blog-list){
+  padding-bottom: 80px;
+}
