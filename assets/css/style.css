@@ -1548,3 +1548,46 @@ body.projects-page .project-link {
 .form-alert.info{
   background: rgba(56,189,248,.12);
 }
+
+/* ===============================
+   MODAL DETAIL PORTOFOLIO (FINAL FIX)
+================================ */
+
+.about-modal {
+  display: none;              /* dikontrol JS */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+
+  /* CENTER */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-modal-content {
+  width: 420px;
+  max-width: 90%;
+  height: 85vh;
+  background: #ffffff;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+}
+
+.about-modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.about-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+}

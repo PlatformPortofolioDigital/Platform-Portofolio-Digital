@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8">
   <title>About | Kelompok 2</title>
@@ -13,99 +12,142 @@
 
   <!-- ICON -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- MODAL STYLE (WAJIB ADA) -->
+  <style>
+    /* OVERLAY */
+    #detailModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* BOX */
+    .modal-box {
+      width: 80%;
+      max-width: 800px;
+      height: 80vh;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* CLOSE */
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 
 <body class="about-page">
 
-  <!-- NAVBAR -->
-  <header class="navbar animate">
-    <h1 class="logo">Tentang Kami</h1>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+<!-- NAVBAR -->
+<header class="navbar">
+  <h1 class="logo">Tentang Kami</h1>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-  <!-- DESKRIPSI KELOMPOK -->
-  <section class="hero hero-about">
+<!-- HERO -->
+<section class="hero hero-about">
+  <h2>Tentang Kelompok 2</h2>
+  <p>
+    Kelompok 2 merupakan tim mahasiswa yang berfokus pada pengembangan
+    website portfolio modern sebagai bagian dari pembelajaran web.
+  </p>
+</section>
 
-    <!-- NEON ICON -->
-    <div class="about-neon-icon">
-      <i class="fa-solid fa-users"></i>
+<!-- TEAM -->
+<section class="section">
+  <h3>Anggota Kelompok</h3>
+
+  <div class="team-grid">
+
+    <div class="team-card">
+      <img src="../assets/images/profile/profile-1.jpeg">
+      <h4>Mutiara Oktrilisa</h4>
+      <p>Frontend Developer</p>
+      <button onclick="openDetail('detail-about/mutiaraoktrilisa.html')">
+        Detail portofolio →
+      </button>
     </div>
 
-    <h2 class="typing-glow" style="--chars: 18">
-      Tentang Kelompok 2
-    </h2>
-
-    <p>
-      Kelompok 2 merupakan tim mahasiswa yang berfokus pada pengembangan website
-      portfolio modern. Website ini dibuat sebagai bagian dari tugas mata kuliah
-      PPLOS dengan menerapkan prinsip UI/UX, kolaborasi, dan teknologi web.
-    </p>
-
-  </section>
-
-
-  <!-- ANGGOTA KELOMPOK -->
-  <section class="section">
-    <h3 class="animate">Anggota Kelompok</h3>
-
-    <div class="team-grid">
-
-      <div class="team-card neon-purple animate animate-left" style="transition-delay: .1s">
-        <img src="../assets/images/profile/profile-1.jpeg" alt="Mutiara Oktrilisa">
-        <h4>Mutiara Oktrilisa</h4>
-        <p>Frontend Developer</p>
-        <a href="detail-about/mutiaraoktrilisa.html" class="project-link">
-          Detail portofolio →
-        </a>
-      </div>
-
-      <div class="team-card neon-pink animate" style="transition-delay: .2s">
-        <img src="../assets/images/profile/profile-2.jpeg" alt="Zahwa Rava Rahayu">
-        <h4>Zahwa Rava Rahayu</h4>
-        <p>UI / UX Designer</p>
-         <a href="detail-about/zahwaravarahayu.html" class="project-link">
-          Detail portofolio →
-        </a>
-      </div>
-
-      <div class="team-card neon-cyan animate animate-right" style="transition-delay: .3s">
-        <img src="../assets/images/profile/profile-3.png" alt="Marda Tilla">
-        <h4>Marda Tilla</h4>
-        <p>Content & Documentation</p>
-         <a href="detail-about/mardatilla.html" class="project-link">
-          Detail portofolio →
-        </a>
-      </div>
-
-      <div class="team-card neon-blue animate animate-left" style="transition-delay: .4s">
-        <img src="../assets/images/profile/profile-4.jpeg" alt="Vegia Dwi Yandra">
-        <h4>Vegia Dwi Yandra</h4>
-        <p>Project Manager</p>
-         <a href="detail-about/vegiadwiyandra.html" class="project-link">
-          Detail portofolio →
-        </a>
-
-      </div>
-
+    <div class="team-card">
+      <img src="../assets/images/profile/profile-2.jpeg">
+      <h4>Zahwa Rava Rahayu</h4>
+      <p>UI / UX Designer</p>
+      <button onclick="openDetail('detail-about/zahwaravarahayu.html')">
+        Detail portofolio →
+      </button>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="animate">
-    <p>© 2025 Kelompok 2 | Website Portfolio</p>
-  </footer>
+    <div class="team-card">
+      <img src="../assets/images/profile/profile-3.png">
+      <h4>Marda Tilla</h4>
+      <p>Content & Documentation</p>
+      <button onclick="openDetail('detail-about/mardatilla.html')">
+        Detail portofolio →
+      </button>
+    </div>
 
-  <!-- SCRIPT -->
-  <script src="../assets/js/main.js"></script>
-  <script src="../assets/js/navigation.js"></script>
-  <script src="../assets/js/transition.js"></script>
+    <div class="team-card">
+      <img src="../assets/images/profile/profile-4.jpeg">
+      <h4>Vegia Dwi Yandra</h4>
+      <p>Project Manager</p>
+      <button onclick="openDetail('detail-about/vegiadwiyandra.html')">
+        Detail portofolio →
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="detailModal">
+  <div class="modal-box">
+    <span class="close-modal" onclick="closeDetail()">✕</span>
+    <iframe id="detailFrame"></iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Kelompok 2 | Website Portfolio</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+  function openDetail(page) {
+    document.getElementById("detailModal").style.display = "flex";
+    document.getElementById("detailFrame").src = page;
+  }
+
+  function closeDetail() {
+    document.getElementById("detailModal").style.display = "none";
+    document.getElementById("detailFrame").src = "";
+  }
+</script>
 
 </body>
-
 </html>
