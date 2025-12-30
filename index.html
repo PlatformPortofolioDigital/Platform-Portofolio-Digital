@@ -103,6 +103,14 @@
     </section>
   </main>
 
+  <!-- ===============================
+     FOOTER
+================================ -->
+  <footer>
+    <p>© 2025 Kelompok 2 | Portfolio Website</p>
+  </footer>
+
+
   <script>
     // set --nav-height sesuai tinggi navbar beneran
     function syncNavHeight() {
@@ -164,23 +172,7 @@
   <script src="assets/js/navigation.js"></script>
   <script src="assets/js/main.js"></script>
 
-  // Tombol kembali detail project
-  <script>
-    window.addEventListener("load", () => {
-      const target = sessionStorage.getItem("scrollTarget");
-      if (!target) return;
-
-      // tunggu iframe siap
-      setTimeout(() => {
-        const el = document.getElementById(target);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-        sessionStorage.removeItem("scrollTarget");
-      }, 300);
-    });
-  </script>
-
+  
   <!-- GLOBAL NAV + THEME -->
   <script src="assets/js/navigation.js"></script>
   <script src="assets/js/main.js"></script>

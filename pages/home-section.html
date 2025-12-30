@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,9 +13,19 @@
 
   <style>
     /* ===== FIX: jadi 1 halaman full ===== */
-    html, body { height: 100%; margin: 0; padding: 0; }
-    body { overflow: hidden; } /* biar gak ada scroll di iframe */
-    
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    /* biar gak ada scroll di iframe */
+
     /* paksa hero 1 layar */
     .hero.hero-video {
       height: 100vh !important;
@@ -67,16 +78,13 @@
     </video>
 
     <div class="hero-content">
-      <h1>Group 2 Portfolio Website</h1>
+      <h1>Platform Portofolio Digital</h1>
       <p>
         Kami adalah Kelompok 2, tim yang berfokus pada pengembangan solusi digital
         kreatif dan modern. Website ini dibangun sebagai media portofolio untuk
         menampilkan karya, ide, serta proses pembelajaran kami di bidang teknologi
         dan pengembangan web.
       </p>
-
-      <!-- arahkan ke parent section projects -->
-      <a href="../index.html#projects" class="btn">Lihat Project</a>
     </div>
 
     <div class="hero-icons">
@@ -141,43 +149,44 @@
   </div>
 
   <script>
-  // ====== iframe height: karena ini 100vh, cukup kirim 100vh + sedikit ======
-  function sendHeight() {
-    const h = Math.max(window.innerHeight, document.documentElement.clientHeight);
-    parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const welcome = document.getElementById("welcome-screen");
-    const btn = document.getElementById("skip-intro");
-
-    sendHeight();
-    if (!welcome) return;
-
-    const KEY = "welcomeShown";
-    const already = sessionStorage.getItem(KEY);
-
-    const hideWelcome = () => {
-      welcome.classList.add("hide");
-      setTimeout(sendHeight, 400);
-    };
-
-    // kalau sudah pernah tampil di tab ini, langsung skip
-    if (already) {
-      welcome.classList.add("hide");
-      return;
+    // ====== iframe height: karena ini 100vh, cukup kirim 100vh + sedikit ======
+    function sendHeight() {
+      const h = Math.max(window.innerHeight, document.documentElement.clientHeight);
+      parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
     }
-    sessionStorage.setItem(KEY, "true");
 
-    // AUTO CLOSE < 3 detik (1.8 detik)
-    setTimeout(hideWelcome, 1800);
+    document.addEventListener("DOMContentLoaded", () => {
+      const welcome = document.getElementById("welcome-screen");
+      const btn = document.getElementById("skip-intro");
 
-    // tombol "Masuk"
-    if (btn) btn.addEventListener("click", hideWelcome);
-  });
+      sendHeight();
+      if (!welcome) return;
 
-  window.addEventListener("resize", sendHeight);
-</script>
+      const KEY = "welcomeShown";
+      const already = sessionStorage.getItem(KEY);
+
+      const hideWelcome = () => {
+        welcome.classList.add("hide");
+        setTimeout(sendHeight, 400);
+      };
+
+      // kalau sudah pernah tampil di tab ini, langsung skip
+      if (already) {
+        welcome.classList.add("hide");
+        return;
+      }
+      sessionStorage.setItem(KEY, "true");
+
+      // AUTO CLOSE < 3 detik (1.8 detik)
+      setTimeout(hideWelcome, 1800);
+
+      // tombol "Masuk"
+      if (btn) btn.addEventListener("click", hideWelcome);
+    });
+
+    window.addEventListener("resize", sendHeight);
+  </script>
 
 </body>
+
 </html>
