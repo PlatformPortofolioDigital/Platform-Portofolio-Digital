@@ -50,7 +50,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(15, 23, 42, 0.88);
+      background: var(--overlay);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       transition: opacity .35s ease, visibility .35s ease;
@@ -67,6 +67,21 @@
       cursor: pointer;
     }
   </style>
+
+<style>
+  /* welcome theme vars */
+  #welcome-screen .welcome-content { color: var(--text); }
+  #welcome-screen .welcome-content h2,
+  #welcome-screen .welcome-content h3 { color: var(--text); }
+  #welcome-screen .welcome-icons span { color: var(--primary-contrast); }
+  #welcome-screen #skip-intro {
+    background: rgba(255,255,255,0.10);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  [data-theme="dark"] #welcome-screen #skip-intro { background: rgba(255,255,255,0.08); }
+</style>
+
 </head>
 
 <body class="home-page embedded">
@@ -197,6 +212,7 @@
 </script>
 
 
+  <script src="../assets/js/theme-sync.js"></script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.6);
+      background: var(--overlay);
       z-index: 9999;
       align-items: center;
       justify-content: center;
@@ -31,7 +31,8 @@
       width: 80%;
       max-width: 800px;
       height: 80vh;
-      background: #fff;
+      background: var(--card);
+      color: var(--text);
       border-radius: 16px;
       overflow: hidden;
       position: relative;
@@ -39,6 +40,7 @@
 
     /* CLOSE */
     .close-modal {
+      color: var(--text);
       position: absolute;
       top: 12px;
       right: 16px;

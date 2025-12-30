@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>About Me - Profil Anggota Kelompok</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../assets/css/variables.css">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="../../assets/css/responsive.css">
 </head>
 
 <body>
@@ -12,25 +15,20 @@
   /* BACKGROUND SAMA SEPERTI CARD PROJECT */
   body {
     margin: 0;
-    background: linear-gradient(
-      135deg,
-      #0f3c4c 0%,
-      #1e6f85 45%,
-      #5fc4d6 100%
-    );
+    background: var(--bg);
     font-family: 'Poppins', sans-serif;
-    color: #e6faff;
+    color: var(--text);
   }
 
   /* CARD PUTIH → JADI TRANSPARAN */
   .detail-wrapper {
-    background: transparent;
+    background: var(--card);
     max-width: 420px;
     margin: 60px auto;
     padding: 2.6rem;
 
     border-radius: 26px;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid var(--border);
 
     box-shadow:
       0 30px 60px rgba(0,0,0,.35),
@@ -39,27 +37,27 @@
 
   /* TEXT */
   .detail-header h1 {
-    color: #f0fbff;
+    color: var(--text);
   }
 
   .role {
-    color: #c7f2ff;
+    color: var(--muted);
   }
 
   .detail-section h3 {
-    color: #ffffff;
+    color: var(--text);
   }
 
   .detail-section p,
   .detail-list li {
-    color: #e6faff;
+    color: var(--text);
   }
 
   /* SKILL BADGE */
   .skill-badges span {
-    background: rgba(255,255,255,.18);
-    border: 1px solid rgba(255,255,255,.35);
-    color: #ffffff;
+    background: rgba(56,189,248,.12);
+    border: 1px solid var(--border);
+    color: var(--text);
     padding: 7px 16px;
     border-radius: 999px;
     margin: 6px 6px 0 0;
@@ -123,6 +121,7 @@
     </div>
 
 
+<script src="../../assets/js/theme-sync.js"></script>
 </body>
 
 </html>
