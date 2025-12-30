@@ -1,107 +1,98 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog | Kelompok 2</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Artikel dan insight Kelompok 2 seputar pengembangan website." />
 
-  <link rel="stylesheet" href="../assets/css/variables.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+
+  <!-- WAJIB: sync tema dari parent (index iframe) -->
+  <script src="../assets/js/theme-sync.js"></script>
 </head>
-<body>
 
-<header class="navbar">
-  <h1 class="logo">PLATFORM PORTOFOLIO DIGITAL</h1>
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+<body class="projects-page">
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Kelompok 2</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<section class="hero">
-  <h2>BLOG</h2>
-</section>
+  <main>
+    <section class="hero">
+      <h2>BLOG</h2>
+    </section>
 
-<section class="blog-list">
-  <article class="blog-post">
-    <span class="category">Frontend</span>
-    <h3>Mengenal Frontend Development dan Perannya dalam Website
-</h3>
-    <p class="date">20 Desember 2025</p>
-    <p>Frontend development berfokus pada tampilan dan interaksi pengguna
-       menggunakan HTML, CSS, dan JavaScript. Website ini dirancang responsif, 
-       mudah digunakan, serta mendukung fitur dark mode.</p>
-    <a href="detail-blog/artikel-1.html" target="_top">
-  Baca Selengkapnya →
-</a>
+    <section class="blog-list">
+      <article class="blog-post">
+        <span class="category">Frontend</span>
+        <h3>Mengenal Frontend Development dan Perannya dalam Website</h3>
+        <p class="date">20 Desember 2025</p>
+        <p>
+          Frontend development berfokus pada tampilan dan interaksi pengguna menggunakan HTML, CSS, dan JavaScript.
+          Website ini dirancang responsif, mudah digunakan, serta mendukung fitur dark mode.
+        </p>
+        <a href="detail-blog/artikel-1.html" target="_top">Baca Selengkapnya →</a>
+      </article>
 
-  </article>
+      <article class="blog-post">
+        <span class="category">Team Project</span>
+        <h3>Pentingnya Kerja Tim dalam Proyek Pengembangan Website</h3>
+        <p class="date">21 Desember 2025</p>
+        <p>
+          Kolaborasi tim menentukan kualitas hasil akhir proyek. Artikel ini membahas pentingnya komunikasi,
+          pembagian tugas, dan konsistensi dalam pengembangan website kelompok.
+        </p>
+        <a href="detail-blog/artikel-2.html" target="_top">Baca Selengkapnya →</a>
+      </article>
+    </section>
 
-  <article class="blog-post">
-    <span class="category">Team Project</span>
-    <h3>Pentingnya Kerja Tim dalam Proyek Pengembangan Website
-</h3>
-    <p class="date">21 Desember 2025</p>
-    <p>Ini adalah ringkasan artikel blog kedua.</p>
-    <a href="detail-blog/artikel-2.html" target="_top">
-  Baca Selengkapnya →
-</a>
+    <section class="blog-archive">
+      <h3>Kategori Artikel</h3>
+      <ul>
+        <li>Frontend</li>
+        <li>Team Project</li>
+        <li>UI/UX</li>
+      </ul>
+    </section>
+  </main>
 
-  </article>
-</section>
+  <footer>
+    <p>© 2025 Kelompok 2. All rights reserved.</p>
+  </footer>
 
-<section class="blog-archive">
-  <h3>Kategori Artikel</h3>
-  <ul>
-    <li>Frontend</li>
-    <li>Team Project</li>
-    <li>UI/UX</li>
-  </ul>
-</section>
+  <!-- GLOBAL UI & INTERAKTIVITAS -->
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/navigation.js"></script>
 
+  <!-- EMBED (hanya kalau dibuka di iframe index) -->
+  <script>
+    const isEmbedded = window.self !== window.top;
 
-<footer>
-  <p>© 2025 Kelompok 2</p>
-</footer>
+    if (isEmbedded) {
+      document.body.classList.add("embedded");
 
-<!-- GLOBAL UI & INTERAKTIVITAS (WAJIB) -->
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/navigation.js"></script>
-<script>
-  if (window.self !== window.top) {
-    document.body.classList.add("embedded");
-  }
-</script>
-<script>
-  // hide navbar/ footer di mode embed + kirim tinggi ke parent
-  document.body.classList.add("embedded");
+      function sendHeight() {
+        const h = Math.max(
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight
+        );
+        parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
+      }
 
-  function sendHeight() {
-    const h = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    );
-    parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
-  }
-
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
-  new ResizeObserver(sendHeight).observe(document.body);
-</script>
-
-<script>
-  window.addEventListener("message", (event) => {
-    if (!event.data || event.data.type !== "THEME_CHANGE") return;
-
-    const theme = event.data.theme; // "light" | "dark"
-    document.documentElement.setAttribute("data-theme", theme);
-  });
-</script>
-<script src="../assets/js/theme-sync.js"></script>
-
-
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+      new ResizeObserver(sendHeight).observe(document.body);
+    }
+  </script>
 </body>
 </html>

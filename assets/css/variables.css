@@ -518,3 +518,125 @@ header.navbar nav a{
     z-index: 9999 !important;
   }
 }
+
+/* ===============================
+   THEME BRIDGE (WAJIB)
+   Bikin semua halaman ikut var() tanpa bongkar style.css
+================================ */
+
+/* transisi halus saat toggle */
+html.theme-transition *,
+html.theme-transition {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease !important;
+}
+
+/* GLOBAL background + text */
+html, body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* biar section/hero/container gak “nge-lock” warna hardcode */
+main, section, header, footer,
+.hero, .section, .container,
+.onepage-wrapper, .page-frame {
+  color: var(--text) !important;
+}
+
+/* NAVBAR selalu konsisten */
+header.navbar, .navbar {
+  background: var(--nav-bg) !important;
+  color: var(--nav-text) !important;
+  border-bottom: 1px solid var(--border) !important;
+  backdrop-filter: blur(10px);
+}
+header.navbar nav a, .navbar nav a {
+  color: var(--nav-text) !important;
+}
+header.navbar nav a.active, .navbar nav a.active {
+  color: var(--primary) !important;
+}
+
+/* LINK */
+a { color: var(--primary) !important; }
+a:hover { opacity: .9; }
+
+/* CARD / BOX (About, Project, Blog, Contact) */
+.team-card,
+.project-card,
+.blog-post,
+.contact-card2,
+.contact-info2,
+.contact-grid2,
+.section-desc,
+.card {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+/* TEXT MUTED (abu-abu) biar kebaca di dark */
+p, span, small, .muted, .subtitle, .desc,
+.section-desc p {
+  color: var(--muted) !important;
+}
+
+/* HEADING tetap terang */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text) !important;
+}
+
+/* FORM (Contact) */
+input, textarea, select {
+  background: rgba(255,255,255,.02) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--muted) !important;
+}
+button, .btn {
+  background: var(--primary) !important;
+  color: var(--primary-contrast) !important;
+  border: 0 !important;
+}
+button:hover, .btn:hover { filter: brightness(1.05); }
+
+/* ===============================
+   FORCE PAGE GRADIENT (FIX)
+   supaya Projects/Blog/Contact ikut berubah beneran
+================================ */
+
+/* gradient default (LIGHT) */
+:root{
+  --page-grad-start: #8ad7e1;
+  --page-grad-end: #0f172a;
+}
+
+/* gradient saat DARK */
+[data-theme="dark"]{
+  --page-grad-start: #020617;
+  --page-grad-end: #0b1220;
+}
+
+/* PROJECTS section background (yang ngunci turquoise) */
+.projects{
+  background: linear-gradient(180deg, var(--page-grad-start), var(--page-grad-end)) !important;
+}
+
+/* CONTACT page: body pakai :has() ngunci turquoise */
+body:has(main.contact-page){
+  background: linear-gradient(180deg, var(--page-grad-start), var(--page-grad-end)) !important;
+}
+
+/* BLOG: layer fallback yang fixed ngunci turquoise */
+.blog-list::before{
+  background: linear-gradient(180deg, var(--page-grad-start), var(--page-grad-end)) !important;
+}
+
+/* Blog hero biar tetep netral */
+body:has(.blog-list) .hero,
+body:has(.blog-post) .hero{
+  background: transparent !important;
+}
