@@ -3135,3 +3135,131 @@ body.embedded footer {
 }
 
 
+/* ==================================================
+   FIX HOME MOBILE (ANTI TABRAKAN)
+   LETAKKAN PALING BAWAH style.css
+================================================== */
+@media (max-width: 768px) {
+
+  /* Hero jadi vertikal */
+  #home.hero-video {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 60px;
+  }
+
+  /* Teks hero full & tengah */
+  #home.hero-video .hero-content {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #home.hero-video .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  #home.hero-video .hero-content p {
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ICON: HAPUS absolute */
+  #home.hero-video .hero-icons {
+    position: static;
+    transform: none;
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ICON diperkecil */
+  #home.hero-video .hero-icons .icon {
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (max-width: 576px) {
+  #home.hero-video .hero-icons {
+    display: none;
+  }
+}
+/* ===============================
+   FIX MOBILE HOME TABRAKAN
+   PASTI KENA
+================================ */
+@media (max-width: 768px) {
+
+  /* 1. Hero jadi kolom */
+  .hero-video {
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 110px;
+    text-align: center;
+  }
+
+  /* 2. Text full tengah */
+  .hero-content {
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* 3. ICON = MATIKAN TOTAL DI MOBILE */
+  .hero-icons {
+    display: none !important;
+  }
+}
+/* ===============================
+   HERO HOME – CENTER TEXT & FONT FIX
+   (PASTI KENA)
+================================ */
+
+/* container hero */
+#home.hero-video {
+  justify-content: center;
+}
+
+/* konten teks */
+#home.hero-video .hero-content {
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 24px;
+}
+
+/* JUDUL */
+#home.hero-video .hero-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: #e0f2fe;
+  letter-spacing: 0.3px;
+}
+
+/* PARAGRAF */
+#home.hero-video .hero-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  max-width: 720px;
+  margin: 0 auto;
+  color: rgba(248, 250, 252, 0.88);
+
+  /* HAPUS justify */
+  text-align: center;
+}
