@@ -181,41 +181,32 @@
     <p>© 2025 Platform Portofolio Digital</p>
   </footer>
 
-   <!-- GLOBAL UI & INTERAKTIVITAS -->
-  <script src="../assets/js/main.js"></script>
-  <script src="../assets/js/navigation.js"></script>
+ 
+ 
   <script>
-  if (window.self !== window.top) {
+  const isEmbedded = window.self !== window.top;
+
+  if (isEmbedded) {
     document.body.classList.add("embedded");
+
+    function sendHeight() {
+      const h = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
+      parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
+    }
+
+    window.addEventListener("load", sendHeight);
+    window.addEventListener("resize", sendHeight);
+    new ResizeObserver(sendHeight).observe(document.body);
   }
 </script>
-<script>
-  // hide navbar/ footer di mode embed + kirim tinggi ke parent
-  document.body.classList.add("embedded");
 
-  function sendHeight() {
-    const h = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    );
-    parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
-  }
-
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
-  new ResizeObserver(sendHeight).observe(document.body);
-</script>
-
-<script>
-  window.addEventListener("message", (event) => {
-    if (!event.data || event.data.type !== "THEME_CHANGE") return;
-
-    const theme = event.data.theme; // "light" | "dark"
-    document.documentElement.setAttribute("data-theme", theme);
-  });
-</script>
-
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/navigation.js"></script>
 <script src="../assets/js/theme-sync.js"></script>
+
 
 </body>
 </html>
