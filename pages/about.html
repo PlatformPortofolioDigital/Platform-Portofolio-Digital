@@ -187,5 +187,15 @@
   window.addEventListener("resize", sendHeight);
 </script>
 
+<script>
+  window.addEventListener("message", (event) => {
+    if (!event.data || event.data.type !== "THEME_CHANGE") return;
+
+    const theme = event.data.theme; // "light" | "dark"
+    document.documentElement.setAttribute("data-theme", theme);
+  });
+</script>
+
+
 </body>
 </html>
