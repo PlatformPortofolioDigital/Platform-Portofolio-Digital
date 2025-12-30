@@ -141,30 +141,43 @@
   </div>
 
   <script>
-    // ====== iframe height: karena ini 100vh, cukup kirim 100vh + sedikit ======
-    function sendHeight() {
-      const h = Math.max(window.innerHeight, document.documentElement.clientHeight);
-      parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
+  // ====== iframe height: karena ini 100vh, cukup kirim 100vh + sedikit ======
+  function sendHeight() {
+    const h = Math.max(window.innerHeight, document.documentElement.clientHeight);
+    parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const welcome = document.getElementById("welcome-screen");
+    const btn = document.getElementById("skip-intro");
+
+    sendHeight();
+    if (!welcome) return;
+
+    const KEY = "welcomeShown";
+    const already = sessionStorage.getItem(KEY);
+
+    const hideWelcome = () => {
+      welcome.classList.add("hide");
+      setTimeout(sendHeight, 400);
+    };
+
+    // kalau sudah pernah tampil di tab ini, langsung skip
+    if (already) {
+      welcome.classList.add("hide");
+      return;
     }
+    sessionStorage.setItem(KEY, "true");
 
-    // ====== welcome overlay hide ======
-    document.addEventListener("DOMContentLoaded", () => {
-      const welcome = document.getElementById("welcome-screen");
-      const btn = document.getElementById("skip-intro");
+    // AUTO CLOSE < 3 detik (1.8 detik)
+    setTimeout(hideWelcome, 1800);
 
-      // pastikan tinggi langsung benar
-      sendHeight();
+    // tombol "Masuk"
+    if (btn) btn.addEventListener("click", hideWelcome);
+  });
 
-      if (btn && welcome) {
-        btn.addEventListener("click", () => {
-          welcome.classList.add("hide");
-          // setelah animasi, pastikan parent tetap 100vh
-          setTimeout(sendHeight, 400);
-        });
-      }
-    });
+  window.addEventListener("resize", sendHeight);
+</script>
 
-    window.addEventListener("resize", sendHeight);
-  </script>
 </body>
 </html>
