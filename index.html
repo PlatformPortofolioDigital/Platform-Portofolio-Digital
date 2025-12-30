@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,14 +16,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    html { scroll-behavior: smooth; }
-#home .page-frame { min-height: calc(100vh - var(--nav-height)); }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #home .page-frame {
+      min-height: calc(100vh - var(--nav-height));
+    }
 
     /* navbar tinggi dinamis */
-    :root { --nav-height: 72px; }
+    :root {
+      --nav-height: 72px;
+    }
 
     /* satu navbar aja */
-    .onepage-navbar{
+    .onepage-navbar {
       position: sticky;
       top: 0;
       z-index: 9999;
@@ -30,23 +38,24 @@
     }
 
     /* wrapper scroll utama (bukan iframe) */
-    .onepage-wrapper{
+    .onepage-wrapper {
       min-height: 100vh;
       background: var(--light);
     }
 
     /* setiap section halaman */
-    .onepage-section{
+    .onepage-section {
       scroll-margin-top: var(--nav-height);
       background: var(--light);
     }
 
     /* iframe auto height */
-    .page-frame{
+    .page-frame {
       width: 100%;
       border: 0;
       display: block;
-      height: 100px; /* akan di-resize via JS */
+      height: 100px;
+      /* akan di-resize via JS */
       background: var(--light);
     }
   </style>
@@ -55,21 +64,21 @@
 <body class="onepage-home">
   <!-- NAVBAR -->
   <header class="navbar onepage-navbar" id="mainNavbar">
-  <div class="logo">Kelompok 2</div>
+    <div class="logo">Kelompok 2</div>
 
-  <!-- tombol hamburger (mobile) -->
-  
+    <!-- tombol hamburger (mobile) -->
 
-  <nav id="mainNav">
-    <a href="#home" data-goto="home" class="active">Home</a>
-    <a href="#about" data-goto="about">About</a>
-    <a href="#projects" data-goto="projects">Projects</a>
-    <a href="#blog" data-goto="blog">Blog</a>
-    <a href="#contact" data-goto="contact">Contact</a>
-  </nav>
 
-  
-</header>
+    <nav id="mainNav">
+      <a href="#home" data-goto="home" class="active">Home</a>
+      <a href="#about" data-goto="about">About</a>
+      <a href="#projects" data-goto="projects">Projects</a>
+      <a href="#blog" data-goto="blog">Blog</a>
+      <a href="#contact" data-goto="contact">Contact</a>
+    </nav>
+
+
+  </header>
 
 
   <main class="onepage-wrapper">
@@ -120,7 +129,7 @@
     const io = new IntersectionObserver((entries) => {
       const visible = entries
         .filter(en => en.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (!visible) return;
       const id = visible.target.id;
       navLinks.forEach(a => a.classList.toggle("active", a.dataset.goto === id));
@@ -152,26 +161,28 @@
       if (el) el.scrollIntoView({ behavior: "auto", block: "start" });
     });
   </script>
-<script src="assets/js/navigation.js"></script>
-<script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
 
-// Tombol kembali detail project
-<script>
-  window.addEventListener("load", () => {
-    const target = sessionStorage.getItem("scrollTarget");
-    if (!target) return;
+  // Tombol kembali detail project
+  <script>
+    window.addEventListener("load", () => {
+      const target = sessionStorage.getItem("scrollTarget");
+      if (!target) return;
 
-    // tunggu iframe siap
-    setTimeout(() => {
-      const el = document.getElementById(target);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      sessionStorage.removeItem("scrollTarget");
-    }, 300);
-  });
-</script>
+      // tunggu iframe siap
+      setTimeout(() => {
+        const el = document.getElementById(target);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        sessionStorage.removeItem("scrollTarget");
+      }, 300);
+    });
+  </script>
 
+<script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/navigation.js"></script>
 
 </body>
 </html>
