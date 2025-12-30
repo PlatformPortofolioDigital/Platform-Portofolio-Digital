@@ -2950,3 +2950,13 @@ body.embedded footer {
   display: none !important;
 }
 
+/* Gambar Detail Blog*/
+.article-img {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  border-radius: 16px;
+}
+
+
