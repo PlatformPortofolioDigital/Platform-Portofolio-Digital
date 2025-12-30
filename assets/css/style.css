@@ -3084,3 +3084,50 @@ body.embedded footer {
 }
 
 
+/* =========================================================
+   THEME PATCH (FINAL) - BIKIN ISI ABOUT IKUT DARK/LIGHT
+   Karena sebelumnya banyak hardcode + !important
+========================================================= */
+
+/* DARK MODE */
+html[data-theme="dark"] body.about-page {
+  background: linear-gradient(180deg, #020617, #071a2f, #0b1220) !important;
+  color: var(--text) !important;
+}
+
+html[data-theme="dark"] body.about-page .section {
+  background: linear-gradient(180deg,
+    rgba(2, 6, 23, 0.92),
+    rgba(11, 18, 32, 0.92),
+    rgba(2, 6, 23, 0.92)
+  ) !important;
+}
+
+html[data-theme="dark"] body.about-page .hero h2 {
+  color: var(--text) !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="dark"] body.about-page .hero p {
+  color: var(--muted) !important;
+}
+
+html[data-theme="dark"] body.about-page .team-card {
+  background: rgba(17, 24, 39, 0.82) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+html[data-theme="dark"] body.about-page .team-card h4 {
+  color: var(--text) !important;
+}
+
+html[data-theme="dark"] body.about-page .team-card p {
+  color: var(--muted) !important;
+}
+
+/* biar button/link kebaca */
+html[data-theme="dark"] body.about-page a,
+html[data-theme="dark"] body.about-page button {
+  color: var(--text) !important;
+}
