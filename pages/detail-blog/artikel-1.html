@@ -80,7 +80,21 @@
       </li>
     </ul>
 
-    <a href="../blog.html" class="back-link">← Kembali ke Blog</a>
+    <!-- ===============================
+     BACK BUTTON
+================================ -->
+    <section class="blog-back">
+      <a href="../../index.html" class="btn" id="backToBlog">
+        ← Kembali ke Blog
+      </a>
+
+      <script>
+        document.getElementById("backToBlog").addEventListener("click", () => {
+          sessionStorage.setItem("scrollTarget", "blog");
+        });
+      </script>
+
+    </section>
   </main>
 
 </body>
