@@ -4,17 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Judul Artikel 1</title>
-  <link rel="stylesheet" href="../../assets/css/style.css">
+  <title>Judul Artikel 2</title>
 
+  <!-- GLOBAL CSS (WAJIB: variables dulu, baru style, lalu responsive) -->
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
 </head>
 
-<body>
-  <!-- ===============================
-       NAVBAR
-  ================================ -->
-  <header>
-    <div class="logo">Kelompok 2</div>
+<body class="blog-detail-page">
+
+  <!-- NAVBAR (SAMAIN DENGAN PAGE LAIN) -->
+  <header class="navbar">
+    <h1 class="logo">PLATFORM PORTOFOLIO DIGITAL</h1>
     <nav>
       <a href="../../index.html">Home</a>
       <a href="../about.html">About</a>
@@ -24,77 +26,83 @@
     </nav>
   </header>
 
-  <main class="onepage-wrapper">
-    <section class="onepage-section">
-      <div class="container">
-        <div class="card article-detail">
-          <article>
-
-            <img src="../../assets/images/blog/art-2.jpg" alt="Preview artikel 2" class="article-img">
-
-            <h1>Pentingnya Kerja Tim dalam Proyek Pengembangan Website
-
-            </h1>
-            <p class="date">21 Desember 2025</p>
-            <p class="category">Kategori: Team Project</p>
-
-            <p>
-              Dalam sebuah proyek pengembangan website, kerja tim memiliki peranan yang sangat penting.
-              Proyek yang dikerjakan secara tim memungkinkan pembagian tugas yang lebih jelas, sehingga
-              pekerjaan dapat diselesaikan dengan lebih efektif dan efisien. Setiap anggota tim biasanya
-              memiliki peran masing-masing, seperti frontend developer, backend developer, UI/UX designer,
-              dan project manager. Dengan pembagian peran yang baik, setiap anggota dapat fokus pada tugasnya
-              dan menghasilkan kualitas kerja yang maksimal. Komunikasi menjadi kunci utama dalam kerja tim.
-              Diskusi rutin, penggunaan tools kolaborasi seperti GitHub atau Trello, serta keterbukaan terhadap
-              masukan akan membantu meminimalkan kesalahan dan konflik dalam proyek. Melalui kerja tim yang solid,
-              sebuah proyek website tidak hanya selesai tepat waktu, tetapi juga memiliki kualitas yang lebih baik.
-              Oleh karena itu, kemampuan bekerja dalam tim merupakan skill penting yang harus dimiliki oleh setiap
-              developer.
-
-            </p>
-
-            <p>
-              Website dikembangkan menggunakan HTML, CSS, dan JavaScript
-              dengan menerapkan desain responsif dan dark mode.
-            </p>
-            <h3>Referensi Artikel</h3>
-
-            <ul>
-              <li>
-                <a href="https://jtiik.ub.ac.id/index.php/jtiik/article/view/2369" target="_blank" rel="noopener">
-                  Suryanto, A., & Pratama, R. (2021).
-                  <em>Pengaruh Kerja Tim terhadap Keberhasilan Proyek
-                    Pengembangan Perangkat Lunak</em>.
-                  Jurnal Teknologi Informasi dan Ilmu Komputer.
-                </a>
-              </li>
-
-              <li>
-                <a href="https://www.smashingmagazine.com/2018/01/agile-teamwork-web-projects/" target="_blank"
-                  rel="noopener">
-                  Smashing Magazine (2018).
-                  <em>Why Teamwork Is Essential in Web Development Projects</em>.
-                </a>
-              </li>
-            </ul>
-
-<section class="blog">
-    <a href="../blog.html" class="btn" id="backToBlog">
-  ← Kembali ke Blog
-</a>
-
-<script>
-  document.getElementById("backToBlog").addEventListener("click", () => {
-    sessionStorage.setItem("scrollTarget", "Blog");
-  });
-</script>
-
+  <!-- ARTICLE HEADER -->
+  <section class="article-header">
+    <h1>Pentingnya Kerja Tim dalam Proyek Pengembangan Website</h1>
+    <p class="article-desc">
+      Kerja tim yang solid membuat pembagian tugas jelas, komunikasi rapi, dan kualitas hasil akhir lebih baik.
+    </p>
+    <div class="article-meta">
+      <span>21 Desember 2025</span>
+      <span>•</span>
+      <span>Team Project</span>
+    </div>
   </section>
 
+  <!-- ARTICLE IMAGE -->
+  <section class="article-image">
+    <img src="../../assets/images/blog/art-2.jpg" alt="Kerja Tim">
+  </section>
+
+  <!-- ARTICLE CONTENT -->
+  <main class="article-content">
+    <p>
+      Dalam sebuah proyek pengembangan website, kerja tim memiliki peranan yang sangat penting.
+      Proyek yang dikerjakan secara tim memungkinkan pembagian tugas yang lebih jelas, sehingga pekerjaan
+      dapat diselesaikan dengan lebih efektif dan efisien.
+    </p>
+
+    <p>
+      Setiap anggota tim biasanya memiliki peran masing-masing, seperti frontend developer, backend developer,
+      UI/UX designer, dan project manager. Dengan pembagian peran yang baik, setiap anggota dapat fokus
+      pada tugasnya dan menghasilkan kualitas kerja yang maksimal.
+    </p>
+
+    <p>
+      Komunikasi menjadi kunci utama dalam kerja tim. Diskusi rutin, penggunaan tools kolaborasi seperti GitHub
+      atau Trello, serta keterbukaan terhadap masukan akan membantu meminimalkan kesalahan dan konflik
+      dalam proyek.
+    </p>
+
+    <p>
+      Website pada proyek ini dikembangkan menggunakan HTML, CSS, dan JavaScript dengan menerapkan desain
+      responsif serta dukungan dark mode agar nyaman digunakan.
+    </p>
+
+    <!-- ===== REFERENSI ARTIKEL ===== -->
+    <h3>Referensi Artikel</h3>
+
+    <ul>
+      <li>
+        <a href="https://jtiik.ub.ac.id/index.php/jtiik/article/view/2369" target="_blank" rel="noopener">
+          Suryanto, A., &amp; Pratama, R. (2021).
+          <em>Pengaruh Kerja Tim terhadap Keberhasilan Proyek Pengembangan Perangkat Lunak</em>.
+          Jurnal Teknologi Informasi dan Ilmu Komputer.
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.smashingmagazine.com/2018/01/agile-teamwork-web-projects/" target="_blank" rel="noopener">
+          Smashing Magazine (2018).
+          <em>Why Teamwork Is Essential in Web Development Projects</em>.
+        </a>
+      </li>
+    </ul>
+
+    <a href="../blog.html" class="back-link" id="backToBlog">← Kembali ke Blog</a>
   </main>
+
+  <script>
+    // Optional: kalau kamu pakai scrollTarget di blog
+    document.getElementById("backToBlog")?.addEventListener("click", () => {
+      sessionStorage.setItem("scrollTarget", "Blog");
+    });
+  </script>
+
   <!-- GLOBAL UI & INTERAKTIVITAS -->
   <script src="../../assets/js/main.js"></script>
   <script src="../../assets/js/navigation.js"></script>
+
 </body>
 
 </html>

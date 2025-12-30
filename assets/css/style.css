@@ -2091,6 +2091,130 @@ body:has(.blog-list){
 }
 
 /* =========================================================
+   BLOG DETAIL PAGE (detail-blog/*)
+   Biar temanya masuk & konsisten dengan Projects
+========================================================= */
+
+body.blog-detail-page{
+  background: linear-gradient(180deg, #8ad7e1, #0f172a) !important;
+  color: #c7f5ff !important;
+}
+
+body.blog-detail-page .article-header{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 6.5rem 1rem 1.75rem;
+  text-align: center;
+}
+
+body.blog-detail-page .article-header h1{
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #e0f2fe;
+  text-shadow:
+    0 0 10px rgba(56, 189, 248, 0.35),
+    0 0 22px rgba(125, 211, 252, 0.20);
+}
+
+body.blog-detail-page .article-desc{
+  margin-top: .75rem;
+  font-size: 1.05rem;
+  color: rgba(199, 245, 255, 0.88);
+  line-height: 1.85;
+}
+
+body.blog-detail-page .article-meta{
+  margin-top: 1rem;
+  display: inline-flex;
+  gap: .6rem;
+  align-items: center;
+  padding: .55rem .9rem;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 999px;
+  background: rgba(2, 4, 5, 0.42);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.25);
+  color: rgba(224, 242, 254, 0.92);
+  font-weight: 600;
+}
+
+body.blog-detail-page .article-image{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1rem 1.5rem;
+}
+
+body.blog-detail-page .article-image img{
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(56, 189, 248, 0.30);
+  box-shadow:
+    0 14px 34px rgba(15, 23, 42, 0.40),
+    0 0 22px rgba(56, 213, 248, 0.25);
+}
+
+body.blog-detail-page .article-content{
+  max-width: 920px;
+  margin: 0 auto 4.5rem;
+  padding: 2rem 1.75rem;
+  background: linear-gradient(145deg, rgba(2, 4, 5, 0.82), rgba(87, 225, 253, 0.18));
+  border: 1px solid rgba(56, 189, 248, 0.30);
+  border-radius: 18px;
+  box-shadow:
+    0 16px 40px rgba(15, 23, 42, 0.42),
+    0 0 22px rgba(56, 213, 248, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+body.blog-detail-page .article-content p,
+body.blog-detail-page .article-content li{
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(199, 245, 255, 0.92);
+}
+
+body.blog-detail-page .article-content h3{
+  margin-top: 1.6rem;
+  margin-bottom: .75rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #e0f2fe;
+}
+
+body.blog-detail-page .article-content ul{
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+body.blog-detail-page .article-content a{
+  color: #7dd3fc;
+  text-decoration: none;
+}
+
+body.blog-detail-page .article-content a:hover{
+  text-decoration: underline;
+}
+
+body.blog-detail-page .back-link{
+  display: inline-block;
+  margin-top: 1.75rem;
+  padding: .85rem 1.15rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #34d399);
+  color: #0b1220;
+  font-weight: 800;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+}
+
+body.blog-detail-page .back-link:hover{
+  transform: translateY(-2px);
+}
+
+/* =========================================================
    ABOUT -> MATCH PROJECTS / CONTACT CYBER THEME
    (tanpa ubah HTML)
 ========================================================= */
