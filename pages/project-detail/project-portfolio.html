@@ -120,9 +120,16 @@
      BACK BUTTON
 ================================ -->
   <section class="project-back">
-    <a href="../../index.html#projects" class="btn">
+    <a href="../../index.html" class="btn" id="backToProjects">
   ← Kembali ke Projects
 </a>
+
+<script>
+  document.getElementById("backToProjects").addEventListener("click", () => {
+    sessionStorage.setItem("scrollTarget", "projects");
+  });
+</script>
+
   </section>
 
   <!-- ===============================
