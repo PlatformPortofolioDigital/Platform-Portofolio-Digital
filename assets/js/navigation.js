@@ -1,66 +1,68 @@
 // assets/js/navigation.js
-// Navbar global: active indicator + smooth scroll + mobile hamburger menu (tanpa ubah HTML)
+// Global Navigation: active indicator + smooth scroll + scrollspy + REAL mobile hamburger
+// Tanpa ubah HTML (dibuat via JS). Aman walau file ini kepanggil 2x (guard).
 
 (function () {
+  if (window.__PPD_NAV_INIT__) return;
+  window.__PPD_NAV_INIT__ = true;
 
-  function qs(sel, root = document) {
-    return root.querySelector(sel);
-  }
+  const MOBILE_MAX = 992; // samain dengan variables.css (max-width: 992px)
 
-  function qsa(sel, root = document) {
-    return [...root.querySelectorAll(sel)];
-  }
+  const qs = (sel, root = document) => root.querySelector(sel);
+  const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  const getHeader = () => qs("header.navbar") || qs("header.navbar, .navbar") || qs(".navbar");
+  const getNav = () => {
+    const header = getHeader();
+    return header ? qs("nav", header) : null;
+  };
 
   function normalizeFile(path) {
-    const parts = (path || "").split("/");
-    return parts[parts.length - 1];
+    const parts = String(path || "").split("/");
+    return parts[parts.length - 1] || "";
   }
 
   /* ===============================
-     ACTIVE NAV BY PAGE (multi page)
+     1) ACTIVE NAV (MULTI PAGE)
   ================================ */
   function setActiveByPage() {
     const currentFile = normalizeFile(location.pathname) || "index.html";
-    const links = qsa("header.navbar nav a");
+    const links = qsa("header.navbar nav a, .navbar nav a");
 
-    links.forEach(link => {
+    links.forEach((link) => {
       link.classList.add("nav-link");
       link.classList.remove("active");
 
       const href = link.getAttribute("href") || "";
-      // kalau anchor (#section) skip di page-mode
       if (href.startsWith("#")) return;
 
       const hrefFile = normalizeFile(href);
-      if (hrefFile === currentFile) {
+      if (hrefFile && hrefFile === currentFile) {
         link.classList.add("active");
       }
     });
   }
 
   /* ===============================
-     NAVBAR SCROLL EFFECT
+     2) NAVBAR SCROLL EFFECT
   ================================ */
   function enableNavbarScrollEffect() {
-    const header = qs("header.navbar");
+    const header = getHeader();
     if (!header) return;
 
-    function onScroll() {
+    const onScroll = () => {
       if (window.scrollY > 20) header.classList.add("nav-scrolled");
       else header.classList.remove("nav-scrolled");
-    }
+    };
 
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
   }
 
   /* ===============================
-     SMOOTH SCROLL (anchor links)
+     3) SMOOTH SCROLL (ANCHOR LINKS)
   ================================ */
   function enableSmoothScroll() {
-    const header = qs("header.navbar");
-    const headerOffset = () => (header ? header.getBoundingClientRect().height : 0);
-
     document.addEventListener("click", (e) => {
       const a = e.target.closest('a[href^="#"]');
       if (!a) return;
@@ -73,105 +75,176 @@
 
       e.preventDefault();
 
-      const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset() - 12;
+      const header = getHeader();
+      const headerH = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+
+      const top = target.getBoundingClientRect().top + window.pageYOffset - headerH - 12;
       window.scrollTo({ top, behavior: "smooth" });
     });
   }
 
   /* ===============================
-     SCROLLSPY (active by section) - hanya kalau ada anchor menu
+     4) SCROLLSPY (ACTIVE BY SECTION)
+     - jalan kalau nav punya anchor #...
   ================================ */
   function enableScrollSpy() {
-    const header = qs("header.navbar");
-    const navLinks = qsa('header.navbar nav a[href^="#"]');
+    const header = getHeader();
+    const navLinks = qsa('header.navbar nav a[href^="#"], .navbar nav a[href^="#"]');
     if (!header || navLinks.length === 0) return;
 
     const sections = navLinks
-      .map(a => qs(a.getAttribute("href")))
+      .map((a) => qs(a.getAttribute("href")))
       .filter(Boolean);
 
     if (sections.length === 0) return;
 
     const linkById = new Map();
-    navLinks.forEach(a => {
-      a.classList.add("nav-link");
-      linkById.set(a.getAttribute("href").slice(1), a);
+    navLinks.forEach((a) => {
+      const id = (a.getAttribute("href") || "").replace("#", "");
+      if (id) linkById.set(id, a);
     });
 
-    const obs = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(en => en.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((en) => en.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-      if (!visible) return;
-      const id = visible.target.id;
-      navLinks.forEach(a => a.classList.remove("active"));
-      const hit = linkById.get(id);
-      if (hit) hit.classList.add("active");
-    }, {
-      root: null,
-      threshold: [0.2, 0.35, 0.5],
-      rootMargin: `-${Math.ceil(header.getBoundingClientRect().height)}px 0px -60% 0px`
-    });
+        if (!visible) return;
 
-    sections.forEach(s => obs.observe(s));
+        const id = visible.target.id;
+        navLinks.forEach((a) => a.classList.remove("active"));
+        const hit = linkById.get(id);
+        if (hit) hit.classList.add("active");
+      },
+      {
+        root: null,
+        threshold: [0.2, 0.35, 0.5],
+        rootMargin: `-${Math.ceil(header.getBoundingClientRect().height)}px 0px -60% 0px`,
+      }
+    );
+
+    sections.forEach((s) => obs.observe(s));
   }
 
   /* ===============================
-     MOBILE MENU
-     - tombol & panel ditempel ke header (bukan ke nav)
-     - nav desktop disembunyikan oleh CSS media query
+     5) MOBILE HAMBURGER (REAL)
+     - bikin tombol + panel
+     - clone link dari nav asli
   ================================ */
   function ensureMobileMenu() {
-    const header = qs("header.navbar");
-    const nav = qs("header.navbar nav");
+    const header = getHeader();
+    const nav = getNav();
     if (!header || !nav) return;
 
-    // bikin hanya sekali
-    if (!qs("#mobile-menu-btn")) {
-      const btn = document.createElement("button");
+    // bikin tombol hanya sekali
+    let btn = qs("#mobile-menu-btn");
+    if (!btn) {
+      btn = document.createElement("button");
       btn.id = "mobile-menu-btn";
       btn.type = "button";
-      btn.textContent = "☰";
       btn.setAttribute("aria-label", "Open Menu");
+      btn.setAttribute("aria-expanded", "false");
+      btn.innerHTML = '<span aria-hidden="true">☰</span>';
       header.appendChild(btn);
     }
 
-    if (!qs("#mobile-menu-panel")) {
-      const panel = document.createElement("div");
+    // bikin panel hanya sekali
+    let panel = qs("#mobile-menu-panel");
+    if (!panel) {
+      panel = document.createElement("div");
       panel.id = "mobile-menu-panel";
-
-      // clone link dari nav desktop
-      qsa("a", nav).forEach(a => {
-        const clone = a.cloneNode(true);
-        clone.classList.add("nav-link");
-        panel.appendChild(clone);
-      });
-
+      panel.setAttribute("role", "menu");
+      panel.setAttribute("aria-label", "Mobile Navigation");
       header.appendChild(panel);
     }
 
-    const btn = qs("#mobile-menu-btn");
-    const panel = qs("#mobile-menu-panel");
-
-    // toggle open
-    btn.addEventListener("click", () => {
-      panel.classList.toggle("open");
+    // isi panel (clone links) - refresh tiap load biar update kalau nav berubah
+    panel.innerHTML = "";
+    const links = qsa("a", nav).filter((a) => (a.getAttribute("href") || "").trim() !== "");
+    links.forEach((a) => {
+      const clone = a.cloneNode(true);
+      clone.classList.add("nav-link");
+      clone.setAttribute("role", "menuitem");
+      panel.appendChild(clone);
     });
 
-    // close on outside click
-    document.addEventListener("click", (e) => {
-      if (!panel.contains(e.target) && !btn.contains(e.target)) {
-        panel.classList.remove("open");
-      }
+    const closePanel = () => {
+      panel.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    };
+
+    const openPanel = () => {
+      panel.classList.add("open");
+      btn.setAttribute("aria-expanded", "true");
+    };
+
+    const toggle = () => {
+      if (panel.classList.contains("open")) closePanel();
+      else openPanel();
+    };
+
+    // click tombol
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggle();
     });
 
-    // close when click link
+    // klik link dalam panel -> tutup
     panel.addEventListener("click", (e) => {
       const a = e.target.closest("a");
       if (!a) return;
-      panel.classList.remove("open");
+      closePanel();
     });
+
+    // klik luar -> tutup
+    document.addEventListener("click", (e) => {
+      if (!panel.classList.contains("open")) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      closePanel();
+    });
+
+    // esc -> tutup
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      closePanel();
+    });
+  }
+
+  /* ===============================
+     6) NAVBAR STICKY DI MOBILE
+     - user minta: navbar + hamburger tetap ada saat scroll
+     - kita paksa fixed di mobile biar pasti.
+  ================================ */
+  function keepNavbarVisibleOnMobile() {
+    const header = getHeader();
+    if (!header) return;
+
+    const apply = () => {
+      const isMobile = window.innerWidth <= MOBILE_MAX;
+
+      if (isMobile) {
+        header.style.position = "fixed";
+        header.style.top = "0";
+        header.style.left = "0";
+        header.style.right = "0";
+        header.style.zIndex = "9999";
+
+        // kasih ruang supaya konten gak ketutup navbar
+        const h = Math.ceil(header.getBoundingClientRect().height);
+        document.body.style.paddingTop = h + "px";
+      } else {
+        header.style.position = "";
+        header.style.top = "";
+        header.style.left = "";
+        header.style.right = "";
+        header.style.zIndex = "";
+        document.body.style.paddingTop = "";
+      }
+    };
+
+    window.addEventListener("resize", apply);
+    apply();
   }
 
   /* ===============================
@@ -183,6 +256,6 @@
     enableSmoothScroll();
     enableScrollSpy();
     ensureMobileMenu();
+    keepNavbarVisibleOnMobile();
   });
-
 })();

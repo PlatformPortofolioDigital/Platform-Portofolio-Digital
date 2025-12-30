@@ -1,6 +1,9 @@
 // assets/js/main.js
 // Dark/Light mode + localStorage + auto inject toggle (tanpa ubah HTML)
 (function () {
+   if (window.__PPD_MAIN_INIT__) return;
+  window.__PPD_MAIN_INIT__ = true;
+
   const STORAGE_KEY = "theme"; // "light" | "dark"
 
   function setTheme(theme) {
