@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+dist/
+build/
+
+# system
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+
+# editors
+.vscode/
+.idea/
+
+# secrets
+.env
+
+# git folder should not be committed inside submission zip
+.git/

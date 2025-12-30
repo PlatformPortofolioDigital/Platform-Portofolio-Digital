@@ -640,3 +640,178 @@ body:has(.blog-list) .hero,
 body:has(.blog-post) .hero{
   background: transparent !important;
 }
+
+
+/* ===============================
+   PATCH (2025-12-31)
+   Fixes to fully apply Dark/Light + real mobile hamburger + project gallery modal/filter
+   (Tanpa bongkar style lama: hanya override yang perlu)
+================================ */
+
+/* Global background & text follow theme */
+html, body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+body, main, section, footer {
+  color: var(--text);
+}
+
+/* Pastikan konten paragraf terbaca di semua mode */
+p, li, .section-desc, .project-desc, .blog-excerpt, .contact-desc {
+  color: var(--muted) !important;
+}
+
+/* Card unified theme */
+.card,
+.project-card,
+.blog-card,
+.contact-card,
+.about-card,
+.profile-card {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-soft) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Link contrast */
+a { color: inherit; }
+a:hover { color: var(--primary); }
+
+/* ===============================
+   REAL MOBILE HAMBURGER (navigation.js)
+================================ */
+#mobile-menu-btn{
+  display:none;
+  margin-left:auto;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+#mobile-menu-btn span{ font-size: 20px; line-height: 1; }
+
+#mobile-menu-panel{
+  display:none;
+  position: absolute;
+  top: calc(var(--nav-height, 70px) + 10px);
+  right: 14px;
+  left: 14px;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--nav-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+#mobile-menu-panel.open{ display:block; }
+#mobile-menu-panel a{
+  display:block;
+  padding: 12px 10px;
+  border-radius: 12px;
+  margin: 4px 0;
+  text-decoration:none;
+  color: var(--nav-text);
+}
+#mobile-menu-panel a:hover{
+  background: rgba(56,189,248,0.12);
+}
+
+@media (max-width: 992px){
+  header.navbar nav{ display:none !important; }
+  #mobile-menu-btn{ display:inline-flex; align-items:center; justify-content:center; }
+  header.navbar{ position: sticky; top:0; z-index:9999; }
+}
+
+/* ===============================
+   PROJECT FILTERS + MODAL
+================================ */
+.ppd-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin: 18px 0 14px;
+}
+.ppd-filter-btn{
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor:pointer;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.ppd-filter-btn:hover{ transform: translateY(-1px); border-color: rgba(56,189,248,0.45); }
+.ppd-filter-btn.active{
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: var(--primary-contrast);
+  border-color: transparent;
+}
+
+.ppd-modal{
+  position: fixed;
+  inset: 0;
+  display:none;
+  z-index: 99999;
+}
+.ppd-modal.open{ display:block; }
+.ppd-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.55);
+}
+.ppd-modal-dialog{
+  position:relative;
+  max-width: 720px;
+  margin: 8vh auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 22px 18px 18px;
+}
+.ppd-modal-close{
+  position:absolute;
+  top: 10px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor:pointer;
+}
+.ppd-modal-body h3{
+  margin: 6px 0 10px;
+}
+.ppd-modal-meta{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--muted);
+}
+.ppd-modal-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.ppd-modal-actions a.btn, 
+.ppd-modal-actions a.btn-outline{
+  text-decoration:none;
+}
+@media (min-width: 640px){
+  .ppd-modal-meta{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px){
+  .ppd-modal-dialog{ margin: 6vh 12px; }
+}
+

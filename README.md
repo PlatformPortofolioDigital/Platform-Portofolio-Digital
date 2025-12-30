@@ -100,7 +100,7 @@ Platform-Portofolio-Digital/
 │   │   ├── profile/
 │   │   │   ├── profile-1.jpeg
 │   │   │   ├── profile-2.jpeg
-│   │   │   ├── profile-3.png
+│   │   │   ├── profile-3.jpg
 │   │   │   └── profile-4.jpeg
 │   │   └── blog/
 │   │       ├── art-1.jpg
