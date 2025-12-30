@@ -62,9 +62,7 @@
               Role: Frontend Developer
             </div>
 
-            <a href="project-detail/project-portfolio.html" class="project-link">
-              Detail Project →
-            </a>
+            <a href="project-detail/project-portfolio.html" target="_top">Detail Project →</a>
 
           </div>
 
@@ -91,9 +89,7 @@
               Role: Backend & Frontend Developer
             </div>
 
-            <a href="project-detail/project-si.html" class="project-link">
-              Detail Project →
-            </a>
+            <a href="project-detail/project-si.html" target="_top">Detail Project →</a>
           </div>
 
           <!-- PROJECT 3 -->
@@ -117,9 +113,7 @@
               Role: UI/UX Designer
             </div>
 
-            <a href="project-detail/project-ui.html" class="project-link">
-              Detail Project →
-            </a>
+            <a href="project-detail/project-ui.html" target="_top">Detail Project →</a>
           </div>
 
         </div>
@@ -137,27 +131,27 @@
   <!-- GLOBAL UI & INTERAKTIVITAS -->
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/navigation.js"></script>
-<script>
-  if (window.self !== window.top) {
+  <script>
+    if (window.self !== window.top) {
+      document.body.classList.add("embedded");
+    }
+  </script>
+  <script>
+    // hide navbar/ footer di mode embed + kirim tinggi ke parent
     document.body.classList.add("embedded");
-  }
-</script>
-<script>
-  // hide navbar/ footer di mode embed + kirim tinggi ke parent
-  document.body.classList.add("embedded");
 
-  function sendHeight() {
-    const h = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    );
-    parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
-  }
+    function sendHeight() {
+      const h = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
+      parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
+    }
 
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
-  new ResizeObserver(sendHeight).observe(document.body);
-</script>
+    window.addEventListener("load", sendHeight);
+    window.addEventListener("resize", sendHeight);
+    new ResizeObserver(sendHeight).observe(document.body);
+  </script>
 
 </body>
 
