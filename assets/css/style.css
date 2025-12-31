@@ -196,10 +196,7 @@ body {
 .navbar nav a::after {
   content: "";
   position: absolute;
-  left: 0;
   bottom: -6px;
-  width: 0;
-  height: 2px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   transition: .3s;
 }
@@ -237,8 +234,6 @@ body {
   .navbar nav {
     position: absolute;
     top: 100%;
-    left: 0;
-    width: 100%;
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     flex-direction: column;
@@ -259,6 +254,22 @@ body {
     font-size: 1.1rem;
   }
 }
+
+/* ===============================
+   FINAL FIX MOBILE NAV
+================================ */
+@media (max-width: 200px) {
+  header.navbar,
+  .navbar {
+    background: var(--nav-bg) !important;
+  }
+
+  header.navbar nav a {
+    color: var(--nav-text) !important;
+    font-weight: 300;
+  }
+}
+
 
 /* ===============================
    HERO
@@ -1014,10 +1025,6 @@ body.about-page {
 .blog-post::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 6px;
-  height: 100%;
   background: linear-gradient(180deg,
       #38bdf8,
       #2dd4bf);
@@ -1171,10 +1178,7 @@ body.project-detail-page {
 .project-main h2::before {
   content: "";
   position: absolute;
-  left: 0;
   top: 6px;
-  width: 5px;
-  height: 70%;
   background: var(--cyber-accent);
   border-radius: 4px;
 }
@@ -2013,12 +2017,6 @@ body:has(main.contact-page) .info2{
    Detect blog page via: body:has(.blog-list) / body:has(.blog-post)
 ========================================================= */
 
-/* Background blog sama persis Projects */
-body:has(.blog-list),
-body:has(.blog-post){
-  background: linear-gradient(180deg, #8ad7e1, #0f172a) !important;
-  color: #c7f5ff !important;
-}
 
 /* Layer fallback biar background pasti full */
 .blog-list::before{
@@ -2151,10 +2149,7 @@ body:has(.blog-list){
    Biar temanya masuk & konsisten dengan Projects
 ========================================================= */
 
-body.blog-detail-page{
-  background: linear-gradient(180deg, #8ad7e1, #0f172a) !important;
-  color: #c7f5ff !important;
-}
+
 
 body.blog-detail-page .article-header{
   max-width: 920px;
@@ -2269,6 +2264,50 @@ body.blog-detail-page .back-link{
 body.blog-detail-page .back-link:hover{
   transform: translateY(-2px);
 }
+
+/* =========================================================
+   FIX FINAL — DETAIL BLOG (BERSIH & STABIL)
+========================================================= */
+
+body.blog-detail-page{
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: #e5f3ff;
+}
+
+/* Header artikel */
+body.blog-detail-page .article-header{
+  background: transparent;
+  padding: 6rem 1rem 2rem;
+  text-align: center;
+}
+
+body.blog-detail-page .article-header h1{
+  color: #e0f2fe;
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(56,189,248,.35);
+}
+
+body.blog-detail-page .article-desc{
+  color: rgba(224,242,254,.9);
+}
+
+body.blog-detail-page .article-meta span{
+  color: rgba(199,245,255,.85);
+}
+
+/* Konten artikel */
+body.blog-detail-page .article-content{
+  background: rgba(2,6,23,.55);
+  border-radius: 18px;
+  padding: 2rem;
+}
+
+body.blog-detail-page .article-content p,
+body.blog-detail-page .article-content li{
+  color: rgba(224,242,254,.92);
+}
+
+
 
 /* =========================================================
    ABOUT -> MATCH PROJECTS / CONTACT CYBER THEME
@@ -3267,4 +3306,9 @@ body.embedded footer {
 
   /* HAPUS justify */
   text-align: center;
+}
+
+/* HERO TITLE - HOME (iframe) */
+.hero-title {
+  color: #ffffff;
 }

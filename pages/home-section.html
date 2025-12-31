@@ -66,21 +66,39 @@
     #skip-intro {
       cursor: pointer;
     }
+
+    /* === FIX WARNA JUDUL HERO === */
+    .hero-title {
+      color: #ffffff !important;
+      opacity: 1 !important;
+    }
   </style>
 
-<style>
-  /* welcome theme vars */
-  #welcome-screen .welcome-content { color: var(--text); }
-  #welcome-screen .welcome-content h2,
-  #welcome-screen .welcome-content h3 { color: var(--text); }
-  #welcome-screen .welcome-icons span { color: var(--primary-contrast); }
-  #welcome-screen #skip-intro {
-    background: rgba(255,255,255,0.10);
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  [data-theme="dark"] #welcome-screen #skip-intro { background: rgba(255,255,255,0.08); }
-</style>
+  <style>
+    /* welcome theme vars */
+    #welcome-screen .welcome-content {
+      color: var(--text);
+    }
+
+    #welcome-screen .welcome-content h2,
+    #welcome-screen .welcome-content h3 {
+      color: var(--text);
+    }
+
+    #welcome-screen .welcome-icons span {
+      color: var(--primary-contrast);
+    }
+
+    #welcome-screen #skip-intro {
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    [data-theme="dark"] #welcome-screen #skip-intro {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  </style>
 
 </head>
 
@@ -93,7 +111,7 @@
     </video>
 
     <div class="hero-content">
-      <h1>Platform Portofolio Digital</h1>
+      <h1 class="hero-title">Platform Portofolio Digital</h1>
       <p>
         Kami adalah Kelompok 2, tim yang berfokus pada pengembangan solusi digital
         kreatif dan modern. Website ini dibangun sebagai media portofolio untuk
@@ -203,13 +221,13 @@
   </script>
 
   <script>
-  window.addEventListener("message", (event) => {
-    if (!event.data || event.data.type !== "THEME_CHANGE") return;
+    window.addEventListener("message", (event) => {
+      if (!event.data || event.data.type !== "THEME_CHANGE") return;
 
-    const theme = event.data.theme; // "light" | "dark"
-    document.documentElement.setAttribute("data-theme", theme);
-  });
-</script>
+      const theme = event.data.theme; // "light" | "dark"
+      document.documentElement.setAttribute("data-theme", theme);
+    });
+  </script>
 
 
   <script src="../assets/js/theme-sync.js"></script>
