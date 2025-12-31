@@ -170,7 +170,7 @@ body {
   padding: 18px 50px;
   background: var(--nav-bg);
   backdrop-filter: blur(12px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 20px rgba(148, 208, 241, 0.06);
 }
 
 .logo {
