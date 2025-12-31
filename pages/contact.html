@@ -6,13 +6,15 @@
   <meta name="description" content="Hubungi Kelompok 2 melalui form kontak atau sosial media." />
   <title>Contact | Platform Portofolio Digital</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/variables.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/responsive.css" />
 </head>
 
-<body class="projects-page contact-body">
-  <!-- NAVBAR (SAMAIN DENGAN INDEX) -->
+<body class="projects-page contact-body embedded">
+
+  <!-- NAVBAR -->
   <header class="navbar">
     <h1 class="logo">PLATFORM PORTOFOLIO DIGITAL</h1>
     <nav>
@@ -25,6 +27,7 @@
   </header>
 
   <main class="contact-page">
+
     <!-- HERO -->
     <section class="contact-hero2">
       <div class="contact-hero2__inner">
@@ -45,12 +48,11 @@
 
     <!-- GRID -->
     <section class="contact-grid2">
-      <!-- LEFT: INFO -->
+
+      <!-- LEFT -->
       <aside class="contact-card2">
         <h3>Kontak Langsung</h3>
-        <p class="muted2">
-          Kamu bisa hubungi kami lewat channel berikut.
-        </p>
+        <p class="muted2">Kamu bisa hubungi kami lewat channel berikut.</p>
 
         <div class="contact-info2">
           <a class="info2" href="mailto:mutiaraoktrilisa20102005@gmail.com">
@@ -69,7 +71,7 @@
             </div>
           </a>
 
-          <div class="info2" role="group" aria-label="Lokasi">
+          <div class="info2">
             <span class="ic2">📍</span>
             <div>
               <div class="label2">Lokasi</div>
@@ -82,46 +84,20 @@
 
         <h4 class="mini2">Social</h4>
         <div class="social2">
-          <a
-            class="pill2"
-            href="https://github.com/mutiaraoktrilisa20102005-hub"
-            target="_blank"
-            rel="noopener"
-          >
-            GitHub
-          </a>
-
-          <a
-            class="pill2"
-            href="https://www.linkedin.com/in/mutiara-oktrilisa-38442a323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-            target="_blank"
-            rel="noopener"
-          >
-            LinkedIn
-          </a>
-
-          <a
-            class="pill2"
-            href="https://www.instagram.com/mutiiaaa______?igsh=MTF5NTc1ZDFkMzZ2dQ=="
-            target="_blank"
-            rel="noopener"
-          >
-            Instagram
-          </a>
+          <a class="pill2" href="https://github.com/mutiaraoktrilisa20102005-hub" target="_blank">GitHub</a>
+          <a class="pill2" href="https://www.linkedin.com/in/mutiara-oktrilisa-38442a323" target="_blank">LinkedIn</a>
+          <a class="pill2" href="https://www.instagram.com/mutiiaaa______" target="_blank">Instagram</a>
         </div>
 
         <div class="note2">
           Pesan dari form akan terkirim ke email admin.
-          Admin bisa membalas langsung ke email pengirim.
         </div>
       </aside>
 
-      <!-- RIGHT: FORM -->
+      <!-- RIGHT -->
       <section class="contact-card2">
         <h3>Kirim Pesan</h3>
-        <p class="muted2">
-          Isi data dengan benar ya biar admin gampang balas.
-        </p>
+        <p class="muted2">Isi data dengan benar ya biar admin gampang balas.</p>
 
         <div id="formAlert" class="form-alert" style="display:none;"></div>
 
@@ -131,49 +107,37 @@
           method="POST"
           novalidate
         >
-          <!-- ✅ FIX: redirect balik ke contact.html + trigger notif sukses -->
-          <input
-            type="hidden"
-            name="_next"
-            value="http://127.0.0.1:5500/pages/contact.html?success=1"
-          />
-
-          <!-- FormSubmit config -->
+          <input type="hidden" name="_next" value="contact.html?success=1" />
           <input type="hidden" name="_subject" value="Pesan Baru dari Website Portofolio (Kelompok 2)" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_replyto" value="%email%" />
-
-          <!-- anti spam -->
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="text" name="_honey" style="display:none" />
 
           <div class="field2">
             <label for="name">Nama</label>
-            <input id="name" name="name" type="text" placeholder="Nama lengkap" autocomplete="name" required />
+            <input id="name" name="name" type="text" required />
             <small class="error" id="errName"></small>
           </div>
 
           <div class="field2">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="nama@email.com" autocomplete="email" required />
+            <input id="email" name="email" type="email" required />
             <small class="error" id="errEmail"></small>
           </div>
 
           <div class="field2">
             <label for="message">Pesan</label>
-            <textarea id="message" name="message" rows="6" placeholder="Tulis pesan kamu..." required></textarea>
+            <textarea id="message" name="message" rows="6" required></textarea>
             <small class="error" id="errMessage"></small>
           </div>
 
-          <button type="submit" class="btnSend2" id="btnSubmit">
-            Kirim Pesan <span aria-hidden="true">→</span>
+          <button type="submit" class="btnSend2">
+            Kirim Pesan →
           </button>
-
-          <p class="hint2">
-            *Pertama kali pakai FormSubmit biasanya diminta aktivasi via email admin (normal).
-          </p>
         </form>
       </section>
+
     </section>
   </main>
 
@@ -181,14 +145,16 @@
     <p>© 2025 Platform Portofolio Digital</p>
   </footer>
 
- 
- 
+  <!-- JS -->
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/navigation.js"></script>
+  <script src="../assets/js/form-validation.js"></script>
+  <script src="../assets/js/theme-sync.js"></script>
+
+  <!-- ===============================
+       IFRAME HEIGHT SYNC (FINAL)
+  ================================ -->
   <script>
-  const isEmbedded = window.self !== window.top;
-
-  if (isEmbedded) {
-    document.body.classList.add("embedded");
-
     function sendHeight() {
       const h = Math.max(
         document.documentElement.scrollHeight,
@@ -200,14 +166,14 @@
     window.addEventListener("load", sendHeight);
     window.addEventListener("resize", sendHeight);
     new ResizeObserver(sendHeight).observe(document.body);
-  }
-</script>
 
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/navigation.js"></script>
-<script src="../assets/js/form-validation.js"></script>
-<script src="../assets/js/theme-sync.js"></script>
-
+    window.addEventListener("message", (e) => {
+      if (e.data?.type === "REQUEST_HEIGHT") sendHeight();
+      if (e.data?.type === "THEME_CHANGE") {
+        document.documentElement.setAttribute("data-theme", e.data.theme);
+      }
+    });
+  </script>
 
 </body>
 </html>

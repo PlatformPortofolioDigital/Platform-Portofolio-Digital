@@ -13,9 +13,8 @@
   <!-- ICON -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- MODAL STYLE (WAJIB ADA) -->
+  <!-- MODAL STYLE -->
   <style>
-    /* OVERLAY */
     #detailModal {
       display: none;
       position: fixed;
@@ -26,7 +25,6 @@
       justify-content: center;
     }
 
-    /* BOX */
     .modal-box {
       width: 80%;
       max-width: 800px;
@@ -38,7 +36,6 @@
       position: relative;
     }
 
-    /* CLOSE */
     .close-modal {
       color: var(--text);
       position: absolute;
@@ -57,148 +54,137 @@
   </style>
 </head>
 
-<body class="about-page">
+<body class="about-page embedded">
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <h1 class="logo">Tentang Kami</h1>
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="about.html" class="active">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <h1 class="logo">Tentang Kami</h1>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section class="hero hero-about">
-  <h2>Tentang Kelompok 2</h2>
-  <p>
-    Kelompok 2 merupakan tim mahasiswa yang berfokus pada pengembangan
-    website portfolio modern sebagai bagian dari pembelajaran web.
-  </p>
-</section>
+  <!-- HERO -->
+  <section class="hero hero-about">
+    <h2>Tentang Kelompok 2</h2>
+    <p>
+      Kelompok 2 merupakan tim mahasiswa yang berfokus pada pengembangan
+      website portfolio modern sebagai bagian dari pembelajaran web.
+    </p>
+  </section>
 
-<!-- TEAM -->
-<section class="section">
-  <h3>Anggota Kelompok</h3>
+  <!-- TEAM -->
+  <section class="section">
+    <h3>Anggota Kelompok</h3>
 
-  <div class="team-grid">
+    <div class="team-grid">
 
-    <div class="team-card">
-      <img src="../assets/images/profile/profile-1.jpeg">
-      <h4>Mutiara Oktrilisa</h4>
-      <p>Frontend Developer</p>
-      <button onclick="openDetail('detail-about/mutiaraoktrilisa.html')">
-        Detail portofolio →
-      </button>
+      <div class="team-card">
+        <img src="../assets/images/profile/profile-1.jpeg" alt="Mutiara Oktrilisa">
+        <h4>Mutiara Oktrilisa</h4>
+        <p>Frontend Developer</p>
+        <button onclick="openDetail('detail-about/mutiaraoktrilisa.html')">
+          Detail portofolio →
+        </button>
+      </div>
+
+      <div class="team-card">
+        <img src="../assets/images/profile/profile-2.jpeg" alt="Zahwa Rava Rahayu">
+        <h4>Zahwa Rava Rahayu</h4>
+        <p>UI / UX Designer</p>
+        <button onclick="openDetail('detail-about/zahwaravarahayu.html')">
+          Detail portofolio →
+        </button>
+      </div>
+
+      <div class="team-card">
+        <img src="../assets/images/profile/profile-3.jpg" alt="Marda Tilla">
+        <h4>Marda Tilla</h4>
+        <p>Project Manager</p>
+        <button onclick="openDetail('detail-about/mardatilla.html')">
+          Detail portofolio →
+        </button>
+      </div>
+
+      <div class="team-card">
+        <img src="../assets/images/profile/profile-4.jpeg" alt="Vegia Dwi Yandra">
+        <h4>Vegia Dwi Yandra</h4>
+        <p>Content & Documentation</p>
+        <button onclick="openDetail('detail-about/vegiadwiyandra.html')">
+          Detail portofolio →
+        </button>
+      </div>
+
     </div>
+  </section>
 
-    <div class="team-card">
-      <img src="../assets/images/profile/profile-2.jpeg">
-      <h4>Zahwa Rava Rahayu</h4>
-      <p>UI / UX Designer</p>
-      <button onclick="openDetail('detail-about/zahwaravarahayu.html')">
-        Detail portofolio →
-      </button>
+  <!-- MODAL -->
+  <div id="detailModal">
+    <div class="modal-box">
+      <span class="close-modal" onclick="closeDetail()">✕</span>
+      <iframe id="detailFrame"></iframe>
     </div>
-
-    <div class="team-card">
-      <img src="../assets/images/profile/profile-3.jpg">
-      <h4>Marda Tilla</h4>
-      <p>Project Manager</p>
-      <button onclick="openDetail('detail-about/mardatilla.html')">
-        Detail portofolio →
-      </button>
-    </div>
-
-    <div class="team-card">
-      <img src="../assets/images/profile/profile-4.jpeg">
-      <h4>Vegia Dwi Yandra</h4>
-      <p>Content & Documentatio</p>
-      <button onclick="openDetail('detail-about/vegiadwiyandra.html')">
-        Detail portofolio →
-      </button>
-    </div>
-
   </div>
-</section>
 
-<!-- MODAL -->
-<div id="detailModal">
-  <div class="modal-box">
-    <span class="close-modal" onclick="closeDetail()">✕</span>
-    <iframe id="detailFrame"></iframe>
-  </div>
-</div>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Kelompok 2 | Website Portfolio</p>
+  </footer>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 Kelompok 2 | Website Portfolio</p>
-</footer>
-
-<!-- SCRIPT -->
-<script>
-  function openDetail(page) {
-    document.getElementById("detailModal").style.display = "flex";
-    document.getElementById("detailFrame").src = page;
-  }
-
-  function closeDetail() {
-    document.getElementById("detailModal").style.display = "none";
-    document.getElementById("detailFrame").src = "";
-  }
-</script>
-
- <!-- GLOBAL UI & INTERAKTIVITAS -->
+  <!-- JS GLOBAL -->
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/navigation.js"></script>
-<script>
-  if (window.self !== window.top) {
-    document.body.classList.add("embedded");
-  }
-</script>
-<script>
-  // hide navbar/ footer di mode embed + kirim tinggi ke parent
-  document.body.classList.add("embedded");
+  <script src="../assets/js/theme-sync.js"></script>
 
-  function sendHeight() {
-    const h = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    );
-    parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
-  }
+  <!-- MODAL LOGIC -->
+  <script>
+    function openDetail(page) {
+      const modal = document.getElementById("detailModal");
+      const frame = document.getElementById("detailFrame");
+      modal.style.display = "flex";
+      frame.src = page;
+    }
 
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
-  new ResizeObserver(sendHeight).observe(document.body);
-</script>
+    function closeDetail() {
+      const modal = document.getElementById("detailModal");
+      const frame = document.getElementById("detailFrame");
+      modal.style.display = "none";
+      frame.src = "";
+    }
+  </script>
 
-<script>
-  function sendHeight() {
-    const height = document.documentElement.scrollHeight;
-    parent.postMessage(
-      { type: "IFRAME_HEIGHT", height },
-      "*"
-    );
-  }
+  <!-- ===============================
+       IFRAME HEIGHT + THEME SYNC
+  ================================ -->
+  <script>
+    function sendHeight() {
+      const h = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
+      parent.postMessage(
+        { type: "IFRAME_HEIGHT", height: h },
+        "*"
+      );
+    }
 
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
-</script>
+    window.addEventListener("load", sendHeight);
+    window.addEventListener("resize", sendHeight);
+    new ResizeObserver(sendHeight).observe(document.body);
 
-<script>
-  window.addEventListener("message", (event) => {
-    if (!event.data || event.data.type !== "THEME_CHANGE") return;
-
-    const theme = event.data.theme; // "light" | "dark"
-    document.documentElement.setAttribute("data-theme", theme);
-  });
-</script>
-<script src="../assets/js/theme-sync.js"></script>
-
+    window.addEventListener("message", (e) => {
+      if (e.data?.type === "REQUEST_HEIGHT") {
+        sendHeight();
+      }
+      if (e.data?.type === "THEME_CHANGE") {
+        document.documentElement.setAttribute("data-theme", e.data.theme);
+      }
+    });
+  </script>
 
 </body>
 </html>

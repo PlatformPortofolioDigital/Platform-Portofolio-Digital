@@ -20,16 +20,11 @@
       scroll-behavior: smooth;
     }
 
-    #home .page-frame {
-      min-height: calc(100vh - var(--nav-height));
-    }
-
-    /* navbar tinggi dinamis */
     :root {
       --nav-height: 72px;
     }
 
-    /* satu navbar aja */
+    /* navbar */
     .onepage-navbar {
       position: sticky;
       top: 0;
@@ -37,37 +32,39 @@
       background: inherit;
     }
 
-    /* wrapper scroll utama (bukan iframe) */
+    /* wrapper */
     .onepage-wrapper {
       min-height: 100vh;
       background: var(--bg);
     }
 
-    /* setiap section halaman */
+    /* section */
     .onepage-section {
       scroll-margin-top: var(--nav-height);
       background: var(--bg);
     }
 
-    /* iframe auto height */
+    /* iframe */
     .page-frame {
       width: 100%;
       border: 0;
       display: block;
-      height: 100px;
-      /* akan di-resize via JS */
+      height: 300px;
+      min-height: 300px;
       background: var(--bg);
+    }
+
+    #home .page-frame {
+      min-height: calc(100vh - var(--nav-height));
     }
   </style>
 </head>
 
 <body class="onepage-home">
+
   <!-- NAVBAR -->
   <header class="navbar onepage-navbar" id="mainNavbar">
-    <div class="logo">PLATFORM PORTOFOLIO DIGITAL</div>
-
-    <!-- tombol hamburger (mobile) -->
-
+    <div class="logo">Kelompok 2</div>
 
     <nav id="mainNav">
       <a href="#home" data-goto="home" class="active">Home</a>
@@ -76,11 +73,9 @@
       <a href="#blog" data-goto="blog">Blog</a>
       <a href="#contact" data-goto="contact">Contact</a>
     </nav>
-
-
   </header>
 
-
+  <!-- CONTENT -->
   <main class="onepage-wrapper">
     <section class="onepage-section" id="home">
       <iframe class="page-frame" src="pages/home-section.html" title="Home"></iframe>
@@ -103,80 +98,109 @@
     </section>
   </main>
 
-  <!-- ===============================
-     FOOTER
-================================ -->
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 Kelompok 2 | Portfolio Website</p>
   </footer>
 
-
+  <!-- SCRIPT -->
   <script>
-    // set --nav-height sesuai tinggi navbar beneran
+    /* ===============================
+       SYNC NAVBAR HEIGHT
+    ================================ */
     function syncNavHeight() {
       const nav = document.getElementById("mainNavbar");
-      if (!nav) return;
-      document.documentElement.style.setProperty("--nav-height", nav.offsetHeight + "px");
+      if (nav) {
+        document.documentElement.style.setProperty(
+          "--nav-height",
+          nav.offsetHeight + "px"
+        );
+      }
     }
+
     window.addEventListener("load", syncNavHeight);
     window.addEventListener("resize", syncNavHeight);
 
-    // klik navbar -> scroll
+    /* ===============================
+       NAVBAR SCROLL
+    ================================ */
     const navLinks = document.querySelectorAll(".onepage-navbar nav a");
-    navLinks.forEach(a => {
-      a.addEventListener("click", (e) => {
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
         e.preventDefault();
-        const id = a.dataset.goto;
+        const id = link.dataset.goto;
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
-    // active nav saat scroll
+    /* ===============================
+       ACTIVE MENU OBSERVER
+    ================================ */
     const sections = [...document.querySelectorAll(".onepage-section")];
-    const io = new IntersectionObserver((entries) => {
+
+    const observer = new IntersectionObserver((entries) => {
       const visible = entries
-        .filter(en => en.isIntersecting)
+        .filter(e => e.isIntersecting)
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
       if (!visible) return;
+
       const id = visible.target.id;
-      navLinks.forEach(a => a.classList.toggle("active", a.dataset.goto === id));
+      navLinks.forEach(a =>
+        a.classList.toggle("active", a.dataset.goto === id)
+      );
+
       history.replaceState(null, "", "#" + id);
     }, { threshold: [0.45, 0.6, 0.75] });
-    sections.forEach(s => io.observe(s));
 
-    // ==== AUTO-RESIZE IFRAME (biar gak ada scroll kecil di iframe) ====
+    sections.forEach(s => observer.observe(s));
+
+    /* ===============================
+       IFRAME AUTO HEIGHT
+    ================================ */
     const frames = [...document.querySelectorAll(".page-frame")];
 
     window.addEventListener("message", (event) => {
       const data = event.data;
       if (!data || data.type !== "IFRAME_HEIGHT") return;
 
-      // cari iframe yang ngirim
       const iframe = frames.find(f => f.contentWindow === event.source);
       if (!iframe) return;
 
-      // set tinggi iframe sesuai konten
-      const h = Math.max(200, Number(data.height || 0));
-      iframe.style.height = h + "px";
+      iframe.style.height = Math.max(300, Number(data.height)) + "px";
     });
 
-    // kalau buka pakai hash
+    /* ===============================
+       🔥 FIX FINAL: MOBILE ↔ DESKTOP
+    ================================ */
+    function requestAllIframeHeights() {
+      frames.forEach(iframe => {
+        if (iframe.contentWindow) {
+          iframe.contentWindow.postMessage(
+            { type: "REQUEST_HEIGHT" },
+            "*"
+          );
+        }
+      });
+    }
+
+    window.addEventListener("resize", () => {
+      setTimeout(requestAllIframeHeights, 200);
+    });
+
+    window.addEventListener("orientationchange", () => {
+      setTimeout(requestAllIframeHeights, 300);
+    });
+
     window.addEventListener("load", () => {
-      const hash = location.hash.replace("#", "");
-      if (!hash) return;
-      const el = document.getElementById(hash);
-      if (el) el.scrollIntoView({ behavior: "auto", block: "start" });
+      setTimeout(requestAllIframeHeights, 300);
     });
-  </script>
-  <script src="assets/js/navigation.js"></script>
-  <script src="assets/js/main.js"></script>
 
-  
-  
-
-  <!-- Tombol kembali detail project -->
-  <script>
+    /* ===============================
+       RETURN FROM DETAIL PAGE
+    ================================ */
     window.addEventListener("load", () => {
       const target = sessionStorage.getItem("scrollTarget");
       if (!target) return;
@@ -188,6 +212,9 @@
       }, 300);
     });
   </script>
+
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 </html>

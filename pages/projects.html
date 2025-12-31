@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects | Kelompok 2</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/responsive.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body class="projects-page">
+<body class="projects-page embedded">
 
-
-  <!-- NAVBAR -->
+  <!-- NAVBAR (DISIMPAN – otomatis disembunyikan saat iframe) -->
   <header class="navbar">
     <div class="logo">Kelompok 2</div>
     <nav>
@@ -31,9 +32,9 @@
   <!-- MAIN CONTENT -->
   <main>
 
-    <!-- PROJECTS SECTION -->
     <section class="section projects">
       <div class="container">
+
         <h3>Project Kami</h3>
         <p class="section-desc">
           Kumpulan project yang telah kami kerjakan sebagai dokumentasi dan portofolio kelompok.
@@ -43,7 +44,6 @@
 
           <!-- PROJECT 1 -->
           <div class="card project-card">
-
             <div class="project-img project-icon">
               <i class="fas fa-code"></i>
             </div>
@@ -62,18 +62,16 @@
               Role: Frontend Developer
             </div>
 
-            <a href="project-detail/project-portfolio.html" target="_top">Detail Project →</a>
-
+            <a href="project-detail/project-portfolio.html" target="_top">
+              Detail Project →
+            </a>
           </div>
-
 
           <!-- PROJECT 2 -->
           <div class="card project-card">
-
             <div class="project-img project-icon">
               <i class="fas fa-database"></i>
             </div>
-
 
             <h4>Sistem Informasi Sederhana</h4>
 
@@ -89,7 +87,9 @@
               Role: Backend & Frontend Developer
             </div>
 
-            <a href="project-detail/project-si.html" target="_top">Detail Project →</a>
+            <a href="project-detail/project-si.html" target="_top">
+              Detail Project →
+            </a>
           </div>
 
           <!-- PROJECT 3 -->
@@ -97,7 +97,6 @@
             <div class="project-img project-icon">
               <i class="fas fa-palette"></i>
             </div>
-
 
             <h4>UI Design Prototype</h4>
 
@@ -113,11 +112,12 @@
               Role: UI/UX Designer
             </div>
 
-            <a href="project-detail/project-ui.html" target="_top">Detail Project →</a>
+            <a href="project-detail/project-ui.html" target="_top">
+              Detail Project →
+            </a>
           </div>
 
         </div>
-
       </div>
     </section>
 
@@ -128,44 +128,42 @@
     <p>© 2025 Kelompok 2. All rights reserved.</p>
   </footer>
 
-  <!-- GLOBAL UI & INTERAKTIVITAS -->
+  <!-- JS GLOBAL -->
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/navigation.js"></script>
   <script src="../assets/js/theme-sync.js"></script>
-  <script>
-    if (window.self !== window.top) {
-      document.body.classList.add("embedded");
-    }
-  </script>
-  <script>
-    // hide navbar/ footer di mode embed + kirim tinggi ke parent
-    document.body.classList.add("embedded");
+  <script src="../assets/js/project-gallery.js"></script>
 
+  <!-- ===============================
+       IFRAME HEIGHT SYNC (FINAL)
+       SATU-SATUNYA YANG DIPAKAI
+  ================================ -->
+  <script>
     function sendHeight() {
-      const h = Math.max(
+      const height = Math.max(
         document.documentElement.scrollHeight,
         document.body.scrollHeight
       );
-      parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
+      parent.postMessage(
+        { type: "IFRAME_HEIGHT", height },
+        "*"
+      );
     }
 
     window.addEventListener("load", sendHeight);
     window.addEventListener("resize", sendHeight);
+
     new ResizeObserver(sendHeight).observe(document.body);
+
+    window.addEventListener("message", (e) => {
+      if (e.data?.type === "REQUEST_HEIGHT") {
+        sendHeight();
+      }
+      if (e.data?.type === "THEME_CHANGE") {
+        document.documentElement.setAttribute("data-theme", e.data.theme);
+      }
+    });
   </script>
 
-  
-  <script src="../assets/js/project-gallery.js"></script>
-  <script>
-  window.addEventListener("message", (event) => {
-    if (!event.data || event.data.type !== "THEME_CHANGE") return;
-
-    const theme = event.data.theme; // "light" | "dark"
-    document.documentElement.setAttribute("data-theme", theme);
-  });
-</script>
-
-
 </body>
-
 </html>

@@ -6,15 +6,17 @@
   <title>Blog | Kelompok 2</title>
   <meta name="description" content="Artikel dan insight Kelompok 2 seputar pengembangan website." />
 
+  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/variables.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/responsive.css" />
 
-  <!-- WAJIB: sync tema dari parent (index iframe) -->
+  <!-- THEME SYNC -->
   <script src="../assets/js/theme-sync.js"></script>
 </head>
 
-<body class="projects-page">
+<body class="projects-page embedded">
+
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">Kelompok 2</div>
@@ -28,11 +30,15 @@
   </header>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero">
       <h2>BLOG</h2>
     </section>
 
+    <!-- LIST -->
     <section class="blog-list">
+
       <article class="blog-post">
         <span class="category">Frontend</span>
         <h3>Mengenal Frontend Development dan Perannya dalam Website</h3>
@@ -41,7 +47,9 @@
           Frontend development berfokus pada tampilan dan interaksi pengguna menggunakan HTML, CSS, dan JavaScript.
           Website ini dirancang responsif, mudah digunakan, serta mendukung fitur dark mode.
         </p>
-        <a href="detail-blog/artikel-1.html" target="_top">Baca Selengkapnya →</a>
+        <a href="detail-blog/artikel-1.html" target="_top">
+          Baca Selengkapnya →
+        </a>
       </article>
 
       <article class="blog-post">
@@ -52,8 +60,11 @@
           Kolaborasi tim menentukan kualitas hasil akhir proyek. Artikel ini membahas pentingnya komunikasi,
           pembagian tugas, dan konsistensi dalam pengembangan website kelompok.
         </p>
-        <a href="detail-blog/artikel-2.html" target="_top">Baca Selengkapnya →</a>
+        <a href="detail-blog/artikel-2.html" target="_top">
+          Baca Selengkapnya →
+        </a>
       </article>
+
     </section>
   </main>
 
@@ -61,29 +72,38 @@
     <p>© 2025 Kelompok 2. All rights reserved.</p>
   </footer>
 
-  <!-- GLOBAL UI & INTERAKTIVITAS -->
+  <!-- JS GLOBAL -->
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/navigation.js"></script>
 
-  <!-- EMBED (hanya kalau dibuka di iframe index) -->
+  <!-- ===============================
+       IFRAME HEIGHT + THEME SYNC
+  ================================ -->
   <script>
-    const isEmbedded = window.self !== window.top;
-
-    if (isEmbedded) {
-      document.body.classList.add("embedded");
-
-      function sendHeight() {
-        const h = Math.max(
-          document.documentElement.scrollHeight,
-          document.body.scrollHeight
-        );
-        parent.postMessage({ type: "IFRAME_HEIGHT", height: h }, "*");
-      }
-
-      window.addEventListener("load", sendHeight);
-      window.addEventListener("resize", sendHeight);
-      new ResizeObserver(sendHeight).observe(document.body);
+    function sendHeight() {
+      const h = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
+      parent.postMessage(
+        { type: "IFRAME_HEIGHT", height: h },
+        "*"
+      );
     }
+
+    window.addEventListener("load", sendHeight);
+    window.addEventListener("resize", sendHeight);
+    new ResizeObserver(sendHeight).observe(document.body);
+
+    window.addEventListener("message", (e) => {
+      if (e.data?.type === "REQUEST_HEIGHT") {
+        sendHeight();
+      }
+      if (e.data?.type === "THEME_CHANGE") {
+        document.documentElement.setAttribute("data-theme", e.data.theme);
+      }
+    });
   </script>
+
 </body>
 </html>
