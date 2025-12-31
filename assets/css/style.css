@@ -299,10 +299,15 @@ body {
   animation: heroFadeIn 1.2s ease forwards 2.2s;
 }
 
-.hero h1,
 .hero h2 {
   text-align: left;
 }
+
+.hero h1 {
+  color: var(--hero-title);
+}
+
+
 
 .hero p {
   text-align: justify;

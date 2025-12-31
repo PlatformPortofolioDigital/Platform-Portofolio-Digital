@@ -1,3 +1,5 @@
+
+
 /* assets/css/variables.css
    FINAL GLOBAL UI & INTERAKTIVITAS
    Aman untuk kerja tim – tidak merusak style.css utama
@@ -7,75 +9,71 @@
    LIGHT MODE (DEFAULT)
 ================================ */
 :root {
-  --primary: #38bdf8;
-  --secondary: #34d399;
+  /* Background */
+  --bg: #f8fafc;
+  --bg-soft: #f1f5f9;
+  --card-bg: #ffffff;
 
-  --dark: #0f172a;
-  --light: #f8fafc;
-  --gray: #94a3b8;
-  --white: #ffffff;
+  /* Text */
+  --text: #0f172a;
+  --text-muted: #475569;
+  --heading: #020617;
 
-  --bg: #ffffff;
-  --text: #111827;
-  --muted: #4b5563;
+  /* Navigation */
+  --nav-text: #0f172a;
 
-  --card: rgba(255, 255, 255, 0.92);
-  --border: rgba(17, 24, 39, 0.10);
+  /* logo putih di light */
+  --logo-text: #0e0d0d;
 
-  --primary-contrast: #ffffff;
+  /* Accent */
+  --primary: #74e0f3;
+  --primary-hover: #a2bcf6;
 
-  --nav-bg: rgba(255, 255, 255, 0.72);
-  --nav-text: #111827;
-
-  --shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
-  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.08);
-
-  --radius: 14px;
-  --transition: all 0.3s ease;
-
-  /* Focus ring */
-  --focus: rgba(56, 189, 248, 0.45);
-
-  /* Overlay (modal / welcome) */
-  --overlay: rgba(0, 0, 0, 0.65);
+  /* Border & Shadow */
+  --border: #e2e8f0;
+  --shadow: rgba(2, 6, 23, 0.08);
 }
+
+:root {
+  --hero-title: #ffffff;
+}
+
+
 
 /* ===============================
    DARK MODE
 ================================ */
 [data-theme="dark"] {
-  --primary: #60a5fa;
-  --secondary: #34d399;
+  /* Background */
+  --bg: #020617;
+  --bg-soft: #020617;
+  --card-bg: #020617;
 
-  --dark: #e5e7eb;
-  --light: #020617;
-  --gray: #94a3b8;
-  --white: #020617;
-
-  --bg: #0b1220;
+  /* Text */
   --text: #e5e7eb;
-  --muted: #9ca3af;
+  --text-muted: #94a3b8;
+  --heading: #f8fafc;
 
-  --card: rgba(17, 24, 39, 0.88);
-  --border: rgba(229, 231, 235, 0.12);
-
-  --primary-contrast: #0b1220;
-
-  --nav-bg: rgba(17, 24, 39, 0.60);
+  /* Navigation */
   --nav-text: #e5e7eb;
 
-  --shadow: 0 18px 44px rgba(0, 0, 0, 0.40);
-  --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.28);
+  /* logo di dark */
+  --logo-text: #e5e7eb;
 
-  --focus: rgba(96, 165, 250, 0.45);
+  /* Accent */
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
 
-  --overlay: rgba(0, 0, 0, 0.72);
+  /* Border & Shadow */
+  --border: #020617;
+  --shadow: rgba(248, 250, 252, 0.05);
 }
 
 /* ===============================
    GLOBAL BASE (AMAN)
 ================================ */
-html, body {
+html,
+body {
   background-color: var(--bg);
   color: var(--text);
   transition: var(--transition);
@@ -150,26 +148,39 @@ header.navbar nav a.nav-link.active::after {
 }
 
 /* Inputs */
-input, textarea, select {
+input,
+textarea,
+select {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--border);
 }
+
 input::placeholder,
 textarea::placeholder {
   color: var(--muted);
 }
-input:focus, textarea:focus, select:focus {
+
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
   box-shadow: 0 0 0 4px var(--focus);
 }
 
 /* Links */
-a { color: var(--text); }
-a:hover { color: var(--primary); }
+a {
+  color: var(--text);
+}
+
+a:hover {
+  color: var(--primary);
+}
 
 /* Footer */
-footer { color: var(--muted); }
+footer {
+  color: var(--muted);
+}
 
 /* ===============================
    THEME TOGGLE (AMAN)
@@ -236,7 +247,9 @@ footer { color: var(--muted); }
   z-index: 9999;
 }
 
-#mobile-menu-panel.open { display: block; }
+#mobile-menu-panel.open {
+  display: block;
+}
 
 #mobile-menu-panel a.nav-link {
   display: block;
@@ -256,6 +269,7 @@ footer { color: var(--muted); }
    (biar About/Contact gak balik "tinggi")
 ================================ */
 @media (max-width: 768px) {
+
   /* responsive.css kamu bikin .navbar column → kita override jadi 1 baris */
   header.navbar,
   .navbar {
@@ -280,14 +294,12 @@ footer { color: var(--muted); }
 }
 
 /* ===============================
-   FIX: NAV DESKTOP + TOGGLE + HAMBURGER NUMPUK
-   - aktifkan mode mobile sampai 992px
-   - kunci posisi tombol tema & hamburger di kanan
-   - hide nav desktop supaya gak double
+  NAV DESKTOP + TOGGLE + HAMBURGER 
 ================================ */
 
 @media (max-width: 992px) {
-  /* header jangan wrap jadi 2 baris */
+
+  /* header wrap */
   header.navbar,
   .navbar {
     position: relative !important;
@@ -301,7 +313,7 @@ footer { color: var(--muted); }
     min-height: 68px !important;
   }
 
-  /* logo jangan pecah jadi 2 baris (Kelompok / 2) */
+  /* logo */
   header.navbar .logo,
   header.navbar a.logo,
   header.navbar h1,
@@ -309,7 +321,8 @@ footer { color: var(--muted); }
     white-space: nowrap !important;
     line-height: 1.1 !important;
     margin: 0 !important;
-    font-size: 26px !important; /* bisa kecilin ke 24 kalau masih kepotong */
+    font-size: 26px !important;
+    /* bisa kecilin ke 24 kalau masih kepotong */
   }
 
   /* HIDE nav desktop (biar gak tampil barengan hamburger) */
@@ -320,7 +333,8 @@ footer { color: var(--muted); }
   /* tombol tema: fix di kanan (sebelum hamburger) */
   #theme-toggle {
     position: absolute !important;
-    right: 78px !important;   /* jarak dari kanan (biar ada tempat hamburger) */
+    right: 78px !important;
+    /* jarak dari kanan (biar ada tempat hamburger) */
     top: 50% !important;
     transform: translateY(-50%) !important;
     margin: 0 !important;
@@ -345,12 +359,10 @@ footer { color: var(--muted); }
 }
 
 /* ===============================
-   FIX HEADER KECIL: TAGLINE NABRAK TOGGLE/HAMBURGER
-   - sembunyikan subtitle/tagline di navbar saat layar kecil
-   - tombol tetap rapi di kanan
+   FIX HEADER KECIL
 ================================ */
 @media (max-width: 992px) {
-  /* sembunyikan teks kedua/tagline yang bikin numpuk */
+
   header.navbar p,
   header.navbar small,
   header.navbar .tagline,
@@ -359,8 +371,8 @@ footer { color: var(--muted); }
     display: none !important;
   }
 
-  /* kalau tagline kamu berupa elemen ke-2 setelah judul, pakai ini juga */
-  header.navbar > :not(nav):not(#theme-toggle):not(#mobile-menu-btn):not(#mobile-menu-panel):not(.logo):not(a.logo):not(h1):not(h2) {
+  /*tagline*/
+  header.navbar> :not(nav):not(#theme-toggle):not(#mobile-menu-btn):not(#mobile-menu-panel):not(.logo):not(a.logo):not(h1):not(h2) {
     display: none !important;
   }
 
@@ -381,24 +393,32 @@ footer { color: var(--muted); }
 }
 
 /* ===============================
-   FIX HOME HERO (biar cocok light/dark)
-   - overlay background adaptif tema
-   - teks gak terlalu mepet & panjang
-   Aman: hanya styling, tidak ubah HTML
+   FIX HOME HERO 
 ================================ */
 
-/* kalau section hero kamu punya class umum seperti .hero / .home / .landing */
-.hero, .home, .landing, .hero-section, #hero, #home {
+/*  section hero */
+.hero,
+.home,
+.landing,
+.hero-section,
+#hero,
+#home {
   position: relative;
 }
 
 /* overlay gelap/terang di atas background image */
-.hero::before, .home::before, .landing::before, .hero-section::before, #hero::before, #home::before {
+.hero::before,
+.home::before,
+.landing::before,
+.hero-section::before,
+#hero::before,
+#home::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: rgba(255,255,255,0.55); /* default light: bikin lebih soft */
+  background: rgba(255, 255, 255, 0.55);
+  /* default light: bikin lebih soft */
 }
 
 /* dark mode: overlay gelap tapi gak “mati banget” */
@@ -412,13 +432,23 @@ footer { color: var(--muted); }
 }
 
 /* pastikan konten hero di atas overlay */
-.hero > *, .home > *, .landing > *, .hero-section > *, #hero > *, #home > * {
+.hero>*,
+.home>*,
+.landing>*,
+.hero-section>*,
+#hero>*,
+#home>* {
   position: relative;
   z-index: 1;
 }
 
 /* rapihin teks biar gak “blok panjang” */
-.hero p, .home p, .landing p, .hero-section p, #hero p, #home p {
+.hero p,
+.home p,
+.landing p,
+.hero-section p,
+#hero p,
+#home p {
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
@@ -434,32 +464,35 @@ footer { color: var(--muted); }
 [data-theme="dark"] #home h1 {
   color: #fff;
 }
+
 /* ===============================
    NAV DEKET KE THEME TOGGLE (DESKTOP)
    - menu nempel ke tombol 🌙
 ================================ */
 
-header.navbar{
-  display:flex !important;
-  align-items:center !important;
+header.navbar {
+  display: flex !important;
+  align-items: center !important;
   gap: 16px !important;
 }
 
-/* nav didorong ke kanan, tapi JANGAN ada margin kanan gede */
-header.navbar nav{
+/* nav kanan */
+header.navbar nav {
   margin-left: auto !important;
-  margin-right: 12px !important;  /* <<< kecil aja (ubah 8-16px) */
+  margin-right: 12px !important;
+  
 }
 
 /* jarak antar menu rapih */
-header.navbar nav a{
+header.navbar nav a {
   margin: 0 12px !important;
 }
 
 /* toggle tetap pojok kanan */
-#theme-toggle{
+#theme-toggle {
   margin-left: 0 !important;
 }
+
 /* ===============================
    HERO BACKGROUND (GLOBAL)
 ================================ */
@@ -491,6 +524,7 @@ header.navbar nav a{
   --hero-bg-end: #020617;
   --hero-overlay: rgba(2, 6, 23, 0.88);
 }
+
 /* ===============================
    CYBER COLOR SYSTEM (HOME)
 ================================ */
@@ -509,11 +543,12 @@ header.navbar nav a{
   --cyber-text: #dbeafe;
   --cyber-accent: #60a5fa;
 }
+
 /* ===============================
-   NAVBAR: FIXED DI MOBILE (BIAR GAK IKUT HILANG SAAT SCROLL)
-   Note: offset padding-top di-handle oleh navigation.js
+   NAVBAR: FIXED DI MOBILE 
 ================================ */
 @media (max-width: 992px) {
+
   header.navbar,
   .navbar {
     position: fixed !important;
@@ -526,8 +561,7 @@ header.navbar nav a{
 
 /* ===============================
    THEME BRIDGE (WAJIB)
-   Bikin semua halaman ikut var() tanpa bongkar style.css
-================================ */
+  ================================ */
 
 /* transisi halus saat toggle */
 html.theme-transition *,
@@ -536,35 +570,52 @@ html.theme-transition {
 }
 
 /* GLOBAL background + text */
-html, body {
+html,
+body {
   background: var(--bg) !important;
   color: var(--text) !important;
 }
 
 /* biar section/hero/container gak “nge-lock” warna hardcode */
-main, section, header, footer,
-.hero, .section, .container,
-.onepage-wrapper, .page-frame {
+main,
+section,
+header,
+footer,
+.hero,
+.section,
+.container,
+.onepage-wrapper,
+.page-frame {
   color: var(--text) !important;
 }
 
 /* NAVBAR selalu konsisten */
-header.navbar, .navbar {
+header.navbar,
+.navbar {
   background: var(--nav-bg) !important;
   color: var(--nav-text) !important;
   border-bottom: 1px solid var(--border) !important;
   backdrop-filter: blur(10px);
 }
-header.navbar nav a, .navbar nav a {
+
+header.navbar nav a,
+.navbar nav a {
   color: var(--nav-text) !important;
 }
-header.navbar nav a.active, .navbar nav a.active {
+
+header.navbar nav a.active,
+.navbar nav a.active {
   color: var(--primary) !important;
 }
 
 /* LINK */
-a { color: var(--primary) !important; }
-a:hover { opacity: .9; }
+a {
+  color: var(--primary) !important;
+}
+
+a:hover {
+  opacity: .9;
+}
 
 /* CARD / BOX (About, Project, Blog, Contact) */
 .team-card,
@@ -578,93 +629,119 @@ a:hover { opacity: .9; }
   background: var(--card) !important;
   border: 1px solid var(--border) !important;
   color: var(--text) !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
 }
 
 /* TEXT MUTED (abu-abu) biar kebaca di dark */
-p, span, small, .muted, .subtitle, .desc,
+p,
+span,
+small,
+.muted,
+.subtitle,
+.desc,
 .section-desc p {
   color: var(--muted) !important;
 }
 
 /* HEADING tetap terang */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--text) !important;
 }
 
 /* FORM (Contact) */
-input, textarea, select {
-  background: rgba(255,255,255,.02) !important;
+input,
+textarea,
+select {
+  background: rgba(255, 255, 255, .02) !important;
   color: var(--text) !important;
   border: 1px solid var(--border) !important;
 }
-input::placeholder, textarea::placeholder {
+
+input::placeholder,
+textarea::placeholder {
   color: var(--muted) !important;
 }
-button, .btn {
+
+button,
+.btn {
   background: var(--primary) !important;
   color: var(--primary-contrast) !important;
   border: 0 !important;
 }
-button:hover, .btn:hover { filter: brightness(1.05); }
+
+button:hover,
+.btn:hover {
+  filter: brightness(1.05);
+}
 
 /* ===============================
    FORCE PAGE GRADIENT (FIX)
-   supaya Projects/Blog/Contact ikut berubah beneran
-================================ */
+   ================================ */
 
 /* gradient default (LIGHT) */
-:root{
+:root {
   --page-grad-start: #8ad7e1;
   --page-grad-end: #0f172a;
 }
 
 /* gradient saat DARK */
-[data-theme="dark"]{
+[data-theme="dark"] {
   --page-grad-start: #020617;
   --page-grad-end: #0b1220;
 }
 
 /* PROJECTS section background (yang ngunci turquoise) */
-.projects{
+.projects {
   background: linear-gradient(180deg, var(--page-grad-start), var(--page-grad-end)) !important;
 }
 
 /* CONTACT page: body pakai :has() ngunci turquoise */
-body:has(main.contact-page){
+body:has(main.contact-page) {
   background: linear-gradient(180deg, var(--page-grad-start), var(--page-grad-end)) !important;
 }
 
 /* BLOG: layer fallback yang fixed ngunci turquoise */
-.blog-list::before{
+.blog-list::before {
   background: linear-gradient(180deg, var(--page-grad-start), var(--page-grad-end)) !important;
 }
 
 /* Blog hero biar tetep netral */
 body:has(.blog-list) .hero,
-body:has(.blog-post) .hero{
+body:has(.blog-post) .hero {
   background: transparent !important;
 }
 
 
 /* ===============================
    PATCH (2025-12-31)
-   Fixes to fully apply Dark/Light + real mobile hamburger + project gallery modal/filter
-   (Tanpa bongkar style lama: hanya override yang perlu)
-================================ */
+   ================================ */
 
 /* Global background & text follow theme */
-html, body {
+html,
+body {
   background: var(--bg) !important;
   color: var(--text) !important;
 }
 
-body, main, section, footer {
+body,
+main,
+section,
+footer {
   color: var(--text);
 }
 
 /* Pastikan konten paragraf terbaca di semua mode */
-p, li, .section-desc, .project-desc, .blog-excerpt, .contact-desc {
+p,
+li,
+.section-desc,
+.project-desc,
+.blog-excerpt,
+.contact-desc {
   color: var(--muted) !important;
 }
 
@@ -682,15 +759,20 @@ p, li, .section-desc, .project-desc, .blog-excerpt, .contact-desc {
 }
 
 /* Link contrast */
-a { color: inherit; }
-a:hover { color: var(--primary); }
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--primary);
+}
 
 /* ===============================
    REAL MOBILE HAMBURGER (navigation.js)
 ================================ */
-#mobile-menu-btn{
-  display:none;
-  margin-left:auto;
+#mobile-menu-btn {
+  display: none;
+  margin-left: auto;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text);
@@ -700,10 +782,14 @@ a:hover { color: var(--primary); }
   cursor: pointer;
   box-shadow: var(--shadow-soft);
 }
-#mobile-menu-btn span{ font-size: 20px; line-height: 1; }
 
-#mobile-menu-panel{
-  display:none;
+#mobile-menu-btn span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+#mobile-menu-panel {
+  display: none;
   position: absolute;
   top: calc(var(--nav-height, 70px) + 10px);
   right: 14px;
@@ -715,64 +801,92 @@ a:hover { color: var(--primary); }
   box-shadow: var(--shadow);
   backdrop-filter: blur(14px);
 }
-#mobile-menu-panel.open{ display:block; }
-#mobile-menu-panel a{
-  display:block;
+
+#mobile-menu-panel.open {
+  display: block;
+}
+
+#mobile-menu-panel a {
+  display: block;
   padding: 12px 10px;
   border-radius: 12px;
   margin: 4px 0;
-  text-decoration:none;
+  text-decoration: none;
   color: var(--nav-text);
 }
-#mobile-menu-panel a:hover{
-  background: rgba(56,189,248,0.12);
+
+#mobile-menu-panel a:hover {
+  background: rgba(56, 189, 248, 0.12);
 }
 
-@media (max-width: 992px){
-  header.navbar nav{ display:none !important; }
-  #mobile-menu-btn{ display:inline-flex; align-items:center; justify-content:center; }
-  header.navbar{ position: sticky; top:0; z-index:9999; }
+@media (max-width: 992px) {
+  header.navbar nav {
+    display: none !important;
+  }
+
+  #mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+  }
 }
 
 /* ===============================
    PROJECT FILTERS + MODAL
 ================================ */
-.ppd-filters{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
+.ppd-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin: 18px 0 14px;
 }
-.ppd-filter-btn{
+
+.ppd-filter-btn {
   padding: 9px 14px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: transparent;
   color: var(--text);
-  cursor:pointer;
+  cursor: pointer;
   transition: transform .15s ease, background .2s ease, border-color .2s ease;
 }
-.ppd-filter-btn:hover{ transform: translateY(-1px); border-color: rgba(56,189,248,0.45); }
-.ppd-filter-btn.active{
+
+.ppd-filter-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+.ppd-filter-btn.active {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   color: var(--primary-contrast);
   border-color: transparent;
 }
 
-.ppd-modal{
+.ppd-modal {
   position: fixed;
   inset: 0;
-  display:none;
+  display: none;
   z-index: 99999;
 }
-.ppd-modal.open{ display:block; }
-.ppd-modal-backdrop{
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.55);
+
+.ppd-modal.open {
+  display: block;
 }
-.ppd-modal-dialog{
-  position:relative;
+
+.ppd-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.ppd-modal-dialog {
+  position: relative;
   max-width: 720px;
   margin: 8vh auto;
   background: var(--card);
@@ -781,8 +895,9 @@ a:hover { color: var(--primary); }
   box-shadow: var(--shadow);
   padding: 22px 18px 18px;
 }
-.ppd-modal-close{
-  position:absolute;
+
+.ppd-modal-close {
+  position: absolute;
   top: 10px;
   right: 12px;
   width: 40px;
@@ -791,32 +906,45 @@ a:hover { color: var(--primary); }
   border: 1px solid var(--border);
   background: transparent;
   color: var(--text);
-  cursor:pointer;
+  cursor: pointer;
 }
-.ppd-modal-body h3{
+
+.ppd-modal-body h3 {
   margin: 6px 0 10px;
 }
-.ppd-modal-meta{
-  display:grid;
+
+.ppd-modal-meta {
+  display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
   margin-top: 14px;
   color: var(--muted);
 }
-.ppd-modal-actions{
-  display:flex;
-  flex-wrap:wrap;
+
+.ppd-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 18px;
 }
-.ppd-modal-actions a.btn, 
-.ppd-modal-actions a.btn-outline{
-  text-decoration:none;
+
+.ppd-modal-actions a.btn,
+.ppd-modal-actions a.btn-outline {
+  text-decoration: none;
 }
-@media (min-width: 640px){
-  .ppd-modal-meta{ grid-template-columns: 1fr 1fr; }
+
+@media (min-width: 640px) {
+  .ppd-modal-meta {
+    grid-template-columns: 1fr 1fr;
+  }
 }
-@media (max-width: 520px){
-  .ppd-modal-dialog{ margin: 6vh 12px; }
+
+@media (max-width: 520px) {
+  .ppd-modal-dialog {
+    margin: 6vh 12px;
+  }
 }
+
+
+
 
